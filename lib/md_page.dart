@@ -1,7 +1,4 @@
 
-
-import 'dart:async';
-
 import 'package:blog_project/tests.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 
+import 'consts.dart';
 import 'md_widgets/markdown_widget.dart';
 
 class MarkdownPage extends StatefulWidget {
@@ -27,35 +25,76 @@ class _MarkdownPageState extends State<MarkdownPage>
     with TickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
+  var barHeight = Const.barHeight;
 
   @override
   void initState() {
     super.initState();
-    controller =
-        new AnimationController(vsync: this, duration: Duration(milliseconds: 500));
-    controller.value=1;
+    controller = new AnimationController(
+        vsync: this, duration: Duration(milliseconds: 500));
+    controller.value = 1;
     animation =
         // Tween(begin: 1.0, end: 0.0).animate(controller);
-    CurveTween(curve: Curves.fastOutSlowIn).animate(controller);
+        CurveTween(curve: Curves.fastOutSlowIn).animate(controller);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
+        body: Stack(
       children: [
+        Column(
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: ListView(
+                      children: [
+                        SizedBox(height: Const.barHeight,),
+
+                        FlutterLogo(
+                          size: 50,
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text('导航'),
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 10, bottom: 10),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text('首页'),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 10,
+                    child: buildCombineList(),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
         GestureDetector(
           onTap: () {
-            Debug.log(4, 'on tap');
-            controller.reverse();
-            Timer(Duration(seconds: 1), (){
-              controller.forward();
-            });
+            // Debug.log(4, 'on tap');
+            // controller.reverse();
+            // Timer(Duration(seconds: 1), () {
+            //   controller.forward();
+            // });
           },
           child: SizeTransition(
             sizeFactor: animation,
             child: SizedBox(
-              height: 70,
+              height: Const.barHeight,
               child: Container(
                 color: Colors.deepPurpleAccent,
                 child: Row(
@@ -68,66 +107,52 @@ class _MarkdownPageState extends State<MarkdownPage>
             ),
           ),
         ),
-        Expanded(
-          child: Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: ListView(
-                  children: [
-                    FlutterLogo(
-                      size: 100,
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text('导航'),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Padding(
-                        padding: EdgeInsets.only(top: 10, bottom: 10),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text('首页'),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 10,
-                child: ListView(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        // Expanded(child: buildTocWidget()),
-                        Expanded(
-                            child: Align(
-                                alignment: Alignment.topCenter,
-                                child: buildMarkdownListView()),
-                            flex: 3),
-                        Expanded(
-                            child: ListView.builder(
-                          shrinkWrap: true,
-                          itemBuilder: (c, i) {
-                            Debug.log(3, i);
-                            return Text('$i');
-                          },
-                          itemCount: 100,
-                        ))
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
       ],
     ));
+  }
+
+  Widget buildCombineList() {
+    return NotificationListener(
+      onNotification: (t) {
+        if (t is ScrollUpdateNotification) {
+          if (t.scrollDelta > 0) {
+            controller.reverse();
+          } else {
+            controller.forward();
+          }
+          Debug.log(5, t.scrollDelta);
+        }
+        return false;
+      },
+      child: ListView(
+        children: [
+          SizedBox(
+            height: Const.barHeight,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // Expanded(child: buildTocWidget()),
+              Expanded(
+                  child: Align(
+                      alignment: Alignment.topCenter,
+                      child: buildMarkdownListView()),
+                  flex: 3),
+              Expanded(
+                  child: ListView.builder(
+                shrinkWrap: true,
+                itemBuilder: (c, i) {
+                  Debug.log(3, i);
+                  return Text('$i');
+                },
+                itemCount: 100,
+              ))
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   Widget buildMarkdownListView() {
