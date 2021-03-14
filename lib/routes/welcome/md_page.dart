@@ -167,12 +167,13 @@ class _MainPageState extends State<MainPage>
   Widget buildCombineList() {
     return NotificationListener(
       onNotification: (t) {
-        if (t is ScrollUpdateNotification) {
+        if (t is ScrollUpdateNotification && t.depth==0) {
           if (t.scrollDelta > 0) {
             controller.reverse();
           } else {
             controller.forward();
           }
+          Debug.log(5, t);
           Debug.log(5, t.scrollDelta);
         }
         return false;

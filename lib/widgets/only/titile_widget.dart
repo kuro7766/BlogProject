@@ -24,6 +24,7 @@ class TitleCard extends StatelessWidget {
                   title,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      color: Colors.black,
                       fontSize: Const.normalTextSize),
                 ),
               ),

@@ -22,10 +22,18 @@ class TitleListCard extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   title,
-                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: Const.normalTextSize),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,                      color: Colors.black,
+
+                      fontSize: Const.normalTextSize),
                 ),
               )
-            ]..addAll(List.generate(list.length, (index) => Text(list[index],style: TextStyle(fontSize: Const.normalTextSize),))),
+            ]..addAll(List.generate(
+                list.length,
+                (index) => Text(
+                      list[index],
+                      style: TextStyle(fontSize: Const.normalTextSize),
+                    ))),
           ),
         ),
         SizedBox(

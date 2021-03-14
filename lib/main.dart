@@ -4,7 +4,6 @@ import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/user_config.dart';
 import 'package:flutter/material.dart';
 void main() {
-  Debug.configuration(minimalLevel: 7);
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
