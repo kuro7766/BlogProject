@@ -1,0 +1,1 @@
+enum RightPageType { markdown, list }

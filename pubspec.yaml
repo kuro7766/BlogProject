@@ -91,6 +91,15 @@ flutter:
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
+  fonts:
+    - family: Kaishu
+      fonts:
+        - asset: assets/simkai.ttf
+    - family: Dengxian
+      fonts:
+        - asset: assets/Deng.ttf
+        - asset: assets/Dengl.ttf
+        - asset: assets/Dengb.ttf
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

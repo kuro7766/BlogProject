@@ -1,4 +1,20 @@
 class Tests{
+  static var blogConfig={
+    'blog_url':{
+      // 用于存放当前网站 base—url下的相对路径
+      'relative':{
+        '默认':{
+
+        }
+      },
+      //用于存放md文章的绝对路径，甚至可以是其他网站
+      'absolute':{
+
+      }
+    },'user_config':{
+
+    }
+  };
   static var s='''
   # flutter web打包asset图片不显示问题
 
