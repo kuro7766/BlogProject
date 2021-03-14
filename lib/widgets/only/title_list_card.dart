@@ -1,3 +1,4 @@
+import 'package:blog_project/widgets/only/basic_container.dart';
 import 'package:flutter/material.dart';
 
 import '../../consts.dart';
@@ -12,10 +13,7 @@ class TitleListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          padding: EdgeInsets.all(10.0),
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
+        BasicContainer(
           child: Column(
             children: [
               Align(
@@ -23,8 +21,8 @@ class TitleListCard extends StatelessWidget {
                 child: Text(
                   title,
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,                      color: Colors.black,
-
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                       fontSize: Const.normalTextSize),
                 ),
               )

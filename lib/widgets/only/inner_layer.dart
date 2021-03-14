@@ -20,20 +20,23 @@ class _InnerLayerState extends State<InnerLayer> {
         SizedBox(
           height: Const.barHeight,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // Expanded(child: buildTocWidget()),
-            Expanded(
-                child: Align(
-                    alignment: Alignment.topCenter,
-                    child: widget.left),
-                flex: 4),
-            Expanded(
-                flex: 1,
-                child: widget.right)
-          ],
+        Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // Expanded(child: buildTocWidget()),
+              Expanded(
+                  child: Align(
+                      alignment: Alignment.topCenter,
+                      child: widget.left),
+                  flex: 4),
+              Expanded(
+                  flex: 1,
+                  child: widget.right)
+            ],
+          ),
         ),
       ],
     );

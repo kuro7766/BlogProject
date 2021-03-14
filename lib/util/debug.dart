@@ -1,18 +1,18 @@
 
 class Debug {
-  static int minimalLevel=7;
-  static int only=5;
+  static int _minimalLevel=10;
+  static int _only=0;
   static void log(int level, s) {
-    if(only>0){
-      if(level==only){
+    if(_only>0){
+      if(level==_only){
         print('$s');
         return;
       }
     }
-    if (level >= minimalLevel) print('$s');
+    if (level >= _minimalLevel) print('$s');
   }
 
   static void configuration({minimalLevel}) {
-    Debug.minimalLevel = minimalLevel;
+    Debug._minimalLevel = minimalLevel;
   }
 }

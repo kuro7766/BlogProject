@@ -1,4 +1,4 @@
-import 'package:blog_project/routes/welcome/md_page.dart';
+import 'package:blog_project/routes/welcome/entrance_page.dart';
 import 'package:blog_project/tests.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/user_config.dart';

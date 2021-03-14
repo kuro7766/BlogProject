@@ -1,7 +1,6 @@
-
 import 'package:blog_project/consts.dart';
 import 'package:blog_project/md_widgets/markdown_widget.dart';
-import 'package:blog_project/routes/welcome/right_list_view.dart';
+import 'package:blog_project/routes/welcome/inner_layer.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/widgets/only/inner_layer.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,16 +11,18 @@ import '../tests.dart';
 class RightListMdState extends State<InnerLayerContainer> {
   @override
   Widget build(BuildContext context) {
-    return InnerLayer(left: buildMarkdownListView(),right: ListView.builder(
-      shrinkWrap: true,
-      itemBuilder: (c, i) {
-        Debug.log(3, i);
-        return Card(color: Const.cardColor,child: Text('$i'*20));
-      },
-      itemCount: 100,
-    ),);
+    return InnerLayer(
+      left: buildMarkdownListView(),
+      right: ListView.builder(
+        shrinkWrap: true,
+        itemBuilder: (c, i) {
+          Debug.log(3, i);
+          return Card(color: Const.cardColor, child: Text('$i' * 20));
+        },
+        itemCount: 100,
+      ),
+    );
   }
-
 
   Widget buildMarkdownListView() {
     List<Widget> c = [
@@ -71,39 +72,42 @@ class RightListMdState extends State<InnerLayerContainer> {
       ))
       ..add(Align(
           alignment: AlignmentDirectional.centerStart,
-          child: ElevatedButton(onPressed: () {
-            // RenderBox box = mdKey.currentContext.findRenderObject();
-            // Offset position = box.localToGlobal(Offset.zero); //this is global position
-            // double y = position.dy;
-            // Debug.log(7, y);
-          }, child: Text('发表评论'))));
+          child: ElevatedButton(
+              onPressed: () {
+                // RenderBox box = mdKey.currentContext.findRenderObject();
+                // Offset position = box.localToGlobal(Offset.zero); //this is global position
+                // double y = position.dy;
+                // Debug.log(7, y);
+              },
+              child: Text('发表评论'))));
     return ListView(
       shrinkWrap: true,
       children: c,
     );
   }
+
   GlobalKey mdKey = GlobalKey();
 
   Widget buildMarkdown() => MarkdownWidget(
-    data: Tests.s2,
-    key: mdKey,
-    shrinkWrap: true,
-    styleConfig: StyleConfig(
-        markdownTheme: MarkdownTheme.darkTheme,
-        pConfig: PConfig(custom: (node) {
-          return Text(
-            '${node.tag}',
-            style: TextStyle(color: Colors.blueGrey),
-          );
-        }),
-        titleConfig: TitleConfig(
-          showDivider: false,
-          // commonStyle: TextStyle(color: Colors.black),
-        ),
-        preConfig: PreConfig(
-            autoDetectionLanguage: true,
-            preWrapper: (w, t) {
-              return w;
-            })),
-  );
+        data: Tests.s2,
+        key: mdKey,
+        shrinkWrap: true,
+        styleConfig: StyleConfig(
+            markdownTheme: MarkdownTheme.darkTheme,
+            pConfig: PConfig(custom: (node) {
+              return Text(
+                '${node.tag}',
+                style: TextStyle(color: Colors.blueGrey),
+              );
+            }),
+            titleConfig: TitleConfig(
+              showDivider: false,
+              // commonStyle: TextStyle(color: Colors.black),
+            ),
+            preConfig: PreConfig(
+                autoDetectionLanguage: true,
+                preWrapper: (w, t) {
+                  return w;
+                })),
+      );
 }

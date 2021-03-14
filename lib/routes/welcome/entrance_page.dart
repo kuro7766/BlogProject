@@ -1,6 +1,8 @@
-import 'package:blog_project/routes/welcome/right_list_view.dart';
+import 'package:blog_project/routes/welcome/inner_layer.dart';
 import 'package:blog_project/tests.dart';
 import 'package:blog_project/util/debug.dart';
+import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
+import 'package:blog_project/widgets/scenario/l_list/l_list_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -10,7 +12,6 @@ import '../../consts.dart';
 import '../../md_widgets/markdown_widget.dart';
 
 class MainPage extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -18,8 +19,7 @@ class MainPage extends StatefulWidget {
   }
 }
 
-class _MainPageState extends State<MainPage>
-    with TickerProviderStateMixin {
+class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
   var barHeight = Const.barHeight;
@@ -50,14 +50,22 @@ class _MainPageState extends State<MainPage>
                         child: Material(
                           color: Colors.transparent,
                           child: InkWell(
-                            onTap: (){
-
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [Icon(Icons.home,color: Colors.white,),
-                                Text('主页',style:TextStyle(color: Colors.white),)
-                              ],
+                            onTap: () {},
+                            child: SizedBox(
+                              height: Const.barHeight,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.home,
+                                    color: Colors.white,
+                                  ),
+                                  Text(
+                                    '主页',
+                                    style: TextStyle(color: Colors.white),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         )),
@@ -69,22 +77,36 @@ class _MainPageState extends State<MainPage>
                               width: 200,
                               child: Container(
                                 padding: EdgeInsets.only(left: 10),
-
                                 // decoration: BoxDecoration(
                                 //     borderRadius: BorderRadius.circular(30),
                                 //     border: Border.all(
                                 //         width: 3, color: Colors.blueAccent)),
-                                child: new TextField(
-                                  decoration: new InputDecoration(
-                                    labelText: 'abc',
-                                    border: new OutlineInputBorder(
-                                      borderRadius: const BorderRadius.all(
-                                        const Radius.circular(30.0),
+                                child: Theme(
+                                  data: new ThemeData(
+                                    primaryColor: Const.searchBarColor,
+                                    primaryColorDark: Const.searchBarColor,
+                                  ),
+                                  child: new TextField(
+                                    decoration: new InputDecoration(
+                                      labelText: '搜索',
+                                      border: new OutlineInputBorder(
+                                        borderSide: new BorderSide(
+                                            color: Const.searchBarColor),
+                                        borderRadius: const BorderRadius.all(
+                                          const Radius.circular(30.0),
+                                        ),
                                       ),
+                                      enabledBorder: new OutlineInputBorder(
+                                        borderSide: new BorderSide(
+                                            color: Const.searchBarColor),
+                                        borderRadius: const BorderRadius.all(
+                                          const Radius.circular(30.0),
+                                        ),
+                                      ),
+                                      // filled: true,
+                                      // hintStyle: new TextStyle(color: Colors.grey[800]),
+                                      hintText: "输入想要搜索的内容",
                                     ),
-                                    // filled: true,
-                                    // hintStyle: new TextStyle(color: Colors.grey[800]),
-                                    hintText: "Type in your text",
                                   ),
                                 ),
                               ),
@@ -102,29 +124,9 @@ class _MainPageState extends State<MainPage>
               children: [
                 Expanded(
                   flex: Const.leftFlex,
-                  child: ListView(
-                    children: [
-                      FlutterLogo(
-                        size: 50,
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('导航'),
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 10, bottom: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.home_rounded),
-                              Text('首页'),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                  child: Container(
+                    color: Color(0xff3A3F51),
+                    child: LList(),
                   ),
                 ),
                 Expanded(
@@ -159,6 +161,7 @@ class _MainPageState extends State<MainPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
         body: Stack(
       children: [layer1(), layer2()],
     ));
@@ -166,20 +169,18 @@ class _MainPageState extends State<MainPage>
 
   Widget buildCombineList() {
     return NotificationListener(
-      onNotification: (t) {
-        if (t is ScrollUpdateNotification && t.depth==0) {
-          if (t.scrollDelta > 0) {
-            controller.reverse();
-          } else {
-            controller.forward();
+        onNotification: (t) {
+          if (t is ScrollUpdateNotification && t.depth == 0) {
+            if (t.scrollDelta > 0) {
+              controller.reverse();
+            } else {
+              controller.forward();
+            }
+            Debug.log(5, t);
+            Debug.log(5, t.scrollDelta);
           }
-          Debug.log(5, t);
-          Debug.log(5, t.scrollDelta);
-        }
-        return false;
-      },
-      child: InnerLayerContainer()
-    );
+          return false;
+        },
+        child: InnerLayerContainer());
   }
-
 }
