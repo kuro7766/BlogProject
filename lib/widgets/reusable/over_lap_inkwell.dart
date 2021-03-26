@@ -13,9 +13,7 @@ class OverlapInkwell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: this.color ?? Colors.grey[800],
-      child: Center(
-        child: InkWell(onTap: onTap ?? () {}, child: child),
-      ),
+      child: InkWell(onTap: onTap ?? () {}, child: child),
     );
   }
 }

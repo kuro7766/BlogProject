@@ -24,11 +24,18 @@ class MarkdownGenerator {
         inlineSyntaxes: [TaskListSyntax()]);
     final List<String> lines = data.split(RegExp(r'(\r?\n)|(\r?\t)|(\r)'));
     List<m.Node> nodes = document.parseLines(lines);
+
+    nodes.forEach((element) {
+      log(35, '-${element.textContent}-');
+    });
+    log(36, nodes.length);
     _tocList = LinkedHashMap();
     _helper = MarkdownHelper(wConfig: widgetConfig);
     _widgets = [];
     nodes.forEach((element) {
-      _widgets.add(_generatorWidget(element, childMargin));
+      var w = _generatorWidget(element, childMargin);
+      log(40, '${w} added ');
+      _widgets.add(w);
     });
   }
 
@@ -43,10 +50,16 @@ class MarkdownGenerator {
   //todo : generator all widget from markdown data by this method
   ///generator all widget from markdown data by this method
   Widget _generatorWidget(m.Node node, EdgeInsetsGeometry childMargin) {
-    if (node is m.Text) return _helper.getPWidget(m.Element(p, [node]));
+    if (node is m.Text) {
+      log(51, node.textContent + ',' + node.textContent);
+      return _helper.getPWidget(m.Element(p, [node]));
+    }
+    log(50, node.runtimeType);
     final tag = (node as m.Element).tag;
     Widget result;
-    Debug.log(2, '$tag ${node}');
+    var dbg = node as m.Element;
+    log(37, '-${dbg.textContent},${dbg.tag}-');
+    log(51, '-${dbg.textContent},${dbg.tag}-');
     switch (tag) {
       case h1:
         _tocList[_widgets.length] = Toc(
@@ -102,7 +115,20 @@ class MarkdownGenerator {
             5);
         result = _helper.getTitleWidget(node, h6);
         break;
+      //custom widget 入口
       case p:
+        // log(53, 'enter p');
+        // only called once
+
+        //50 : Element
+        // 51 : -<ff>def</ff>abc,p-
+        // 53 : enter p
+        // 52 : 1616596190345 from : markdown_helper.dart     md调用了一次
+        // 52 : 1616596190345 <ff>def</ff>abc
+        // 52 : 1616596190348 from : p.dart                   p自己又调用了一次,禁用p自己的调用方法
+        // 52 : 1616596190348
+        // 52 : 1616596190348 def
+        // 52 : 1616596190348 abc
         result = _helper.getPWidget(node);
         break;
       case pre:

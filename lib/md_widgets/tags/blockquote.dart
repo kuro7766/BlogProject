@@ -27,7 +27,7 @@ class Bq {
           ),
           color: config?.backgroundColor),
       padding: EdgeInsets.only(left: config?.leftSpace ?? 10),
-      child: P().getPWidget(node.children, node,
+      child: P().getPWidget(node.children, node,from: 'blockquote.dart',
           textStyle: config?.blockStyle ?? defaultBlockStyle,
           textConfig: config?.textConfig),
     );

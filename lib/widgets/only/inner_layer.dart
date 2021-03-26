@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../../consts.dart';
+import '../../vars/consts.dart';
 
-class InnerLayer extends StatefulWidget {
+class ManageInnerLayer extends StatefulWidget {
   final Widget left;
   final Widget right;
 
-  InnerLayer({this.left, this.right});
+  ManageInnerLayer({this.left, this.right});
 
   @override
-  _InnerLayerState createState() => _InnerLayerState();
+  _ManageInnerLayerState createState() => _ManageInnerLayerState();
 }
 
-class _InnerLayerState extends State<InnerLayer> {
+class _ManageInnerLayerState extends State<ManageInnerLayer> {
   @override
   Widget build(BuildContext context) {
     return ListView(

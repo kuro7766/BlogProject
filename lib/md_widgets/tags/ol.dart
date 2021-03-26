@@ -71,6 +71,7 @@ class Ol {
                 textStyle: config?.textStyle ?? defaultPStyle,
                 crossAxisAlignment: WrapCrossAlignment.start,
                 textConfig: config?.textConfig,
+                from: 'ol.dart',
                 selectable: config?.selectable),
           ),
         ],

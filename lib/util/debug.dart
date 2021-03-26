@@ -1,18 +1,29 @@
-
 class Debug {
-  static int _minimalLevel=10;
-  static int _only=0;
+  static int _minimalLevel = 0;
+  static int _only = 0;
+
+  static set only(int a) {
+    _only = a;
+  }
+
+  static set minLv(int a) {
+    _minimalLevel = a;
+  }
+
   static void log(int level, s) {
-    if(_only>0){
-      if(level==_only){
-        print('$s');
+    if (_only > 0) {
+      if (level == _only) {
+        print('$level : $s');
         return;
       }
+    } else {
+      if (level >= _minimalLevel) print('$level : $s');
     }
-    if (level >= _minimalLevel) print('$s');
   }
+}
 
-  static void configuration({minimalLevel}) {
-    Debug._minimalLevel = minimalLevel;
-  }
+log(level, s) {
+  Debug.only=0;
+  Debug.minLv=61;
+  Debug.log(level, s);
 }

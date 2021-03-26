@@ -1,4 +1,6 @@
 import 'dart:collection';
+import 'package:blog_project/util/debug.dart';
+
 import 'markdown_toc.dart';
 import 'markdown_generator.dart';
 import 'config/style_config.dart';
@@ -97,6 +99,7 @@ class _MarkdownWidgetState extends State<MarkdownWidget> {
     compute(buildMarkdownGenerator, _markdownData).then((value) {
       markdownGenerator = value;
       tocList.addAll(markdownGenerator.tocList);
+      log(35, markdownGenerator.tocList.toString());
       widgets.addAll(markdownGenerator.widgets);
       if (widget.controller != null)
         itemPositionsListener.itemPositions.addListener(indexListener);
@@ -147,7 +150,7 @@ class _MarkdownWidgetState extends State<MarkdownWidget> {
       widget.loadingWidget ?? Center(child: CircularProgressIndicator());
 
   Widget buildMarkdownWidget() {
-    widgets.add(Text('myadd'));
+    // widgets.add(Text('myadd'));
     return widget.controller == null
         ? ListView.builder(
             shrinkWrap: widget.shrinkWrap,

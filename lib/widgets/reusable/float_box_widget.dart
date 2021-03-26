@@ -18,7 +18,7 @@ class _FloatBoxWidgetState extends State<FloatBoxWidget> with SingleTickerProvid
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 50),
+      duration: const Duration(milliseconds: 200),
       vsync: this,
     );
     // ..repeat();

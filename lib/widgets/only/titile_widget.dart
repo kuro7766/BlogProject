@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../consts.dart';
+import '../../vars/consts.dart';
 
 class TitleCard extends StatelessWidget {
   final String title;
@@ -13,7 +13,7 @@ class TitleCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(20.0),
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
           child: Column(

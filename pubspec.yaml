@@ -39,6 +39,7 @@ dependencies:
 
 # laochenzi 博客依赖-----------------------
   markdown: ^3.0.0
+  flutter_markdown:
   #highlight code
   highlight: ^0.6.0
   flutter_highlight: ^0.6.0
@@ -55,13 +56,19 @@ dependencies:
   chewie: ^1.0.0
 # laochenzi 博客依赖-----------------------
 
+  # state management
+  get:
+  get_storage:
 
+
+  url_strategy: ^0.2.0
 
   # -------------almost necessary for every projects-------------
   http: ^0.13.0
   url_launcher: ^6.0.2
   # -------------almost necessary for every projects-------------
 
+  fluro: ^2.0.3
 #  flutter_markdown: ^0.6.0
 #  flutter_web: any
 #  flutter_web_ui: any
@@ -91,15 +98,16 @@ flutter:
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-  fonts:
-    - family: Kaishu
-      fonts:
-        - asset: assets/simkai.ttf
-    - family: Dengxian
-      fonts:
-        - asset: assets/Deng.ttf
-        - asset: assets/Dengl.ttf
-        - asset: assets/Dengb.ttf
+
+#  fonts:
+#    - family: Kaishu
+#      fonts:
+#        - asset: assets/simkai.ttf
+#    - family: Dengxian
+#      fonts:
+#        - asset: assets/Deng.ttf
+#        - asset: assets/Dengl.ttf
+#        - asset: assets/Dengb.ttf
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

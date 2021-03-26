@@ -24,7 +24,7 @@ class MarkdownHelper {
 
   ///p
   Widget getPWidget(m.Element node) =>
-      wConfig?.p?.call(node) ?? P().getPWidget(node.children, node);
+      wConfig?.p?.call(node) ?? P().getPWidget(node.children, node,from: 'markdown_helper.dart');
 
   ///pre
   Widget getPreWidget(m.Node node) =>

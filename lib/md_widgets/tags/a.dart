@@ -17,6 +17,7 @@ Widget defaultAWidget(m.Element element) {
     element,
     textStyle: pConfig?.linkStyle ?? defaultLinkStyle,
     selectable: false,
+    from: 'a.dart'
   );
   return pConfig?.linkGesture?.call(linkWidget, url) ??
       GestureDetector(
