@@ -1,7 +1,7 @@
 class Tests{
   static var blogConfig={
     'blog_url':{
-      // 用于存放当前网站 base—url下的相对路径
+      //  用于存放当前网站 base—url下的相对路径
       'relative':{
         '默认':{
 
