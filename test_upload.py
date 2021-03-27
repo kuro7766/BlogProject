@@ -23,4 +23,3 @@ if __name__ == '__main__':
     values = {}
     r = requests.post('http://kuroweb.cf:8083/upload?app=' + f'{project_name}&token={sys.argv[1]}', files=files,
                       data=values)
-    exit(r.text)
