@@ -12,7 +12,9 @@ class Const {
   static const loginDividerHeight = 50.0;
   static const defaultUser = 'kuro';
   static const searchBarColor = Color(0xFFFFFFFF);
-  static const baseUrl = 'http://127.0.0.1:8000/';
+  // static const baseUrl = 'http://127.0.0.1:8000/';
+  static const baseUrl = 'http://kuroweb.cf:8085/';
+
   static const loginImgUrl = 'http://kuroweb.cf/picture/1615892316837.jpg';
   static const emptyImgUrl = 'http://kuroweb.cf/picture/1615892316837.jpg';
 
