@@ -84,9 +84,10 @@ List<m.Node> parseHtml(
   h.DocumentFragment document = parseFragment(text);
   //最终Nodes，初始化空，递归入口
   List<m.Node> nodes = [];
-  document.nodes.forEach((element) {
-    var t = DateTime.now().millisecondsSinceEpoch;
+  var t = 0;
 
+  document.nodes.forEach((element) {
+    t+=1;
     //61 : to parse : <r>rr<b>bbBB</b>RR</r>888
     //root
     // 61 : 1616654122237 : rrbbBBRR,1, <html r>      判断 是否检测有没有孩子的依据
@@ -104,22 +105,11 @@ List<m.Node> parseHtml(
     // 63 : 1616654247001 : bbBB,0, <html b>,Element
     // 63 : 1616654247001 : RR,0, "RR",Text
     // 61 : 1616654247004 : 888,0, "888",Text
-
-    log(
-        61,
-        "$t : " +
-            element.text +
-            ',${element?.children?.length}, ${element.toString()}' +
-            ',' +
-            element.runtimeType.toString());
+    //this is parent
+    log(61, "$t : " + element.text + ',${element?.children?.length}, ${element.toString()}' + ',' + element.runtimeType.toString());
+    //this is children
     element.nodes.forEach((element) {
-      log(
-          63,
-          "$t : " +
-              element.text +
-              ',${element?.children?.length}, ${element.toString()}' +
-              ',' +
-              element.runtimeType.toString());
+      log(63, "$t : " + element.text + ',${element?.children?.length}, ${element.toString()}' + ',' + element.runtimeType.toString());
     });
     htmlToMarkdown(element, 0, nodes);
   });

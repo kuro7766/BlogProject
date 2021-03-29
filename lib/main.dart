@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
           page: () => UserManage(Get.parameters.toString()),
         ),
         GetPage(name: '/404', page: () => Route404()),
+        GetPage(name: '/', page: () => ProxyPage('/entrance?user=a')),
         GetPage(name: '/entrance', page: () => MainPage())
       ],
       debugShowCheckedModeBanner: false,
