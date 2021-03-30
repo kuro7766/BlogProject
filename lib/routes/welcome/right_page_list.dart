@@ -28,7 +28,8 @@ class RightList extends State<CenterInnerLayerContainer> {
       left: HttpBuilder<List<ArticleIdEntity>>(
         url: DjangoUrl.selectArticleIdByUserName(Config.user),
         builder: (c, j) {
-          int pageCount = (j.length ~/ 10) + (j.length % 10 == 0 ? 0 : 1);
+          var pageSplit=3;
+          int pageCount = (j.length ~/ pageSplit) + (j.length % pageSplit == 0 ? 0 : 1);
           int rowIndexCount = (min<int>(Config.currentPage + 3, pageCount)) -
               (max<int>(Config.currentPage - 3, 1)) +
               1 +
