@@ -28,7 +28,7 @@ void main() {
       // Get.offNamed('/404');
       await Future.delayed(const Duration(seconds: 1), () => '');
       print(Get.currentRoute);
-      // debugDumpApp();
+      //  debugDumpApp();
       expect(find.text('您要找的资源不存在\n请检查链接是否正确'), findsOneWidget);
       // await tester.pumpAndSettle();
       //
