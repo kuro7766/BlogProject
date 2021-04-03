@@ -13,14 +13,7 @@ void main() {
   init();
   GetStorage().hasData('token');
   Get.put(UserStateInfo()..url, permanent: true);
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return getApp();
-  }
+  runApp(getApp());
 }
 
 StatelessWidget getApp() {
@@ -43,6 +36,7 @@ StatelessWidget getApp() {
       GetPage(name: '/404', page: () => Route404()),
       // this is default page
       GetPage(name: '/', page: () => ProxyPage('/entrance?user=a')),
+      // GetPage(name: '/', page: () => Route404()),
       GetPage(name: '/entrance', page: () => MainPage())
     ],
     debugShowCheckedModeBanner: false,

@@ -7,7 +7,6 @@ class Route404 extends StatelessWidget {
       child: Column(
         children: [
           Text('您要找的资源不存在\n请检查链接是否正确'),
-          Text('0')
         ],
       ),
     ),);
