@@ -26,3 +26,6 @@ https://github.com/kuro7766/BlogProject/actions
 
 ## 测试用例的写法见getx
 https://github.com/jonataslaw/getx/tree/master/test
+
+## 一些需要注意的地方
+testcase中，调用Get.to()等跳转方法时需要调用```await tester.pumpAndSettle();```
