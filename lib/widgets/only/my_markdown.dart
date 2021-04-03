@@ -39,7 +39,7 @@ class _MarkdownListViewState extends State<MarkdownListView> {
   Widget build(BuildContext context) {
     return ListView(
         controller: controller,
-        children: [DbgContainer(), MarkDownWeb(widget.data), DbgContainer()]);
+        children: [MarkDownWeb(widget.data)]);
   }
 }
 
