@@ -10,8 +10,8 @@ on: [push, pull_request]
 jobs:
   custom:
     steps:
-      run: |
-        echo hello world
+    - run: |
+      echo hello world
   build:
     runs-on: ubuntu-latest
     steps:
