@@ -1,7 +1,6 @@
 import 'package:blog_project/widgets/only/basic_container.dart';
 import 'package:blog_project/widgets/reusable/float_box_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:highlight/languages/tex.dart';
 
 import '../../vars/consts.dart';
 

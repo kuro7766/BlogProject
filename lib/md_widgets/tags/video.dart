@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
 import 'package:markdown/markdown.dart' as m;
+import 'package:video_player/video_player.dart';
+
 import '../config/style_config.dart';
 
 ///Tag: video(this is not markdown's tag)

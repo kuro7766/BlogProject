@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:markdown/markdown.dart' as m;
-import '../config/style_config.dart';
 
+import '../config/style_config.dart';
 import 'markdown_tags.dart';
 
 ///Tag: h1~h6

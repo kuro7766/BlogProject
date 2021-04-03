@@ -1,8 +1,8 @@
 import 'package:blog_project/util/debug.dart';
-
-import '../config/style_config.dart';
 import 'package:flutter/material.dart';
 import 'package:markdown/markdown.dart' as m;
+
+import '../config/style_config.dart';
 
 ///Tag: other --- this is for you to custom widget
 InlineSpan getOtherWidgetSpan(m.Element node) =>

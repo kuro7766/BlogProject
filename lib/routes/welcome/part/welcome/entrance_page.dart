@@ -1,14 +1,9 @@
-import 'package:blog_project/routes/404.dart';
 import 'package:blog_project/routes/welcome/part/entrance_top/entrance_top_layer.dart';
-import 'package:blog_project/tests.dart';
 import 'package:blog_project/util/debug.dart';
-import 'package:blog_project/vars/consts.dart';
 import 'package:blog_project/vars/configuration.dart';
-import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
+import 'package:blog_project/vars/consts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 import 'inner_layer.dart';

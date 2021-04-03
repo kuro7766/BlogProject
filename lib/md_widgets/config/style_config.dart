@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import '../markdown_themes/all_themes.dart';
-import '../tags/markdown_tags.dart';
 import '../tags/all_tags.dart';
+import '../tags/markdown_tags.dart';
+
 export '../tags/all_tags.dart';
 
 class StyleConfig {

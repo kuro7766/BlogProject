@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../config/style_config.dart';
 import 'package:markdown/markdown.dart' as m;
 
-import 'p.dart';
+import '../config/style_config.dart';
 import 'markdown_tags.dart';
+import 'p.dart';
 
 ///Tag: ol
 class Ol {

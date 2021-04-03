@@ -1,22 +1,9 @@
-import 'dart:async';
-import 'dart:math';
 
-import 'package:blog_project/entity/article_id_entity.dart';
-import 'package:blog_project/entity/article_item_entity.dart';
-import 'package:blog_project/routes/welcome/content/markdown_nested_scroll.dart';
 import 'package:blog_project/routes/welcome/part/welcome/inner_layer.dart';
 import 'package:blog_project/tests.dart';
-import 'package:blog_project/util/debug.dart';
-import 'package:blog_project/vars/django_function.dart';
-import 'package:blog_project/vars/configuration.dart';
-import 'package:blog_project/widgets/only/image_item.dart';
 import 'package:blog_project/widgets/only/inner_layer.dart';
-import 'package:blog_project/widgets/only/page_index_button.dart';
+import 'package:blog_project/widgets/only/markdown_web.dart';
 import 'package:blog_project/widgets/only/titile_widget.dart';
-import 'package:blog_project/widgets/only/title_list_card.dart';
-import 'package:blog_project/widgets/reusable/dbg_container.dart';
-import 'package:blog_project/widgets/reusable/float_box_widget.dart';
-import 'package:blog_project/widgets/reusable/http_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -38,12 +25,6 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
             begin: RelativeRect.fromLTRB(0, 0, 0, -200),
             end: RelativeRect.fromLTRB(0, 0, 0, 0))
         .animate(controller);
-    // Timer(Duration(seconds: 3), () {
-    //   controller.reverse();
-    //   Timer(Duration(seconds: 3), () {
-    //     controller.forward();
-    //   });
-    // });
   }
 
   @override
@@ -55,8 +36,9 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
   @override
   Widget build(BuildContext context) {
     return ManageInnerLayer(
-      left: SizeTransition(
-          sizeFactor: controller, child: MarkDownNestedScroll(data: Tests.s2)),
+      left:
+      SizeTransition(
+          sizeFactor: controller, child: MarkDownWeb(Tests.s)),
       // HttpBuilder<List<ArticleIdEntity>>(
       //   url: DjangoUrl.selectArticleIdByUserName(Config.user),
       //   builder: (c, j) {

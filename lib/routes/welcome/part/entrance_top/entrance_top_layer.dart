@@ -1,8 +1,5 @@
-import 'package:blog_project/routes/login/login_page.dart';
 import 'package:blog_project/routes/welcome/part/l_list/l_list_widgets.dart';
-import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/consts.dart';
-import 'package:blog_project/widgets/reusable/html_embeded.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,4 @@
 import 'package:blog_project/entity/new1_public_info_entity.dart';
-import 'package:blog_project/entity/new_user_public_info_entity.dart';
-import 'package:blog_project/entity/public_info_entity.dart';
-import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/configuration.dart';
 import 'package:blog_project/vars/consts.dart';
 import 'package:blog_project/vars/django_function.dart';

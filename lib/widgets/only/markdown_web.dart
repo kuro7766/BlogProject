@@ -1,6 +1,6 @@
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:async';
 import 'dart:html' as html;
+import 'dart:ui' as ui;
 
 import 'package:blog_project/entity/markdown_event.dart';
 import 'package:blog_project/init_web_markdown.dart';
@@ -8,11 +8,8 @@ import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/consts.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
-
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
-import 'package:uuid/uuid_util.dart';
 
 class WebScrollEvent {
   int dy;
@@ -20,9 +17,14 @@ class WebScrollEvent {
   WebScrollEvent(this.dy);
 }
 
+class MarkDownWebStatus {
+  bool loaded = false;
+}
+
 class MarkDownWeb extends StatefulWidget {
   final String data;
   final String uuid = Uuid().v4();
+  final MarkDownWebStatus markDownWebStatus = MarkDownWebStatus();
 
   MarkDownWeb(this.data);
 
@@ -41,7 +43,7 @@ class _MarkDownWebState extends State<MarkDownWeb> {
       if (event.data['uuid'] != widget.uuid) return;
       log(95, event.data);
       if (event.data['type'] == 'setHeight') {
-        if(mdHeight!=event.data['msg']) {
+        if (mdHeight != event.data['msg']) {
           mdHeight = event.data['msg'];
           if (mounted) setState(() {});
         }
@@ -54,6 +56,8 @@ class _MarkDownWebState extends State<MarkDownWeb> {
       }
       if (event.data['type'] == 'webloaded') {
         sendIFrameMessage({'type': 'render', 'msg': widget.data}, widget.uuid);
+        widget.markDownWebStatus.loaded = true;
+        setState(() {});
       }
       if (event.data['type'] == 'received') {
         log(92, '${widget.uuid} : ${event.data}');
@@ -73,12 +77,28 @@ class _MarkDownWebState extends State<MarkDownWeb> {
         ..style.border = 'none';
       return iFrameElement;
     });
-    return SizedBox(
-      height: mdHeight == 0 ? 0 : mdHeight + 30,
-      // height: mdHeight + 100,
-      child: HtmlElementView(
-        viewType: widget.uuid,
-      ),
+
+    return Stack(
+      children: [
+        widget.markDownWebStatus.loaded
+            ? Container()
+            : SizedBox(
+                height: 30,
+                child: Center(
+                  child: SizedBox(
+                      height: 25,
+                      width: 25,
+                      child: CircularProgressIndicator()),
+                ),
+              ),
+        SizedBox(
+          height: mdHeight == 0 ? 30 : mdHeight + 30,
+          // height: mdHeight + 100,
+          child: HtmlElementView(
+            viewType: widget.uuid,
+          ),
+        ),
+      ],
     );
   }
 }

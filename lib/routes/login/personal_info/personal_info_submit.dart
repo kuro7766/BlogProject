@@ -1,6 +1,4 @@
-import 'package:blog_project/util/http_request.dart';
 import 'package:blog_project/vars/consts.dart';
-import 'package:blog_project/vars/django_function.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

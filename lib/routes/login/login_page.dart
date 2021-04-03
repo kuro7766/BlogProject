@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:blog_project/entity/token_entity.dart';
-import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/http_request.dart';
 import 'package:blog_project/vars/consts.dart';
 import 'package:blog_project/vars/django_function.dart';

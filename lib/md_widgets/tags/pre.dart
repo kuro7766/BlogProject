@@ -1,7 +1,8 @@
-import '../config/style_config.dart';
 import 'package:flutter/material.dart';
-import 'package:markdown/markdown.dart' as m;
 import 'package:highlight/highlight.dart' as hi;
+import 'package:markdown/markdown.dart' as m;
+
+import '../config/style_config.dart';
 
 ///Tag: pre
 class Pre {

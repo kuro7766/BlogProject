@@ -1,14 +1,10 @@
 import 'dart:async';
 
-import 'package:blog_project/md_widgets/markdown_widget.dart';
-import 'package:blog_project/tests.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/widgets/only/my_markdown.dart';
-import 'package:blog_project/widgets/reusable/dbg_container.dart';
 import 'package:blog_project/widgets/reusable/white_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:html/parser.dart' show parse;
 
 class ReleaseArticle extends StatefulWidget {
   @override

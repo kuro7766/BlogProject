@@ -1,13 +1,9 @@
-import 'package:blog_project/md_widgets/markdown_widget.dart';
 import 'package:blog_project/routes/welcome/part/welcome/inner_layer.dart';
-import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/consts.dart';
 import 'package:blog_project/widgets/only/inner_layer.dart';
 import 'package:blog_project/widgets/only/my_markdown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../tests.dart';
 
 class RightListMdState extends State<CenterInnerLayerContainer> {
   @override

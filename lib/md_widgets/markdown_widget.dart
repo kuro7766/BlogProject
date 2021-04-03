@@ -1,18 +1,20 @@
 import 'dart:collection';
-import 'package:blog_project/util/debug.dart';
 
-import 'markdown_toc.dart';
-import 'markdown_generator.dart';
-import 'config/style_config.dart';
-import 'config/widget_config.dart';
-import 'package:flutter/material.dart';
+import 'package:blog_project/util/debug.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import 'config/style_config.dart';
+import 'config/widget_config.dart';
+import 'markdown_generator.dart';
+import 'markdown_toc.dart';
+
 export 'dart:collection';
-export 'markdown_toc.dart';
-export 'markdown_generator.dart';
+
 export 'config/style_config.dart';
+export 'markdown_generator.dart';
+export 'markdown_toc.dart';
 
 class MarkdownWidget extends StatefulWidget {
   final String data;
