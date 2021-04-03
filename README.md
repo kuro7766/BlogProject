@@ -1,4 +1,4 @@
-# 第二次迭代内容
+# 第二次迭代说明和文档记录
 项目地址: http://kuroweb.cf/ci/blog/web/#/entrance?user=a
 
 ## 完全支持markdown，使用iframe展示markdown
@@ -24,3 +24,5 @@ _scrollStreamSubscription.cancel();
 ## CI 地址
 https://github.com/kuro7766/BlogProject/actions
 
+## 测试用例的写法见getx
+https://github.com/jonataslaw/getx/tree/master/test

@@ -22,14 +22,16 @@ void main() {
       GetStorage().hasData('token');
       Get.put(UserStateInfo()..url, permanent: true);
 
-      await tester.pumpWidget(GetMaterialApp(
-        home: Route404(),
-      ));
+      // await tester.pumpWidget(GetMaterialApp(
+      //   home: Route404(),
+      // ));
+      await tester.pumpWidget(getApp());
       // Get.offNamed('/404');
       await Future.delayed(const Duration(seconds: 1), () => '');
       print(Get.currentRoute);
       //  debugDumpApp();
       expect(find.text('您要找的资源不存在\n请检查链接是否正确'), findsOneWidget);
+
       // await tester.pumpAndSettle();
       //
       // expect(find.byType(FirstScreen), findsOneWidget);
