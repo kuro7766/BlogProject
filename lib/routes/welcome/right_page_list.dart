@@ -1,9 +1,19 @@
 
+import 'dart:math';
+
+import 'package:blog_project/entity/article_id_entity.dart';
+import 'package:blog_project/entity/article_item_entity.dart';
 import 'package:blog_project/routes/welcome/part/welcome/inner_layer.dart';
 import 'package:blog_project/tests.dart';
+import 'package:blog_project/util/debug.dart';
+import 'package:blog_project/vars/configuration.dart';
+import 'package:blog_project/vars/django_function.dart';
+import 'package:blog_project/widgets/only/image_item.dart';
 import 'package:blog_project/widgets/only/inner_layer.dart';
 import 'package:blog_project/widgets/only/markdown_web.dart';
+import 'package:blog_project/widgets/only/page_index_button.dart';
 import 'package:blog_project/widgets/only/titile_widget.dart';
+import 'package:blog_project/widgets/reusable/http_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -37,67 +47,67 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
   Widget build(BuildContext context) {
     return ManageInnerLayer(
       left:
-      SizeTransition(
-          sizeFactor: controller, child: MarkDownWeb(Tests.s)),
-      // HttpBuilder<List<ArticleIdEntity>>(
-      //   url: DjangoUrl.selectArticleIdByUserName(Config.user),
-      //   builder: (c, j) {
-      //     var pageSplit = 3;
-      //     int pageCount =
-      //         (j.length ~/ pageSplit) + (j.length % pageSplit == 0 ? 0 : 1);
-      //     int rowIndexCount = (min<int>(Config.currentPage + 3, pageCount)) -
-      //         (max<int>(Config.currentPage - 3, 1)) +
-      //         1 +
-      //         2;
-      //     if (rowIndexCount == 2) rowIndexCount = 0;
-      //
-      //     return Column(
-      //       children: [
-      //         ListView.builder(
-      //             shrinkWrap: true,
-      //             itemCount: j.length,
-      //             itemBuilder: (c, i) {
-      //               // return FloatBoxWidget(child: ImgItem());
-      //               return HttpBuilder<ArticleItemEntity>(
-      //                 url: DjangoUrl.selectArticleIdPictureDescription(
-      //                     j[i].articleId),
-      //                 builder: (c1, j1) {
-      //                   return ImgItem(
-      //                     imageUrl: j1.pictureUrl,
-      //                     text: j1.articleDescription,
-      //                   );
-      //                   return Text('${j1.toJson()}');
-      //                 },
-      //               );
-      //             }),
-      //       ]..add(rowIndexCount == 3
-      //           ? DbgContainer()
-      //           : Row(
-      //               mainAxisAlignment: MainAxisAlignment.center,
-      //               children: List.generate(rowIndexCount, (index) {
-      //                 // return PageIndexWidget(
-      //                 //     child: Icon(Icons.arrow_forward_ios_outlined))
-      //                 // PageIndexWidget(child: Icon(Icons.arrow_forward_ios_outlined))
-      //                 if (index == rowIndexCount - 1) {
-      //                   return PageIndexWidget(
-      //                       child: Icon(Icons.arrow_forward_ios_outlined));
-      //                 } else if (index == 0) {
-      //                   return PageIndexWidget(
-      //                       child: Icon(Icons.arrow_back_ios_outlined));
-      //                 }
-      //                 return PageIndexButton(
-      //                   index,
-      //                   highlight: index == Config.currentPage,
-      //                   onTap: () {
-      //                     log(75, 'set');
-      //                     setState(() {});
-      //                   },
-      //                 );
-      //               }),
-      //             )),
-      //     );
-      //   },
-      // ),
+      // SizeTransition(
+      //     sizeFactor: controller, child: MarkDownWeb(Tests.s)),
+      HttpBuilder<List<ArticleIdEntity>>(
+        url: DjangoUrl.selectArticleIdByUserName(Config.user),
+        builder: (c, j) {
+          var pageSplit = 3;
+          int pageCount =
+              (j.length ~/ pageSplit) + (j.length % pageSplit == 0 ? 0 : 1);
+          int rowIndexCount = (min<int>(Config.currentPage + 3, pageCount)) -
+              (max<int>(Config.currentPage - 3, 1)) +
+              1 +
+              2;
+          if (rowIndexCount == 2) rowIndexCount = 0;
+
+          return Column(
+            children: [
+              ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: j.length,
+                  itemBuilder: (c, i) {
+                    // return FloatBoxWidget(child: ImgItem());
+                    return HttpBuilder<ArticleItemEntity>(
+                      url: DjangoUrl.selectArticleIdPictureDescription(
+                          j[i].articleId),
+                      builder: (c1, j1) {
+                        return ImgItem(
+                          imageUrl: j1.pictureUrl,
+                          text: j1.articleDescription,
+                        );
+                        return Text('${j1.toJson()}');
+                      },
+                    );
+                  }),
+            ]..add(rowIndexCount == 3
+                ? Container()
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(rowIndexCount, (index) {
+                      // return PageIndexWidget(
+                      //     child: Icon(Icons.arrow_forward_ios_outlined))
+                      // PageIndexWidget(child: Icon(Icons.arrow_forward_ios_outlined))
+                      if (index == rowIndexCount - 1) {
+                        return PageIndexWidget(
+                            child: Icon(Icons.arrow_forward_ios_outlined));
+                      } else if (index == 0) {
+                        return PageIndexWidget(
+                            child: Icon(Icons.arrow_back_ios_outlined));
+                      }
+                      return PageIndexButton(
+                        index,
+                        highlight: index == Config.currentPage,
+                        onTap: () {
+                          log(75, 'set');
+                          setState(() {});
+                        },
+                      );
+                    }),
+                  )),
+          );
+        },
+      ),
       right: Padding(
         padding: EdgeInsets.only(left: 20),
         child: ListView(
