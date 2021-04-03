@@ -15,29 +15,20 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 void main() {
-  testWidgets('test page if exists', (WidgetTester tester) async {
+  testWidgets('test page if not exists', (WidgetTester tester) async {
     await tester.runAsync(() async {
       Get.testMode = true;
       init();
       Get.put(UserStateInfo()..url, permanent: true);
-
-      // await tester.pumpWidget(GetMaterialApp(
-      //   home: Route404(),
-      // ));
       await tester.pumpWidget(getApp());
       // Get.offNamed('/404');
+      await tester.pumpAndSettle();
       await tester.pumpAndSettle();
       await tester.pumpAndSettle();
       await tester.pumpAndSettle();
       print(Get.currentRoute);
       //  debugDumpApp();
       expect(find.text('您要找的资源不存在\n请检查链接是否正确'), findsOneWidget);
-
-      Get.offNamed('/');
-      await tester.pumpAndSettle();
-      await tester.pumpAndSettle();
-      await tester.pumpAndSettle();
-      expect(find.text('菜单'), findsOneWidget);
 
       // await tester.pumpAndSettle();
       //
