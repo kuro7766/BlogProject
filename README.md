@@ -18,6 +18,9 @@ _scrollStreamSubscription = eventBus.on<WebScrollEvent>().listen((event) {
 });
 _scrollStreamSubscription.cancel();
 ```
+## flutter test
+```flutter test --platform chrome```
 
 ## CI 地址
 https://github.com/kuro7766/BlogProject/actions
+

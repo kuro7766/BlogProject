@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-
 void main() {
   init();
   GetStorage().hasData('token');
@@ -20,35 +19,39 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'My Blog',
-      initialRoute: '/entrance',
-      getPages: [
-        GetPage(
-            name: '/login',
-            page: () {
-              return GetStorage().hasData('token')
-                  ? ProxyPage('/manage')
-                  : LoginPage();
-            }),
-        GetPage(name: '/manage', page: () => UserManage('')),
-        GetPage(
-          name: '/users',
-          page: () => UserManage(Get.parameters.toString()),
-        ),
-        GetPage(name: '/404', page: () => Route404()),
-        // this is default page
-        GetPage(name: '/', page: () => ProxyPage('/entrance?user=a')),
-        GetPage(name: '/entrance', page: () => MainPage())
-      ],
-      debugShowCheckedModeBanner: false,
-      // showPerformanceOverlay: true,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      // home:MyHomePage()
-      // home: Md2(),
-      // home: MainPage(),
-    );
+    return getApp();
   }
+}
+
+StatelessWidget getApp() {
+  return GetMaterialApp(
+    title: 'My Blog',
+    initialRoute: '/entrance',
+    getPages: [
+      GetPage(
+          name: '/login',
+          page: () {
+            return GetStorage().hasData('token')
+                ? ProxyPage('/manage')
+                : LoginPage();
+          }),
+      GetPage(name: '/manage', page: () => UserManage('')),
+      GetPage(
+        name: '/users',
+        page: () => UserManage(Get.parameters.toString()),
+      ),
+      GetPage(name: '/404', page: () => Route404()),
+      // this is default page
+      GetPage(name: '/', page: () => ProxyPage('/entrance?user=a')),
+      GetPage(name: '/entrance', page: () => MainPage())
+    ],
+    debugShowCheckedModeBanner: false,
+    // showPerformanceOverlay: true,
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    // home:MyHomePage()
+    // home: Md2(),
+    // home: MainPage(),
+  );
 }
