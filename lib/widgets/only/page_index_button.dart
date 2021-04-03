@@ -8,7 +8,7 @@ class PageIndexButton extends StatelessWidget {
   PageIndexButton(this.index,{this.onTap, this.highlight=false});
   @override
   Widget build(BuildContext context) {
-    return PageIndexWidget(highlight: highlight,child:Text('$index'));
+    return PageIndexWidget(highlight: highlight,child:Text('$index'),onTap: onTap,);
   }
 }
 

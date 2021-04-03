@@ -56,7 +56,6 @@ public class Application
 
 以下的四张表均为sc表，他们的关联关系如下
 
-
 ### 关系演算
 
 $\exists u(sc(u)\land\forall w(sc(w)\land w[0]=1\land w[1]=2)\rightarrow\exist v(w[3]=v[3]\land u[0]=v[0]\land u[1]=v[1]))$

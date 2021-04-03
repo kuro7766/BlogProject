@@ -13,6 +13,8 @@ import 'package:blog_project/entity/new1_public_info_entity.dart';
 import 'package:blog_project/generated/json/new1_public_info_entity_helper.dart';
 import 'package:blog_project/entity/test1_entity.dart';
 import 'package:blog_project/generated/json/test1_entity_helper.dart';
+import 'package:blog_project/entity/iframe_channel_entity.dart';
+import 'package:blog_project/generated/json/iframe_channel_entity_helper.dart';
 import 'package:blog_project/entity/token_entity.dart';
 import 'package:blog_project/generated/json/token_entity_helper.dart';
 import 'package:blog_project/entity/new_user_public_info_entity.dart';
@@ -39,6 +41,8 @@ class JsonConvert<T> {
 				return new1PublicInfoEntityFromJson(data as New1PublicInfoEntity, json) as T;
 			case Test1Entity:
 				return test1EntityFromJson(data as Test1Entity, json) as T;
+			case IFrameChannelEntity:
+				return iFrameChannelEntityFromJson(data as IFrameChannelEntity, json) as T;
 			case TokenEntity:
 				return tokenEntityFromJson(data as TokenEntity, json) as T;
 			case NewUserPublicInfoEntity:
@@ -58,6 +62,8 @@ class JsonConvert<T> {
 				return new1PublicInfoEntityToJson(data as New1PublicInfoEntity);
 			case Test1Entity:
 				return test1EntityToJson(data as Test1Entity);
+			case IFrameChannelEntity:
+				return iFrameChannelEntityToJson(data as IFrameChannelEntity);
 			case TokenEntity:
 				return tokenEntityToJson(data as TokenEntity);
 			case NewUserPublicInfoEntity:
@@ -78,6 +84,8 @@ class JsonConvert<T> {
 			return New1PublicInfoEntity().fromJson(json);
 		}	else if(type == (Test1Entity).toString()){
 			return Test1Entity().fromJson(json);
+		}	else if(type == (IFrameChannelEntity).toString()){
+			return IFrameChannelEntity().fromJson(json);
 		}	else if(type == (TokenEntity).toString()){
 			return TokenEntity().fromJson(json);
 		}	else if(type == (NewUserPublicInfoEntity).toString()){
@@ -98,6 +106,8 @@ class JsonConvert<T> {
 			return data.map<New1PublicInfoEntity>((e) => New1PublicInfoEntity().fromJson(e)).toList() as M;
 		}	else if(<Test1Entity>[] is M){
 			return data.map<Test1Entity>((e) => Test1Entity().fromJson(e)).toList() as M;
+		}	else if(<IFrameChannelEntity>[] is M){
+			return data.map<IFrameChannelEntity>((e) => IFrameChannelEntity().fromJson(e)).toList() as M;
 		}	else if(<TokenEntity>[] is M){
 			return data.map<TokenEntity>((e) => TokenEntity().fromJson(e)).toList() as M;
 		}	else if(<NewUserPublicInfoEntity>[] is M){

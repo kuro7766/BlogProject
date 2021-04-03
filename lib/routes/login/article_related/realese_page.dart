@@ -74,7 +74,7 @@ class _ReleaseArticleState extends State<ReleaseArticle> {
                     child: WhiteBorder(
                       child: Align(
                           alignment: Alignment.topCenter,
-                          child: MyMarkDown(controller.text)),
+                          child: MarkdownListView(controller.text)),
                     ),
                     flex: 1,
                   )

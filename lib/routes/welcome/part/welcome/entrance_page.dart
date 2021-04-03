@@ -91,13 +91,17 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     return NotificationListener(
         onNotification: (t) {
           if (t is ScrollUpdateNotification && t.depth == 0) {
-            if (t.scrollDelta > 0) {
+            log(84, t.metrics.pixels);
+            // if (t.scrollDelta > 0.1) {
+            //   controller.reverse();
+            // } else {
+            //   controller.forward();
+            // }
+            if (t.metrics.pixels > 0) {
               controller.reverse();
             } else {
               controller.forward();
             }
-
-
           }
           return false;
         },

@@ -24,6 +24,6 @@ class Debug {
 
 log(level, s) {
   Debug.only=0;
-  Debug.minLv=61;
+  Debug.minLv=92;
   Debug.log(level, s);
 }
