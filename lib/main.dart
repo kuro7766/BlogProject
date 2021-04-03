@@ -11,7 +11,6 @@ import 'package:get_storage/get_storage.dart';
 
 void main() {
   init();
-  GetStorage().hasData('token');
   Get.put(UserStateInfo()..url, permanent: true);
   runApp(getApp());
 }

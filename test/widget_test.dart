@@ -19,7 +19,6 @@ void main() {
     await tester.runAsync(() async {
       Get.testMode = true;
       init();
-      GetStorage().hasData('token');
       Get.put(UserStateInfo()..url, permanent: true);
 
       // await tester.pumpWidget(GetMaterialApp(
@@ -27,7 +26,7 @@ void main() {
       // ));
       await tester.pumpWidget(getApp());
       // Get.offNamed('/404');
-      await Future.delayed(const Duration(seconds: 1), () => '');
+      await tester.pumpAndSettle();
       print(Get.currentRoute);
       //  debugDumpApp();
       expect(find.text('您要找的资源不存在\n请检查链接是否正确'), findsOneWidget);
