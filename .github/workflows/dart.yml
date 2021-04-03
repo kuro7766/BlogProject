@@ -15,9 +15,9 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
         channel: stable
-    - run: flutter config --enable-web
+#    - run: flutter config --enable-web
     - run: flutter pub get
-    - run: flutter build web --no-sound-null-safety
+    - run: flutter build web
     - uses: actions/setup-python@v2
       with:
         python-version: '3.9' # Version range or exact version of a Python version to use, using SemVer's version range syntax
