@@ -27,7 +27,6 @@ void main() {
       await tester.pumpAndSettle();
       print(Get.currentRoute);
       expect(find.text('博客管理'), findsOneWidget);
-
     });
 
   });

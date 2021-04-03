@@ -8,6 +8,9 @@ name: Dart
 on: [push, pull_request]
 
 jobs:
+  custom:
+    run: |
+      echo hello world
   build:
     runs-on: ubuntu-latest
     steps:
