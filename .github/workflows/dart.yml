@@ -9,8 +9,9 @@ on: [push, pull_request]
 
 jobs:
   custom:
-    run: |
-      echo hello world
+    steps:
+      run: |
+        echo hello world
   build:
     runs-on: ubuntu-latest
     steps:
