@@ -22,7 +22,7 @@ void main() {
       // await tester.pumpAndSettle();
       print(Get.currentRoute);
       //  debugDumpApp();
-      expect(find.text('您要找的资源不存在\n请检查链接是否正确'), findsOneWidget);
+      expect(find.text('菜单'), findsOneWidget);
 
       // await tester.pumpAndSettle();
       //
