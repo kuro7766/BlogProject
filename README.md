@@ -25,8 +25,7 @@ _scrollStreamSubscription.cancel();
 
 ## GetxController
 中间的markdown和列表展示页面逻辑复杂，因此我用了GetxController，使代码整洁一些
-## flutter test
-```flutter test --platform chrome```
+
 
 ## CI 地址
 https://github.com/kuro7766/BlogProject/actions
@@ -41,8 +40,8 @@ https://github.com/jonataslaw/getx/pull/954
 
 ## intellij 技巧
 shift+alt 多光标选择
-
-## flutter analyze 的问题
+## 自动化测试相关
+### flutter analyze 的问题
 flutter web 目前对代码缺陷识别有错误，能编译但是会有红波浪线，目前只能默认无视
 创建```analysis_options.yaml```并写入以下代码
 ```yaml
@@ -51,3 +50,7 @@ analyzer:
     undefined_prefixed_name: ignore
 ```
 官方修复进度 : https://github.com/flutter/flutter/issues/41563
+### flutter test
+由于本项目是web，需要加web参数
+
+```flutter test --platform chrome```
