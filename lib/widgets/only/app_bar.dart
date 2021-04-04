@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SimpleAppBar extends AppBar {
-  final String _appBarTitle;
   final Color color;
   final Color textColor;
-  SimpleAppBar(this._appBarTitle,  {this.textColor=Colors.white,this.color = Colors.white})
+  SimpleAppBar(_appBarTitle,  {this.textColor=Colors.white,this.color = Colors.white})
       : super(
           backgroundColor: color,
           title: Container(

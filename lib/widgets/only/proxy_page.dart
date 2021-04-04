@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+// this class should never be used
 class ProxyPage extends StatelessWidget {
   final String route;
 

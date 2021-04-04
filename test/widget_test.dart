@@ -8,11 +8,8 @@
 import 'package:blog_project/entity/user_state_info.dart';
 import 'package:blog_project/init_web_markdown.dart';
 import 'package:blog_project/main.dart';
-import 'package:blog_project/routes/404.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 void main() {
   testWidgets('test page if not exists', (WidgetTester tester) async {
