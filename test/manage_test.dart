@@ -18,7 +18,6 @@ void main() {
       init();
       Get.put(UserStateInfo()..url, permanent: true);
       await tester.pumpWidget(getApp());
-
       Get.toNamed('/manage');
       print(Get.currentRoute);
       await tester.pumpAndSettle();

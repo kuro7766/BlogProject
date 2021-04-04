@@ -20,9 +20,6 @@ void main() {
       await tester.pumpWidget(getApp());
       // Get.offNamed('/404');
       await tester.pumpAndSettle();
-      await tester.pumpAndSettle();
-      await tester.pumpAndSettle();
-      await tester.pumpAndSettle();
       print(Get.currentRoute);
       //  debugDumpApp();
       expect(find.text('您要找的资源不存在\n请检查链接是否正确'), findsOneWidget);
