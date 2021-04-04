@@ -41,3 +41,13 @@ https://github.com/jonataslaw/getx/pull/954
 
 ## intellij 技巧
 shift+alt 多光标选择
+
+## flutter analyze 的问题
+flutter web 目前对代码缺陷识别有错误，能编译但是会有红波浪线，目前只能默认无视
+创建```analysis_options.yaml```并写入以下代码
+```yaml
+analyzer:
+  errors:
+    undefined_prefixed_name: ignore
+```
+官方修复进度 : https://github.com/flutter/flutter/issues/41563
