@@ -22,7 +22,8 @@ void main() {
       print(Get.currentRoute);
       await tester.pumpAndSettle();
       print(Get.currentRoute);
-      expect(find.text('博客管理'), findsOneWidget);
+      //检查用户token，应重定向到login
+      expect(find.text('博客登录系统'), findsOneWidget);
     });
 
   });
