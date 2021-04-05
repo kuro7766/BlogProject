@@ -139,7 +139,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                                 color: Colors.white,
                               ),
                               Text(
-                                'kuroの小站',
+                                Const.leftTopTitle,
                                 style: TextStyle(color: Colors.white),
                               )
                             ],

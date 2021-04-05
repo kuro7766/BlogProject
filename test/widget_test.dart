@@ -8,6 +8,7 @@
 import 'package:blog_project/entity/user_state_info.dart';
 import 'package:blog_project/init_web_markdown.dart';
 import 'package:blog_project/main.dart';
+import 'package:blog_project/vars/consts.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +22,7 @@ void main() {
       // await tester.pumpAndSettle();
       print(Get.currentRoute);
       //  debugDumpApp();
-      expect(find.text('菜单'), findsOneWidget);
+      expect(find.text(Const.leftTopTitle), findsOneWidget);
 
       // await tester.pumpAndSettle();
       //

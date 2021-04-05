@@ -7,6 +7,7 @@ class Const {
   static const displayMarkdownUrl = 'http://kuroweb.cf/ci/MarkDownRenderer/index.html';
   // static const displayMarkdownUrl = 'http://127.0.0.1:8813/index.html';
 
+  static var leftTopTitle='kuroの小站';
   static const barHeight = 85.0;
   static const leftFlex = 2;
   static var iFrameId = 'myiframe';
