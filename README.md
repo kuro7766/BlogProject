@@ -6,8 +6,9 @@ iframe捕获mousescroll事件，然后发送给flutter手动滚动列表
 **仍然存在一些bug**
 ```HtmlElementView()``` 旧iframe未完全销毁，虽然过滤了，但是消息仍然能接收到。
 
+firefox可能有些安全原因或者函数不同，无法捕获滚动事件
 ## 引入GetX和EventBus，开发效率飞起🚀
-对于非组件构建类消息
+### 对于非组件构建类消息
 ```dart
 //在初始化main函数中
 EventBus eventBus = Get.put(EventBus());
@@ -19,9 +20,31 @@ _scrollStreamSubscription = eventBus.on<WebScrollEvent>().listen((event) {
 });
 _scrollStreamSubscription.cancel();
 ```
-组件构建类消息
+### 组件构建类消息
 使用getX插件生成mvc文件，然后用
 ```Obx(() {})```来构建
+
+例如：
+
+```dart
+RxInt viewType;
+RxInt currentPage;
+MainContentState() {
+viewType = 0.obs;
+currentPage = 1.obs;
+}
+//这个Obx要求必须在最外层调用需要观察的对象，简直就是魔法！
+//除了Get.find()之外唯二感觉厉害的地方
+get observe => [viewType.value,currentPage.value];
+Obx(() {
+      //这里放上需要观察的数组即可
+      state.observe;
+      switch (state.viewType.value) {
+        case 0:
+        return Container();      
+      }
+});
+```
 
 ## GetxController
 中间的markdown和列表展示页面逻辑复杂，因此我用了GetxController，使代码整洁一些

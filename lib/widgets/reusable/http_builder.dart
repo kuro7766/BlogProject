@@ -21,7 +21,7 @@ class HttpBuilder<T> extends StatelessWidget {
           if (snap.data == null) {
             return Center(child: Padding(padding: EdgeInsets.all(10),child: SizedBox(width: 30,height: 30,child: CircularProgressIndicator())));
           }
-          return builder(c, snap.data);
+          return builder(c, snap.data)??Container();
         });
   }
 }

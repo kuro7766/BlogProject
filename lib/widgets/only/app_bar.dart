@@ -6,7 +6,8 @@ import 'package:get/get.dart';
 class SimpleAppBar extends AppBar {
   final Color color;
   final Color textColor;
-  SimpleAppBar(_appBarTitle,  {this.textColor=Colors.white,this.color = Colors.white})
+  final GestureTapCallback onTap;
+  SimpleAppBar(_appBarTitle,   {this.onTap,this.textColor=Colors.white,this.color = Colors.white})
       : super(
           backgroundColor: color,
           title: Container(
@@ -31,12 +32,7 @@ class SimpleAppBar extends AppBar {
                           width: 10,
                         ),
                         InkWell(
-                          onTap: () {
-
-
-
-                            Get.offNamed(Config.currentHomePageRoute);
-                          },
+                          onTap: onTap,
                           child: Icon(
                             Icons.arrow_back,
                             size: 30,

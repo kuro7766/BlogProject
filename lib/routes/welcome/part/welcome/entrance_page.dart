@@ -1,7 +1,11 @@
+import 'dart:async';
+
+import 'package:blog_project/entity/show_banner_event.dart';
 import 'package:blog_project/routes/welcome/part/entrance_top/entrance_top_layer.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/configuration.dart';
 import 'package:blog_project/vars/consts.dart';
+import 'package:event_bus/event_bus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +24,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
   var barHeight = Const.barHeight;
-
+  StreamSubscription _subscription;
   @override
   void initState() {
     super.initState();
@@ -30,6 +34,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     animation =
         // Tween(begin: 1.0, end: 0.0).animate(controller);
         CurveTween(curve: Curves.fastOutSlowIn).animate(controller);
+    _subscription=Get.find<EventBus>().on<ShowBannerEvent>().listen((event) {
+      controller.forward();
+    });
   }
 
   layer1() => Column(
@@ -57,7 +64,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     if (Get.currentRoute.startsWith('/entrance') &&
         !Get.parameters.containsKey('user')) {
 
-
+      //todo something went wrong
       Future.microtask(() => Get.offNamed('/404'));
       return Container();
     } else {
