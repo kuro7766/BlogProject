@@ -27,6 +27,8 @@ import 'package:blog_project/entity/new_user_public_info_entity.dart';
 import 'package:blog_project/generated/json/new_user_public_info_entity_helper.dart';
 import 'package:blog_project/entity/test_bean_entity.dart';
 import 'package:blog_project/generated/json/test_bean_entity_helper.dart';
+import 'package:blog_project/entity/artile_title_item_entity.dart';
+import 'package:blog_project/generated/json/artile_title_item_entity_helper.dart';
 
 class JsonConvert<T> {
 	T fromJson(Map<String, dynamic> json) {
@@ -62,7 +64,9 @@ class JsonConvert<T> {
 			case NewUserPublicInfoEntity:
 				return newUserPublicInfoEntityFromJson(data as NewUserPublicInfoEntity, json) as T;
 			case TestBeanEntity:
-				return testBeanEntityFromJson(data as TestBeanEntity, json) as T;    }
+				return testBeanEntityFromJson(data as TestBeanEntity, json) as T;
+			case ArtileTitleItemEntity:
+				return artileTitleItemEntityFromJson(data as ArtileTitleItemEntity, json) as T;    }
     return data as T;
   }
 
@@ -92,6 +96,8 @@ class JsonConvert<T> {
 				return newUserPublicInfoEntityToJson(data as NewUserPublicInfoEntity);
 			case TestBeanEntity:
 				return testBeanEntityToJson(data as TestBeanEntity);
+			case ArtileTitleItemEntity:
+				return artileTitleItemEntityToJson(data as ArtileTitleItemEntity);
 			}
 			return data as T;
 		}
@@ -122,6 +128,8 @@ class JsonConvert<T> {
 			return NewUserPublicInfoEntity().fromJson(json);
 		}	else if(type == (TestBeanEntity).toString()){
 			return TestBeanEntity().fromJson(json);
+		}	else if(type == (ArtileTitleItemEntity).toString()){
+			return ArtileTitleItemEntity().fromJson(json);
 		}	
 		return null;
 	}
@@ -152,6 +160,8 @@ class JsonConvert<T> {
 			return data.map<NewUserPublicInfoEntity>((e) => NewUserPublicInfoEntity().fromJson(e)).toList() as M;
 		}	else if(<TestBeanEntity>[] is M){
 			return data.map<TestBeanEntity>((e) => TestBeanEntity().fromJson(e)).toList() as M;
+		}	else if(<ArtileTitleItemEntity>[] is M){
+			return data.map<ArtileTitleItemEntity>((e) => ArtileTitleItemEntity().fromJson(e)).toList() as M;
 		}
 		throw Exception("not fond");
 	}

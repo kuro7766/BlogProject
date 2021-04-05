@@ -1,6 +1,7 @@
 import 'package:blog_project/entity/tag_id_entity.dart';
 import 'package:blog_project/entity/tag_name_entity.dart';
-import 'package:blog_project/logic/main_content/view.dart';
+import 'package:blog_project/routes/main_page/main_content/logic.dart';
+import 'package:blog_project/routes/main_page/main_content/view.dart';
 import 'package:blog_project/routes/welcome/part/welcome/inner_layer.dart';
 import 'package:blog_project/vars/configuration.dart';
 import 'package:blog_project/vars/django_function.dart';
@@ -9,6 +10,7 @@ import 'package:blog_project/widgets/only/titile_widget.dart';
 import 'package:blog_project/widgets/reusable/http_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../vars/consts.dart';
 
@@ -17,6 +19,7 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
   int page = 1;
   Animation<RelativeRect> animation;
   AnimationController controller;
+  final MainContentLogic logic = Get.put(MainContentLogic());
 
   @override
   void initState() {
@@ -40,8 +43,6 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
   Widget build(BuildContext context) {
     return ManageInnerLayer(
       left:
-          // SizeTransition(
-          //     sizeFactor: controller, child: MarkDownWeb(Tests.s)),
           MainContentPage(),
       right: Padding(
         padding: EdgeInsets.only(left: 20),
@@ -103,8 +104,11 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
                               (index) => HttpBuilder<TagNameEntity>(
                                     url: DjangoUrl.getTagNameById(
                                         j[index].tagId),
-                                    builder: (c1, j1) =>
-                                        Chip(label: Text(j1.tagName)),
+                                    builder: (c1, j1) => GestureDetector(
+                                        onTap: () {
+                                          logic.toTagList(home: true);
+                                        },
+                                        child: Chip(label: Text(j1.tagName))),
                                   )),
                         ))
                 // Wrap(

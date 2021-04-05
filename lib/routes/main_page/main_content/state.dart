@@ -5,7 +5,7 @@ class MainContentState {
   /// | --- | --- |
   /// 0|列表
   /// 1|markdown
-  /// 2|
+  /// 2|tagList
   /// 3|
   /// 4|
   /// 5|
@@ -14,15 +14,19 @@ class MainContentState {
   ///
   RxInt viewType;
 
-  //浏览页码，从1开始
+  //主页浏览页码，从1开始
   RxInt currentPage;
   RxInt articleId;
+
+  //tagList浏览页码
+  RxInt tagCurrentPage;
 
   MainContentState() {
     viewType = 0.obs;
     currentPage = 1.obs;
     articleId=0.obs;
+    tagCurrentPage=1.obs;
   }
 
-  get observe => [viewType.value, currentPage.value];
+  get observeMain => [viewType.value, currentPage.value];
 }

@@ -18,6 +18,7 @@ class DjangoUrl {
     static selectArticleByText(search,user) =>Const.baseUrl + 'blog?type=select_article_by_text&search=$search&user=$user';
     static selectArticleIdByUserName(user_name) =>Const.baseUrl + 'blog?type=select_article_id_by_user_name&user_name=$user_name';
     static selectArticleIdPictureDescription(article_id) =>Const.baseUrl + 'blog?type=select_article_id_picture_description&article_id=$article_id';
+    static selectArticleInfoByUserNameAndPage(user_name,page) =>Const.baseUrl + 'blog?type=select_article_info_by_user_name_and_page&user_name=$user_name&page=$page';
     static updateUserInfo(token,announcement,github,qq,csdn) =>Const.baseUrl + 'blog?type=update_user_info&token=$token&announcement=$announcement&github=$github&qq=$qq&csdn=$csdn';
     static updateUserName(token,name) =>Const.baseUrl + 'blog?type=update_user_name&token=$token&name=$name';
     

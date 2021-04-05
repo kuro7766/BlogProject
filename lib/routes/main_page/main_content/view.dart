@@ -4,6 +4,7 @@ import 'package:blog_project/entity/article_content_entity.dart';
 import 'package:blog_project/entity/article_id_entity.dart';
 import 'package:blog_project/entity/article_item_entity.dart';
 import 'package:blog_project/routes/article/comment.dart';
+import 'package:blog_project/routes/main_page/tag_list.dart';
 import 'package:blog_project/tests.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/configuration.dart';
@@ -26,7 +27,8 @@ class MainContentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      state.observe;
+      state.observeMain;
+      log2(0, 'rebuild');
       switch (state.viewType.value) {
         case 0:
           return HttpBuilder<List<ArticleIdEntity>>(
@@ -55,7 +57,7 @@ class MainContentPage extends StatelessWidget {
                         thought = thought > pageSplit ? pageSplit : thought;
                         if (thought < 0) {
                           thought = 0;
-                          logic.toArticleList();
+                          logic.toArticleList(home: true);
                         }
                         return thought;
                       })(),
@@ -131,7 +133,7 @@ class MainContentPage extends StatelessWidget {
         // child: MarkDownWeb(Tests.s2));
         // break;
         case 2:
-          break;
+          return TagList();
         case 3:
           break;
         case 4:
