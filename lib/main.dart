@@ -10,7 +10,6 @@ import 'package:get_storage/get_storage.dart';
 
 void main() {
   init();
-  Get.put(UserStateInfo()..url, permanent: true);
   runApp(getApp());
 }
 

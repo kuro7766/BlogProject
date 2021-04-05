@@ -111,20 +111,7 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
                                         child: Chip(label: Text(j1.tagName))),
                                   )),
                         ))
-                // Wrap(
-                //   spacing: 1.0, // gap between adjacent chips
-                //   runSpacing: 1.0, // gap between lines
-                //   children: <Widget>[
-                //     Chip(
-                //       avatar: CircleAvatar(backgroundColor: Colors.blue.shade900, child: Text('ML')),
-                //       label: Text('Lafayette'),
-                //     ),
-                //     Chip(
-                //       avatar: CircleAvatar(backgroundColor: Colors.blueGrey, child: Text('#')),
-                //       label: Text('f'),
-                //     ),
-                //   ],
-                // )
+
                 ),
           ),
           TitleCard(

@@ -1,10 +1,12 @@
+import 'dart:js';
+
 import 'package:blog_project/entity/show_banner_event.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:event_bus/event_bus.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'state.dart';
-
 
 class MainContentLogic extends GetxController {
   final state = MainContentState();
@@ -14,8 +16,29 @@ class MainContentLogic extends GetxController {
     _eventBus = Get.find();
   }
 
+  void _loseTextFieldFocus() {
+    FocusScope.of(Get.context).requestFocus(new FocusNode());
+  }
+
   void _showBanner() {
     _eventBus.fire(ShowBannerEvent());
+  }
+
+  void changeSearchBarFocus(bool focus) {
+    if (focus) {
+      toSearch();
+    }
+  }
+
+  void toFriendList() {
+    Future.microtask(() {
+      _loseTextFieldFocus();
+      state.viewType(3);
+    });
+  }
+
+  void toSearch() {
+    state.viewType(4);
   }
 
   void toArticle(int articleId) {
@@ -29,13 +52,13 @@ class MainContentLogic extends GetxController {
       state.viewType.value = 0;
       if (home) state.currentPage.value = 1;
       _showBanner();
+      _loseTextFieldFocus();
     });
   }
 
-  toTagList({home=false}){
-    state.viewType.value=2;
-    if(home)
-    state.tagCurrentPage.value=1;
+  toTagList({home = false}) {
+    state.viewType.value = 2;
+    if (home) state.tagCurrentPage.value = 1;
   }
 
   void switchPage(int offset) {

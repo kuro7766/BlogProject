@@ -1,17 +1,12 @@
+import 'package:blog_project/routes/main_page/main_base_widget.dart';
 import 'package:blog_project/widgets/only/markdown_web.dart';
 import 'package:flutter/material.dart';
 
-class CommentArea extends StatefulWidget {
-  @override
-  _CommentAreaState createState() => _CommentAreaState();
-}
-
-class _CommentAreaState extends State<CommentArea> {
+class CommentArea extends MainContentBaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     return buildMarkdownListView();
   }
-
 
   Widget buildMarkdownListView() {
     List<Widget> c = [
@@ -20,10 +15,14 @@ class _CommentAreaState extends State<CommentArea> {
         children: [
           Align(
               alignment: AlignmentDirectional.centerStart,
-              child: Tooltip(message: '上一篇',child: ElevatedButton(onPressed: () {}, child: Text('上一篇')))),
+              child: Tooltip(
+                  message: '上一篇',
+                  child: ElevatedButton(onPressed: () {}, child: Text('上一篇')))),
           Align(
               alignment: AlignmentDirectional.centerEnd,
-              child: Tooltip(message: '下一篇',child: ElevatedButton(onPressed: () {}, child: Text('下一篇'))))
+              child: Tooltip(
+                  message: '下一篇',
+                  child: ElevatedButton(onPressed: () {}, child: Text('下一篇'))))
         ],
       )
     ];

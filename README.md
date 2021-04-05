@@ -2,9 +2,24 @@
 项目地址: http://kuroweb.cf/ci/blog/web/#/entrance?user=a
 
 ## 完全支持markdown，使用iframe展示markdown
+由于flutter对Markdown支持实在是太差了，只能用iframe了
+
+* 嵌套滚动办法
+
 iframe捕获mousescroll事件，然后发送给flutter手动滚动列表
-**仍然存在一些bug**
-```HtmlElementView()``` 旧iframe未完全销毁，虽然过滤了，但是消息仍然能接收到。
+* 仍然存在一些bug
+
+```HtmlElementView()``` 
+旧iframe的onMessage未完全销毁，虽然过滤了，但是消息仍然能接收到。
+
+* iframe点击后焦点混乱的问题解决
+
+https://github.com/flutter/flutter/issues/70173
+
+* iframe会抢其他控件焦点（暂未解决❌）
+
+由于flutter是个canvas，iframe是个html组件，而且在canvas上方
+只能在其他控件需要点击的时候把它隐藏，尽量不重叠
 
 firefox可能有些安全原因或者函数不同，无法捕获滚动事件
 ## 引入GetX和EventBus，开发效率飞起🚀

@@ -6,8 +6,8 @@ class MainContentState {
   /// 0|列表
   /// 1|markdown
   /// 2|tagList
-  /// 3|
-  /// 4|
+  /// 3|友链
+  /// 4|searchList
   /// 5|
   /// 6|
   /// 7|
@@ -20,13 +20,17 @@ class MainContentState {
 
   //tagList浏览页码
   RxInt tagCurrentPage;
+  RxString search;
 
   MainContentState() {
     viewType = 0.obs;
     currentPage = 1.obs;
-    articleId=0.obs;
-    tagCurrentPage=1.obs;
+    articleId = 0.obs;
+    tagCurrentPage = 1.obs;
+    search = ''.obs;
   }
 
   get observeMain => [viewType.value, currentPage.value];
+
+  get observeSearch => [search.value];
 }

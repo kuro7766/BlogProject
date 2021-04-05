@@ -16,7 +16,6 @@ void main() {
     await tester.runAsync(() async {
       Get.testMode = true;
       init();
-      Get.put(UserStateInfo()..url, permanent: true);
       await tester.pumpWidget(getApp());
       // Get.offNamed('/404');
       // await tester.pumpAndSettle();

@@ -11,6 +11,7 @@ class SimpleAppBar extends AppBar {
       : super(
           backgroundColor: color,
           title: Container(
+            padding: EdgeInsets.only(right: 100),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

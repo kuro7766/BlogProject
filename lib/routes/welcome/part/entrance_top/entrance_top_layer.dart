@@ -1,3 +1,4 @@
+import 'package:blog_project/routes/main_page/main_content/logic.dart';
 import 'package:blog_project/routes/welcome/part/l_list/l_list_widgets.dart';
 import 'package:blog_project/vars/consts.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
@@ -14,20 +15,26 @@ class EntranceTopLayer extends StatefulWidget {
   _EntranceTopLayerState createState() => _EntranceTopLayerState();
 }
 
-class _EntranceTopLayerState extends State<EntranceTopLayer>
-    with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> searchListAnimation;
+class _EntranceTopLayerState extends State<EntranceTopLayer> {
+  MainContentLogic logic = Get.put(MainContentLogic());
+  TextEditingController textEditingController;
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
     super.initState();
-    controller = new AnimationController(
-        vsync: this, duration: Duration(milliseconds: 500));
-    controller.value = 0;
-    searchListAnimation =
-        // Tween(begin: 1.0, end: 0.0).animate(controller);
-        CurveTween(curve: Curves.fastOutSlowIn).animate(controller);
+    textEditingController = TextEditingController();
+    // controller = new AnimationController(
+    //     vsync: this, duration: Duration(milliseconds: 500));
+    // controller.value = 0;
+    // searchListAnimation =
+    //     // Tween(begin: 1.0, end: 0.0).animate(controller);
+    //     CurveTween(curve: Curves.fastOutSlowIn).animate(controller);
   }
 
   topRightRow() => Row(
@@ -46,15 +53,9 @@ class _EntranceTopLayerState extends State<EntranceTopLayer>
                   primaryColorDark: Const.searchBarColor,
                 ),
                 child: Focus(
-                  onFocusChange: (has) {
-
-                    if (has) {
-                      controller.forward();
-                    } else {
-                      controller.reverse();
-                    }
-                  },
+                  onFocusChange: logic.changeSearchBarFocus,
                   child: new TextField(
+                    controller: textEditingController,
                     decoration: new InputDecoration(
                       labelText: '搜索',
                       border: new OutlineInputBorder(
@@ -80,7 +81,9 @@ class _EntranceTopLayerState extends State<EntranceTopLayer>
           ),
           OverlapInkwell(
               color: Const.barColor,
-              onTap: () {},
+              onTap: () {
+                logic.state.search(textEditingController.text);
+              },
               child: Container(
                   padding: EdgeInsets.all(10),
                   alignment: Alignment.center,
@@ -132,11 +135,11 @@ class _EntranceTopLayerState extends State<EntranceTopLayer>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.menu,
+                                Icons.home,
                                 color: Colors.white,
                               ),
                               Text(
-                                '菜单',
+                                'kuroの小站',
                                 style: TextStyle(color: Colors.white),
                               )
                             ],
@@ -169,28 +172,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer>
               Expanded(
                 child: Container(
                     // color: Colors.red,
-                    child: Align(
-                  alignment: Alignment.topLeft,
-                  child: SizeTransition(
-                    sizeFactor: searchListAnimation,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                            width: 300,
-                            height: 200,
-                            child: ListView.builder(
-                                itemCount: 10,
-                                itemBuilder: (c, i) {
-                                  return OverlapInkwell(
-                                      onTap: () {},
-                                      child: Container(
-                                          height: 30,
-                                          child: Center(child: Text('$i'))));
-                                }))
-                      ],
                     ),
-                  ),
-                )),
                 flex: Const.rightFlex,
               )
             ],

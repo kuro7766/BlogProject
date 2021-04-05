@@ -57,7 +57,7 @@ class _MarkDownWebState extends State<MarkDownWeb> {
       if (event.data['type'] == 'webloaded') {
         sendIFrameMessage({'type': 'render', 'msg': widget.data}, widget.uuid);
         widget.markDownWebStatus.loaded = true;
-        setState(() {});
+        if (mounted) setState(() {});
       }
       if (event.data['type'] == 'received') {
         log(92, '${widget.uuid} : ${event.data}');

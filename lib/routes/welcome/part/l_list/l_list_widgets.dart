@@ -1,4 +1,5 @@
 import 'package:blog_project/entity/new1_public_info_entity.dart';
+import 'package:blog_project/routes/main_page/main_content/logic.dart';
 import 'package:blog_project/vars/configuration.dart';
 import 'package:blog_project/vars/consts.dart';
 import 'package:blog_project/vars/django_function.dart';
@@ -11,6 +12,8 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LUserContentList extends StatelessWidget {
+  final MainContentLogic logic = Get.put(MainContentLogic());
+
   @override
   Widget build(BuildContext context) {
     return HttpBuilder<New1PublicInfoEntity>(
@@ -33,7 +36,6 @@ class LUserContentList extends StatelessWidget {
                         snackPosition: SnackPosition.BOTTOM,
                         colorText: Colors.white70);
                   }
-
                 },
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
@@ -62,8 +64,8 @@ class LUserContentList extends StatelessWidget {
                 iconData: Icons.home_outlined,
                 text: '首页',
                 onTap: () {
-                  Get.offNamed(Config.currentHomePageRoute);
-
+                  // Get.offNamed(Config.currentHomePageRoute);
+logic.toArticleList(home: true);
                   // FocusScope.of(context).requestFocus(new FocusNode());
                 },
               ),
@@ -78,7 +80,6 @@ class LUserContentList extends StatelessWidget {
                         snackPosition: SnackPosition.BOTTOM,
                         colorText: Colors.white70);
                   }
-
                 },
               ),
               LItem(
@@ -92,7 +93,6 @@ class LUserContentList extends StatelessWidget {
                         snackPosition: SnackPosition.BOTTOM,
                         colorText: Colors.white70);
                   }
-
                 },
               ),
               LItem(
@@ -100,7 +100,7 @@ class LUserContentList extends StatelessWidget {
                 text: '友链',
                 onTap: () {
                   // j.qq ?? launch(j.qq);
-
+                  logic.toFriendList();
                 },
               ),
               LItem(
@@ -114,7 +114,6 @@ class LUserContentList extends StatelessWidget {
                         snackPosition: SnackPosition.BOTTOM,
                         colorText: Colors.white70);
                   }
-
                 },
               ),
               OverlapInkwell(
