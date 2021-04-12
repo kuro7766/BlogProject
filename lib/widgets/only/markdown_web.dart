@@ -1,4 +1,5 @@
 // ignore: avoid_web_libraries_in_flutter
+import 'dart:async';
 import 'dart:html' as html;
 import 'dart:ui' as ui;
 
@@ -34,12 +35,13 @@ class MarkDownWeb extends StatefulWidget {
 
 class _MarkDownWebState extends State<MarkDownWeb> {
   double mdHeight;
+  StreamSubscription _subscription;
 
   @override
   void initState() {
     super.initState();
     EventBus eventBus = Get.find();
-    eventBus.on<MarkdownEvent>().listen((event) {
+    _subscription = eventBus.on<MarkdownEvent>().listen((event) {
       if (event.data['uuid'] != widget.uuid) return;
       log(95, event.data);
       if (event.data['type'] == 'setHeight') {
@@ -64,6 +66,12 @@ class _MarkDownWebState extends State<MarkDownWeb> {
       }
     });
     mdHeight = 0.0;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _subscription?.cancel();
   }
 
   @override

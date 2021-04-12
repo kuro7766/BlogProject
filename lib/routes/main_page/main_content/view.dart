@@ -25,7 +25,7 @@ import 'logic.dart';
 import 'state.dart';
 
 class MainContentPage extends StatelessWidget {
-  final MainContentLogic logic = Get.put(MainContentLogic());
+  final MainContentLogic logic = Get.put(new MainContentLogic());
   final MainContentState state = Get.find<MainContentLogic>().state;
 
   @override

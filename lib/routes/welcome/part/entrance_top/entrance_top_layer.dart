@@ -83,6 +83,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
               color: Const.barColor,
               onTap: () {
                 logic.state.search(textEditingController.text);
+                textEditingController.text='';
               },
               child: Container(
                   padding: EdgeInsets.all(10),

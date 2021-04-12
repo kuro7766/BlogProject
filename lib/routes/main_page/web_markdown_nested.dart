@@ -11,7 +11,6 @@ import 'main_content/logic.dart';
 import 'main_content/state.dart';
 
 class WebMarkdownNested extends StatelessWidget {
-
   final MainContentLogic logic = Get.put(MainContentLogic());
   final MainContentState state = Get.find<MainContentLogic>().state;
 

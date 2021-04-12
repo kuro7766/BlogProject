@@ -1,3 +1,4 @@
+
 class Debug {
   static int _minimalLevel = 0;
   static int _only = 0;
@@ -23,7 +24,7 @@ class Debug {
 }
 
 log(level, s) {
-  Debug.only=0;
+  Debug.only=95;
   Debug.minLv=100;
   Debug.log(level, s);
 }

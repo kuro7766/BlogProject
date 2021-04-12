@@ -3,6 +3,7 @@ import 'package:blog_project/entity/tag_name_entity.dart';
 import 'package:blog_project/routes/main_page/main_content/logic.dart';
 import 'package:blog_project/routes/main_page/main_content/view.dart';
 import 'package:blog_project/routes/welcome/part/welcome/inner_layer.dart';
+import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/configuration.dart';
 import 'package:blog_project/vars/django_function.dart';
 import 'package:blog_project/widgets/only/inner_layer.dart';
@@ -41,9 +42,9 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
 
   @override
   Widget build(BuildContext context) {
+    log2(1, 'rebuild right');
     return ManageInnerLayer(
-      left:
-          MainContentPage(),
+      left: MainContentPage(),
       right: Padding(
         padding: EdgeInsets.only(left: 20),
         child: ListView(shrinkWrap: true, children: [
@@ -110,9 +111,7 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
                                         },
                                         child: Chip(label: Text(j1.tagName))),
                                   )),
-                        ))
-
-                ),
+                        ))),
           ),
           TitleCard(
             title: '统计',

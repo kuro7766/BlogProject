@@ -59,6 +59,7 @@ class MainContentLogic extends GetxController {
   toTagList({home = false}) {
     state.viewType.value = 2;
     if (home) state.tagCurrentPage.value = 1;
+    _showBanner();
   }
 
   void switchPage(int offset) {
