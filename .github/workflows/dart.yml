@@ -23,7 +23,7 @@ jobs:
     - run: flutter pub get
 #    - run: flutter analyze
     - run: flutter test --platform chrome
-    - run: flutter build web
+    - run: flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=https://cdn.jsdelivr.net/npm/canvaskit-wasm@0.24.0/bin/
     - uses: actions/setup-python@v2
       with:
         python-version: '3.9' # Version range or exact version of a Python version to use, using SemVer's version range syntax
