@@ -32,7 +32,8 @@ class MainContentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       state.observeMain;
-      log2(0, 'rebuild');
+      log2(0, 'outer2build');
+      log2(0, '${state.observeMain[0]}${state.observeMain[1]}');
       switch (state.viewType.value) {
         case 0:
           return HomeList();

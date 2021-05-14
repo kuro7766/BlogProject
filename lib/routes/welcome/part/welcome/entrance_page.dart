@@ -15,7 +15,6 @@ import 'inner_layer.dart';
 class MainPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-
     return _MainPageState();
   }
 }
@@ -61,6 +60,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     // log(60, Get.currentRoute);
+    log2(3, 'rbuild33333');
     if (Get.currentRoute.startsWith('/entrance') &&
         !Get.parameters.containsKey('user')) {
 
@@ -109,4 +109,5 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         },
         child: CenterInnerLayerContainer());
   }
+
 }

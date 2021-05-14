@@ -1,5 +1,6 @@
 import 'package:blog_project/entity/article_content_entity.dart';
 import 'package:blog_project/routes/article/comment.dart';
+import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/django_function.dart';
 import 'package:blog_project/widgets/only/app_bar.dart';
 import 'package:blog_project/widgets/only/markdown_web.dart';
@@ -16,6 +17,7 @@ class WebMarkdownNested extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log2(4, 'outerbuild');
     return HttpBuilder<ArticleContentEntity>(
       url: DjangoUrl.getArticleContent(state.articleId.value),
       builder: (c, j) {

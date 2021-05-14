@@ -77,6 +77,7 @@ class _MarkDownWebState extends State<MarkDownWeb> {
   @override
   Widget build(BuildContext context) {
     log(92, 'rb');
+    log2(3, 'reb');
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(widget.uuid, (int viewId) {
       html.IFrameElement iFrameElement = html.IFrameElement()
