@@ -9,6 +9,7 @@ import 'package:event_bus/event_bus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:should_rebuild/should_rebuild.dart';
 
 import 'inner_layer.dart';
 
@@ -78,14 +79,19 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           onTap: () {
             FocusScope.of(context).requestFocus(new FocusNode());
           },
-          child: Stack(
-            children: [
-              layer1(),
-              EntranceTopLayer(
-                animation: animation,
-              )
-            ],
-          ),
+          child:
+          ShouldRebuild<Stack>(
+              shouldRebuild: (oldWidget, newWidget) => false,
+              child: Stack(
+                children: [
+                  layer1(),
+                  EntranceTopLayer(
+                    animation: animation,
+                  )
+                ],
+              ),
+          )
+
         ));
   }
 

@@ -79,7 +79,7 @@ dependencies:
 #  flutter_web: any
 #  flutter_web_ui: any
 #  font_awesome_flutter: ^8.5.0
-
+  should_rebuild: 0.1.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
