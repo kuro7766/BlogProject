@@ -92,3 +92,6 @@ analyzer:
 由于本项目是web，需要加web参数
 
 ```flutter test --platform chrome```
+
+## 错误记录
+GetX在页面级才能对getcontroller回收
