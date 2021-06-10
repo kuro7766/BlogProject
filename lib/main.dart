@@ -4,13 +4,19 @@ import 'package:blog_project/routes/404.dart';
 import 'package:blog_project/routes/login/login_page.dart';
 import 'package:blog_project/routes/login/user_manage.dart';
 import 'package:blog_project/routes/welcome/part/welcome/entrance_page.dart';
+import 'package:blog_project/vars/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
+import 'package:http/http.dart' as http;
 void main() {
   init();
   runApp(getApp());
+
+  // (() async{
+  //   var x= await http.get(Uri.parse(Const.weather));
+  //   print(x.body);
+  // })();
 }
 
 class CheckLoginMiddleWare extends GetMiddleware {

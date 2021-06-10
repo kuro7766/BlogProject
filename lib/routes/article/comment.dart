@@ -28,16 +28,41 @@ class CommentArea extends MainContentBaseStatelessWidget {
     ];
     c
       ..add(Text('发表评论'))
-      ..add(TextField(
-        keyboardType: TextInputType.multiline,
-        maxLines: null,
-        decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: '居然什么也不说，哼',
-            hintStyle: TextStyle(fontSize: 12)),
+      ..add(SizedBox(
+        height: 200,
+        child: TextField(
+          keyboardType: TextInputType.multiline,
+          maxLines: null,
+          decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: '居然什么也不说，哼',
+              hintStyle: TextStyle(fontSize: 12)),
+        ),
       ))
-      ..add(Row(
-        children: [Text('姓名'), Text('邮箱'), Text('地址')],
+      ..add(Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [Text('姓名*'),TextField(
+          keyboardType: TextInputType.multiline,
+          maxLines: null,
+          decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: '请输入姓名',
+              hintStyle: TextStyle(fontSize: 12)),
+        ), Text('邮箱'), TextField(
+          keyboardType: TextInputType.multiline,
+          maxLines: null,
+          decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: '请输入邮箱',
+              hintStyle: TextStyle(fontSize: 12)),
+        ),Text('地址'),TextField(
+          keyboardType: TextInputType.multiline,
+          maxLines: null,
+          decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: '输入博客地址',
+              hintStyle: TextStyle(fontSize: 12)),
+        ),],
       ))
       ..add(Align(
           alignment: AlignmentDirectional.centerStart,

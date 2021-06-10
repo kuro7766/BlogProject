@@ -30,6 +30,6 @@ log(level, s) {
 }
 log2(level, s) {
   Debug.only=0;
-  Debug.minLv=0;
+  Debug.minLv=3;
   Debug.log(level, s);
 }

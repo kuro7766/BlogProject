@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:blog_project/entity/article_id_entity.dart';
 import 'package:blog_project/entity/article_item_entity.dart';
 import 'package:blog_project/routes/main_page/main_base_widget.dart';
+import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/configuration.dart';
 import 'package:blog_project/vars/django_function.dart';
 import 'package:blog_project/widgets/only/image_item.dart';
@@ -25,6 +26,7 @@ class HomeList extends MainContentBaseStatelessWidget {
         // 实际页码个数
         int pageCount =
             (j.length ~/ pageSplit) + (j.length % pageSplit == 0 ? 0 : 1);
+        log2(3, pageCount);
         //下方角标的数量包括《 和 》
         int rowIndexCount =
             (min<int>(state.currentPage.value + 3, pageCount)) -
@@ -60,7 +62,7 @@ class HomeList extends MainContentBaseStatelessWidget {
                                   (state.currentPage.value - 1)]
                               .articleId);
                         },
-                        child: ImgItem(
+                        child: ArticleItemWidget(
                           imageUrl: j1.pictureUrl,
                           text: j1.articleDescription,
                         ),
@@ -69,7 +71,6 @@ class HomeList extends MainContentBaseStatelessWidget {
                   );
                 }),
           ]..add(rowIndexCount == 3
-          //
               ? Container()
               : Row(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 
 
 class JSUtil {
-  call({@required String function,@required List params}) {
+  static call({@required String function,@required List params}) {
     js.context.callMethod(function, params);
   }
 }

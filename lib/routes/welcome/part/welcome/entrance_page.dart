@@ -62,6 +62,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     // log(60, Get.currentRoute);
     log2(3, 'rbuild33333');
+    //todo 更改路由
     if (Get.currentRoute.startsWith('/entrance') &&
         !Get.parameters.containsKey('user')) {
 
@@ -69,7 +70,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       Future.microtask(() => Get.offNamed('/404'));
       return Container();
     } else {
-
       Config.user = Get.parameters['user'] ?? Config.user;
     }
 

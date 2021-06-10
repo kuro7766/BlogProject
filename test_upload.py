@@ -15,7 +15,7 @@ def make_archive(source, destination):
 
 
 if __name__ == '__main__':
-    project_name = 'blog'
+    project_name = 'blogv2'
     project_dir = 'build/web'
     make_archive(os.path.join(os.getcwd(), project_dir),
                  'default.zip')

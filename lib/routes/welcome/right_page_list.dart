@@ -1,5 +1,6 @@
 import 'package:blog_project/entity/tag_id_entity.dart';
 import 'package:blog_project/entity/tag_name_entity.dart';
+import 'package:blog_project/entity/weather_bean_entity.dart';
 import 'package:blog_project/routes/main_page/main_content/logic.dart';
 import 'package:blog_project/routes/main_page/main_content/view.dart';
 import 'package:blog_project/routes/welcome/part/welcome/inner_layer.dart';
@@ -80,9 +81,21 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
                         TitleCard(
                           title: '天气',
                           child: SizedBox(
-                            height: 120,
-                            child: Icon(Icons.wb_sunny),
-                          ),
+                              height: 120,
+                              child: HttpBuilder<WeatherBeanEntity>(
+                                url: Const.weather,
+                                builder2: (json) {
+                                  return Column(
+                                    children: [
+                                      (json.weatherinfo.weather.contains('雨'))?Icon(Icons.cloud): Icon(Icons.wb_sunny),
+                                      Text(json.weatherinfo.city),
+                                      Text(json.weatherinfo.weather)
+                                    ],
+                                  );
+                                },
+                              )
+                              // Icon(Icons.wb_sunny),
+                              ),
                         ),
                         Icon(Icons.directions_transit),
                         Icon(Icons.directions_bike),

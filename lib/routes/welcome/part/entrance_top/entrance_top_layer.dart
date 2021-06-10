@@ -1,5 +1,6 @@
 import 'package:blog_project/routes/main_page/main_content/logic.dart';
 import 'package:blog_project/routes/welcome/part/l_list/l_list_widgets.dart';
+import 'package:blog_project/util/js_util.dart';
 import 'package:blog_project/vars/consts.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
 import 'package:flutter/cupertino.dart';
@@ -95,8 +96,10 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
           OverlapInkwell(
             color: Const.barColor,
             onTap: () {
-              Get.toNamed('/login');
+              // Get.toNamed('/login');
+              JSUtil.call(function: 'redirect', params: [Const.eruptUrl]);
             },
+
             child: SizedBox(
               height: Const.barHeight,
               child: Row(

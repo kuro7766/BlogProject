@@ -95,3 +95,6 @@ analyzer:
 
 ## 错误记录
 GetX在页面级才能对getcontroller回收
+
+## flutter
+### CustomPaint()
