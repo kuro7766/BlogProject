@@ -19,6 +19,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
 import 'package:url_encoder/url_encoder.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../blog_list_main_content/logic.dart';
 import '../blog_list_main_content/state.dart';
@@ -36,8 +37,9 @@ class HomeList extends MainContentBaseStatelessWidget {
     Dbg.log(imagePaths.where((element) => element.endsWith('md')), 'kk');
     // var s=await rootBundle.loadString(imagePaths[0].replaceFirst('assets/', ''));
     // Dbg.log(s,'kkk');
-    return ResponseContent.success(
-        imagePaths.where((element) => element.startsWith('assets/markdown/')).toList());
+    return ResponseContent.success(imagePaths
+        .where((element) => element.startsWith('assets/markdown/'))
+        .toList());
   }
 
   @override
@@ -66,26 +68,36 @@ class HomeList extends MainContentBaseStatelessWidget {
           itemCount: data.length,
           itemBuilder: (ctx, index) {
             return GestureDetector(
-              onTap: (){
+              onTap: () {
                 // Get.snackbar('title', 'message');
-
               },
               child: SimpleHttpBuilder(
                 httpFuture: (() async {
-                  var s = await rootBundle.loadString(Uri.decodeFull(data[index]));
+                  var s =
+                      await rootBundle.loadString(Uri.decodeFull(data[index]));
                   // Dbg.log(s);
-                  return ResponseContent.success([Uri.decodeFull(p.basename(data[index])),s]);
+                  return ResponseContent.success(
+                      [Uri.decodeFull(p.basename(data[index])), s]);
                 })(),
                 builder: (tuple) {
-                  var mdContent=tuple[1];
-                  var title=tuple[0].replaceFirst('\.md', '');
+                  var mdContent = tuple[1];
+                  var title = tuple[0].replaceFirst('\.md', '');
                   return TitleCard(
                     title: '$title',
                     child: Container(
                       // color: Colors.orangeAccent,
                       child: MarkdownBody(
-                        data: '$mdContent'.substring(0, min(200, '$mdContent'.length)).replaceFirst(title, ''),
+                        data: '$mdContent'
+                            .substring(0, min(200, '$mdContent'.length))
+                            .replaceFirst(title, ''),
                         selectable: true,
+                        onTapLink:
+                            (String text, String href, String title) async {
+                          var fail=!await launch(href);
+                          if(fail){
+                            Get.snackbar('Error', 'Could not open link',snackPosition: SnackPosition.BOTTOM);
+                          }
+                        },
                       ),
                     ),
                   );

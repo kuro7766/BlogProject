@@ -43,6 +43,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
         children: [
           SizedBox(
             width: 300,
+            // height: 200,
             child: Container(
               padding: EdgeInsets.only(left: 10),
               // decoration: BoxDecoration(

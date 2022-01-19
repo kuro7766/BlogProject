@@ -85,6 +85,7 @@ dependencies:
   path: ^1.8.0
   url_encoder: ^0.0.3
   flutter_markdown: ^0.6.9
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -113,6 +114,18 @@ flutter:
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
+
+#  fonts:
+#    - family: MyFont
+#      fonts:
+#        - asset: assets/font/FeiHuaSongTi-2.ttf
+#          weight: 900
+#        - asset: assets/font/NotoSansHK-Black.otf
+#        - asset: assets/font/NotoSansHK-Bold.otf
+#        - asset: assets/font/NotoSansHK-Light.otf
+#        - asset: assets/font/NotoSansHK-Medium.otf
+#        - asset: assets/font/NotoSansHK-Regular.otf
+#        - asset: assets/font/NotoSansHK-Thin.otf
 
 #  fonts:
 #    - family: Kaishu

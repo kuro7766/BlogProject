@@ -70,6 +70,8 @@ StatelessWidget getApp() {
     // showPerformanceOverlay: true,
     theme: ThemeData(
       primarySwatch: Colors.blue,
+      // textTheme: TextTheme(bodyText1: TextStyle(backgroundColor: Colors.red)),
+      // fontFamily: 'MyFont',
     ),
     // home:MyHomePage()
     // home: Md2(),
