@@ -33,7 +33,7 @@ jobs:
 #        git config --local user.name "github-actions[bot]"
 #        git commit -m "Add changes" -a
 
-    - run: git add ./build/web
+    - run: git add -f ./build/web
     - run: git commit -m "auto changes"
 
     - run: find ./
