@@ -42,7 +42,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
   topRightRow() => Row(
         children: [
           SizedBox(
-            width: 300,
+            width: MediaQuery.of(context).size.width/2
+  ,
             // height: 200,
             child: Container(
               padding: EdgeInsets.only(left: 10),
