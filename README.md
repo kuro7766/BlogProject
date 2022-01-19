@@ -1,6 +1,6 @@
 # 我的博客项目说明
 
-click here to visit https://kuro7766.github.io/BlogProject/build/web/index.html
+[click here to visit](https://kuro7766.github.io/BlogProject/build/web/index.html)
 
 1.解决flutter web无法连接的bug，见[此处](https://github.com/flutter/flutter/issues/53338)
 

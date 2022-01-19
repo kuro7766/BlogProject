@@ -3,10 +3,12 @@ import 'package:blog_project/routes/blog_list_main_content/logic.dart';
 import 'package:blog_project/routes/welcome/l_list_widgets.dart';
 import 'package:blog_project/util/js_util.dart';
 import 'package:blog_project/vars/consts.dart';
+import 'package:blog_project/widgets/iframe_widget.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:should_rebuild/should_rebuild.dart';
 
 class EntranceTopLayer extends StatefulWidget {
   final Animation<double> animation;
@@ -42,8 +44,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
   topRightRow() => Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width/2
-  ,
+            width: MediaQuery.of(context).size.width / 3,
             // height: 200,
             child: Container(
               padding: EdgeInsets.only(left: 10),
@@ -97,8 +98,14 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                       : EdgeInsets.all(30.0),
                   alignment: Alignment.center,
                   child: Icon(Icons.search))),
-          Expanded(child: Container()),
-
+          // Expanded(child: Container()),
+          ShouldRebuild<IframeWidget>(
+              shouldRebuild: (oldWidget, newWidget) => false,
+              child: IframeWidget(
+                'https://music.163.com/outchain/player?type=2&id=26131698&auto=1&height=66',
+                width: 200,
+                height: 80,
+              ))
           // Container(child: SizedBox(width: 300,child: HtmlEmbedView(url: Const.music[0]))),
           // OverlapInkwell(
           //   color: Const.barColor,
