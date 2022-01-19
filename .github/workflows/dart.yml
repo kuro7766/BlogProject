@@ -26,7 +26,7 @@ jobs:
 #    - run: flutter config --enable-web
     - run: flutter pub get
     - run: flutter build web
-    - run: git add ./build/web && git commit -m "github action robot"
+    - run: git add ./build/web
     - run: find ./
     - run: |
         git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/$GITHUB_REPOSITORY
