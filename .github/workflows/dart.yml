@@ -27,7 +27,7 @@ jobs:
     - run: flutter pub get
     - run: flutter build web
 
-    - run: git checkout deployment
+#    - run: git checkout deployment
 
     - name: config for github bot
       run: |
@@ -45,6 +45,8 @@ jobs:
       with:
        github_token: ${{ secrets.PAT }}
        branch: deployment
+       force: true
+
 #    - run: |
 #        git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/$GITHUB_REPOSITORY
 #
