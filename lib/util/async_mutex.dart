@@ -2,6 +2,7 @@ import 'dart:async';
 
 /// flutter中的synchronize，
 /// 用future形成链表的方式
+/// sqlite数据库需要使用到
 
 class AsyncMutex {
   Future _next = new Future.value(null);
