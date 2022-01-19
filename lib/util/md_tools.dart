@@ -3,8 +3,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 
 mixin  BaseArticle {
   static List articles=[
-    ()=>m('dflksjal'),
-    ()=>m('dflksjal'),
+
   ];
 
   static m(data) => MarkdownBody(

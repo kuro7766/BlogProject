@@ -78,15 +78,18 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
                   Expanded(
                     child: TabBarView(
                       children: [
-                        TitleCard(
-                          title: '天气',
-                          child:
-                          // Text('暂无')
-                          SizedBox(
-                              height: 120,
-                              child: Text('暂无')
-                              // Icon(Icons.wb_sunny),
-                              ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: TitleCard(
+                            title: '天气',
+                            child:
+                            // Text('暂无')
+                            SizedBox(
+                                height: 120,
+                                child: Text('暂无')
+                                // Icon(Icons.wb_sunny),
+                                ),
+                          ),
                         ),
                         Icon(Icons.directions_transit),
                         Icon(Icons.directions_bike),

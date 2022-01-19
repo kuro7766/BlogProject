@@ -83,24 +83,30 @@ class HomeList extends MainContentBaseStatelessWidget {
                 },
                 child: TitleCard(
                   title: '$title',
-                  child: Container(
-                    // color: Colors.orangeAccent,
-                    child: Stack(
-                      children: [
-                        MarkdownBody(
-                          data: '$mdContent'
-                              .substring(0, min(200, '$mdContent'.length))
-                              .replaceFirst(title, ''),
-                          selectable: true,
-                          onTapLink:
-                              (String text, String href, String title) async {
-                            var fail=!await launch(href);
-                            if(fail){
-                              Get.snackbar('Error', 'Could not open link',snackPosition: SnackPosition.BOTTOM);
-                            }
-                          },
-                        ),
-                      ],
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      // color: Colors.orangeAccent,
+                      child: Stack(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: MarkdownBody(
+                              data: '$mdContent'
+                                  .substring(0, min(200, '$mdContent'.length))
+                                  .replaceFirst(title, ''),
+                              selectable: true,
+                              onTapLink:
+                                  (String text, String href, String title) async {
+                                var fail=!await launch(href);
+                                if(fail){
+                                  Get.snackbar('Error', 'Could not open link',snackPosition: SnackPosition.BOTTOM);
+                                }
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

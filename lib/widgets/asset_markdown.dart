@@ -31,19 +31,22 @@ class AssetMarkdown extends StatelessWidget {
         var title = tuple[0].replaceFirst('\.md', '');
         return TitleCard(
           title: '$title',
-          child: Container(
-            // color: Colors.orangeAccent,
-            child: MarkdownBody(
-              data: '$mdContent'
-                  .replaceFirst(title, ''),
-              selectable: true,
-              onTapLink:
-                  (String text, String href, String title) async {
-                var fail=!await launch(href);
-                if(fail){
-                  Get.snackbar('Error', 'Could not open link',snackPosition: SnackPosition.BOTTOM);
-                }
-              },
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              // color: Colors.orangeAccent,
+              child: MarkdownBody(
+                data: '$mdContent'
+                    .replaceFirst(title, ''),
+                selectable: true,
+                onTapLink:
+                    (String text, String href, String title) async {
+                  var fail=!await launch(href);
+                  if(fail){
+                    Get.snackbar('Error', 'Could not open link',snackPosition: SnackPosition.BOTTOM);
+                  }
+                },
+              ),
             ),
           ),
         );
