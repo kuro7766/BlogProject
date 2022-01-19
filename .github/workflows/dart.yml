@@ -27,6 +27,8 @@ jobs:
     - run: flutter pub get
     - run: flutter build web
 
+    - run: git checkout deployment
+
     - name: config for github bot
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
