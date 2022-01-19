@@ -1,14 +1,21 @@
+import 'dart:async';
+
 import 'package:blog_project/config.dart';
 import 'package:blog_project/routes/blog_list_main_content/logic.dart';
 import 'package:blog_project/routes/welcome/l_list_widgets.dart';
+import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/js_util.dart';
+import 'package:blog_project/util/simple_http_builder.dart';
 import 'package:blog_project/vars/consts.dart';
+import 'package:blog_project/widgets/attatcher.dart';
 import 'package:blog_project/widgets/iframe_widget.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:should_rebuild/should_rebuild.dart';
+import 'package:http/http.dart' as http;
 
 class EntranceTopLayer extends StatefulWidget {
   final Animation<double> animation;
@@ -23,6 +30,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
   MainContentLogic logic = Get.put(MainContentLogic());
   TextEditingController textEditingController;
 
+
   @override
   void dispose() {
     textEditingController.dispose();
@@ -33,6 +41,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
   void initState() {
     super.initState();
     textEditingController = TextEditingController();
+
     // controller = new AnimationController(
     //     vsync: this, duration: Duration(milliseconds: 500));
     // controller.value = 0;
@@ -41,10 +50,14 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
     //     CurveTween(curve: Curves.fastOutSlowIn).animate(controller);
   }
 
-  topRightRow() => Row(
+  topRightRow() =>
+      Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width / 3,
+            width: MediaQuery
+                .of(context)
+                .size
+                .width / 3,
             // height: 200,
             child: Container(
               padding: EdgeInsets.only(left: 10),
@@ -93,19 +106,46 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
               child: Container(
                   padding: Cfg.isMobile
                       ? EdgeInsets.only(
-                          left: Cfg.mobileHomeIconPadding,
-                          right: Cfg.mobileHomeIconPadding)
+                      left: Cfg.mobileHomeIconPadding,
+                      right: Cfg.mobileHomeIconPadding)
                       : EdgeInsets.all(30.0),
                   alignment: Alignment.center,
                   child: Icon(Icons.search))),
           // Expanded(child: Container()),
-          ShouldRebuild<IframeWidget>(
-              shouldRebuild: (oldWidget, newWidget) => false,
-              child: IframeWidget(
-                'https://music.163.com/outchain/player?type=2&id=26131698&auto=1&height=66',
-                width: 200,
-                height: 80,
-              ))
+          Visibility(
+            child: ShouldRebuild<IframeWidget>(
+                shouldRebuild: (oldWidget, newWidget) => false,
+                child:IframeWidget(
+                  // 'https://music.163.com/outchain/player?type=2&id=26131698&auto=1&height=66',
+                  'https://music.163.com/outchain/player?type=2&id=419594766&auto=1&height=66',
+                  width: 300,
+                  height: 200,
+                ) ),
+            // maintainSize: true,
+            // maintainAnimation: true,
+            // maintainState: true,
+            visible: Cfg.isMobile?false:true,
+          )  ,
+          Visibility(
+            visible: true,
+            child: Builder(builder: (c) {
+              return IconButton(
+                onPressed: () {
+                  // SmartDialog.showAttach(
+                  //   targetContext: c,
+                  //   target: Offset(100, 100),
+                  //   widget: Container(width: 100, height: 100, color: Colors.red),
+                  // );
+                  attach(c,Alignment.bottomCenter,SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: Column(children: [Text('暂时没有歌曲')],),
+                  ));
+                },
+                icon: Icon(Icons.music_video_rounded),
+              );
+            }),
+          )
           // Container(child: SizedBox(width: 300,child: HtmlEmbedView(url: Const.music[0]))),
           // OverlapInkwell(
           //   color: Const.barColor,
@@ -133,7 +173,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
         ],
       );
 
-  topScrollBar() => SizeTransition(
+  topScrollBar() =>
+      SizeTransition(
         sizeFactor: widget.animation,
         child: SizedBox(
           height: Const.barHeight,
@@ -152,8 +193,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                         child: Padding(
                           padding: Cfg.isMobile
                               ? EdgeInsets.only(
-                                  left: Cfg.mobileHomeIconPadding,
-                                  right: Cfg.mobileHomeIconPadding)
+                              left: Cfg.mobileHomeIconPadding,
+                              right: Cfg.mobileHomeIconPadding)
                               : EdgeInsets.only(),
                           child: SizedBox(
                             height: Const.barHeight,
@@ -167,9 +208,9 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                                 Cfg.isMobile
                                     ? Container()
                                     : Text(
-                                        Const.leftTopTitle,
-                                        style: TextStyle(color: Colors.white),
-                                      )
+                                  Const.leftTopTitle,
+                                  style: TextStyle(color: Colors.white),
+                                )
                               ],
                             ),
                           ),
@@ -200,8 +241,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
               ),
               Expanded(
                 child: Container(
-                    // color: Colors.red,
-                    ),
+                  // color: Colors.red,
+                ),
                 flex: Const.rightFlex,
               )
             ],

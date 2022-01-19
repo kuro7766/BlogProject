@@ -36,6 +36,8 @@ class _MarkDownWebState extends State<IframeWidget> {
       html.IFrameElement iFrameElement = html.IFrameElement()
         ..src = widget.url
         ..id = widget.uuid
+        ..style.width = '100%'
+        ..style.height = '100%'
         ..style.border = 'none';
       return iFrameElement;
     });

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-typedef Builder<T> = Widget Function(T json);
+typedef SimpleHttpBuilderX<T> = Widget Function(T json);
 class ResponseContent<T> {
   bool success;
   T data;
@@ -22,7 +22,7 @@ class ResponseContent<T> {
 }
 class SimpleHttpBuilder<T> extends StatelessWidget {
   // 组件回调，两者任选其一
-  final Builder<T> builder;
+  final SimpleHttpBuilderX<T> builder;
 
   final Widget loadingWidget;
 

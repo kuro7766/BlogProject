@@ -7,6 +7,7 @@ import 'package:blog_project/routes/welcome/entrance_page_initializer.dart';
 import 'package:blog_project/vars/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
@@ -40,42 +41,55 @@ class CheckLoginMiddleWare extends GetMiddleware {
   }
 }
 
-StatelessWidget getApp() {
-  return GetMaterialApp(
-    title: 'kuroの小站',
-    initialRoute: '/',
-    getPages: [
-      GetPage(
-          name: '/login',
-          page: () {
-            return LoginPage();
-          },
-          middlewares: [CheckLoginMiddleWare()]),
-      GetPage(
-          name: '/manage',
-          page: () {
-            return UserManage('');
-          },
-          middlewares: [CheckLoginMiddleWare()]),
+Widget getApp() {
+  return WillPopScope(
+    onWillPop: () async {
+      // if (Get.isCurrent<LoginPage>()) {
+      //   return false;
+      // }
+      return true;
+    },
+    child: GetMaterialApp(
+      title: 'kuroの小站',
+      initialRoute: '/',
+      getPages: [
+        GetPage(
+            name: '/login',
+            page: () {
+              return LoginPage();
+            },
+            middlewares: [CheckLoginMiddleWare()]),
+        GetPage(
+            name: '/manage',
+            page: () {
+              return UserManage('');
+            },
+            middlewares: [CheckLoginMiddleWare()]),
 
-      GetPage(name: '/404', page: () => Route404()),
-      // this is default page
-      GetPage(
-          name: '/',
-          page: () => Route404(),
-          middlewares: [CheckLoginMiddleWare()]),
-      // GetPage(name: '/', page: () => Route404()),
-      GetPage(name: '/entrance', page: () => MainPage())
-    ],
-    debugShowCheckedModeBanner: false,
-    // showPerformanceOverlay: true,
-    theme: ThemeData(
-      primarySwatch: Colors.blue,
-      // textTheme: TextTheme(bodyText1: TextStyle(backgroundColor: Colors.red)),
-      // fontFamily: 'MyFont',
+        GetPage(name: '/404', page: () => Route404()),
+        // this is default page
+        GetPage(
+            name: '/',
+            page: () => Route404(),
+            middlewares: [CheckLoginMiddleWare()]),
+        // GetPage(name: '/', page: () => Route404()),
+        GetPage(name: '/entrance', page: () => MainPage())
+      ],
+      debugShowCheckedModeBanner: false,
+      navigatorObservers: [FlutterSmartDialog.observer],
+      builder: (BuildContext context, Widget child) {
+        return FlutterSmartDialog(child: child);
+      },
+      // builder: FlutterSmartDialog.init(),
+      // showPerformanceOverlay: true,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        // textTheme: TextTheme(bodyText1: TextStyle(backgroundColor: Colors.red)),
+        // fontFamily: 'MyFont',
+      ),
+      // home:MyHomePage()
+      // home: Md2(),
+      // home: MainPage(),
     ),
-    // home:MyHomePage()
-    // home: Md2(),
-    // home: MainPage(),
   );
 }
