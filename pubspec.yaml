@@ -105,6 +105,7 @@ flutter:
     - assets/markdown/
     - assets/
     - assets/r/
+    - assets/generated/
 #   assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
