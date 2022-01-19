@@ -4,11 +4,11 @@ class MainContentState {
   /// | 序号 | 内容 |
   /// | --- | --- |
   /// 0|列表
-  /// 1|markdown
+  /// 1|markdown(禁用)
   /// 2|tagList
   /// 3|友链
   /// 4|searchList
-  /// 5|
+  /// 5|markdown(普通markdown)
   /// 6|
   /// 7|
   ///
@@ -17,6 +17,7 @@ class MainContentState {
   //主页浏览页码，从1开始
   RxInt currentPage;
   RxInt articleId;
+  RxString articleAssetResource;
 
   //tagList浏览页码
   RxInt tagCurrentPage;
@@ -32,6 +33,7 @@ class MainContentState {
     articleId = 0.obs;
     tagCurrentPage = 1.obs;
     search = ''.obs;
+    articleAssetResource=''.obs;
   }
 
   get observeMain => [viewType.value, currentPage.value];

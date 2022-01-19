@@ -9,6 +9,7 @@ import 'package:blog_project/routes/main_page/home_list.dart';
 import 'package:blog_project/routes/main_page/search_page.dart';
 import 'package:blog_project/routes/main_page/tag_list.dart';
 import 'package:blog_project/routes/main_page/web_markdown_nested.dart';
+import 'package:blog_project/routes/markdown_viewer/view.dart';
 import 'package:blog_project/tests.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/configuration.dart';
@@ -25,7 +26,7 @@ import 'logic.dart';
 import 'state.dart';
 
 class MainContentPage extends StatelessWidget {
-  final MainContentLogic logic = Get.put(new MainContentLogic());
+  final MainContentLogic logic = Get.put(MainContentLogic());
   final MainContentState state = Get.find<MainContentLogic>().state;
 
   @override
@@ -46,7 +47,8 @@ class MainContentPage extends StatelessWidget {
         case 4:
           return SearchList();
         case 5:
-          break;
+          return MarkdownViewerComponent();
+          // break;
       }
       return Container(
         child: Text('请添加${state.viewType.value}类型'),

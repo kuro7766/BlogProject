@@ -6,6 +6,7 @@ import 'package:blog_project/routes/login/user_manage.dart';
 import 'package:blog_project/routes/welcome/entrance_page_initializer.dart';
 import 'package:blog_project/vars/consts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;

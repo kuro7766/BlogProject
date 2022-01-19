@@ -17,6 +17,7 @@ import 'package:blog_project/widgets/reusable/http_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:url_encoder/url_encoder.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -64,47 +65,52 @@ class HomeList extends MainContentBaseStatelessWidget {
         //       Uri.decodeFull(p.basename(data[index]))}')),
         // );
         return Column(children: List.generate( data.length, ( index) {
-          return GestureDetector(
-            onTap: () {
-              // Get.snackbar('title', 'message');
-            },
-            child: SimpleHttpBuilder(
-              httpFuture: (() async {
-                var s =
-                await rootBundle.loadString(Uri.decodeFull(data[index]));
-                // Dbg.log(s);
-                return ResponseContent.success(
-                    [Uri.decodeFull(p.basename(data[index])), s]);
-              })(),
-              builder: (tuple) {
-                var mdContent = tuple[1];
-                var title = tuple[0].replaceFirst('\.md', '');
-                return TitleCard(
+          return SimpleHttpBuilder(
+            httpFuture: (() async {
+              var s =
+              await rootBundle.loadString(Uri.decodeFull(data[index]));
+              // Dbg.log(s);
+              return ResponseContent.success(
+                  [Uri.decodeFull(p.basename(data[index])), s]);
+            })(),
+            builder: (tuple) {
+              var mdContent = tuple[1];
+              var title = tuple[0].replaceFirst('\.md', '');
+              return GestureDetector(
+                onTap: (){
+                  logic.toArticle(data[index]);
+
+                },
+                child: TitleCard(
                   title: '$title',
                   child: Container(
                     // color: Colors.orangeAccent,
-                    child: MarkdownBody(
-                      data: '$mdContent'
-                          .substring(0, min(200, '$mdContent'.length))
-                          .replaceFirst(title, ''),
-                      selectable: true,
-                      onTapLink:
-                          (String text, String href, String title) async {
-                        var fail=!await launch(href);
-                        if(fail){
-                          Get.snackbar('Error', 'Could not open link',snackPosition: SnackPosition.BOTTOM);
-                        }
-                      },
+                    child: Stack(
+                      children: [
+                        MarkdownBody(
+                          data: '$mdContent'
+                              .substring(0, min(200, '$mdContent'.length))
+                              .replaceFirst(title, ''),
+                          selectable: true,
+                          onTapLink:
+                              (String text, String href, String title) async {
+                            var fail=!await launch(href);
+                            if(fail){
+                              Get.snackbar('Error', 'Could not open link',snackPosition: SnackPosition.BOTTOM);
+                            }
+                          },
+                        ),
+                      ],
                     ),
                   ),
-                );
-                // return Markdown(
-                //   shrinkWrap: true,
-                //   selectable: true,
-                //   data: dd,
-                // );
-              },
-            ),
+                ),
+              );
+              // return Markdown(
+              //   shrinkWrap: true,
+              //   selectable: true,
+              //   data: dd,
+              // );
+            },
           );
         },
         ),);

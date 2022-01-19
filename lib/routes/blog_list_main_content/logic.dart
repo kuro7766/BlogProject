@@ -41,9 +41,11 @@ class MainContentLogic extends GetxController {
     state.viewType(4);
   }
 
-  void toArticle(int articleId) {
-    state.viewType.value = 1;
-    state.articleId.value = articleId;
+  void toArticle(String articleId) {
+    // state.viewType.value = 1;
+    // state.articleId.value = articleId;
+    state.viewType(5);
+    state.articleAssetResource(articleId);
     _showBanner();
   }
 
