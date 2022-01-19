@@ -1,5 +1,5 @@
-import 'package:blog_project/routes/main_page/main_content/logic.dart';
-import 'package:blog_project/routes/main_page/main_content/state.dart';
+import 'package:blog_project/routes/blog_list_main_content/logic.dart';
+import 'package:blog_project/routes/blog_list_main_content/state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

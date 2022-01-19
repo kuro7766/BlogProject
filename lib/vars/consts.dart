@@ -1,3 +1,4 @@
+import 'package:blog_project/config.dart';
 import 'package:flutter/material.dart';
 
 class Const {
@@ -16,7 +17,7 @@ class Const {
 
   // static var leftTopTitle='kuroの小站';
   static const barHeight = 85.0;
-  static const leftFlex = 2;
+  static get leftFlex => Cfg.isMobile ? 0 : 2;
   static var iFrameId = 'myiframe';
 
   static const rightFlex = 15;

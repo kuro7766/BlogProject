@@ -23,6 +23,10 @@ class MainContentState {
   RxString search;
 
   MainContentState() {
+    init();
+  }
+
+  void init(){
     viewType = 0.obs;
     currentPage = 1.obs;
     articleId = 0.obs;

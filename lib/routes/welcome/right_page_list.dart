@@ -1,9 +1,9 @@
 import 'package:blog_project/entity/tag_id_entity.dart';
 import 'package:blog_project/entity/tag_name_entity.dart';
 import 'package:blog_project/entity/weather_bean_entity.dart';
-import 'package:blog_project/routes/main_page/main_content/logic.dart';
-import 'package:blog_project/routes/main_page/main_content/view.dart';
-import 'package:blog_project/routes/welcome/part/welcome/inner_layer.dart';
+import 'package:blog_project/routes/blog_list_main_content/logic.dart';
+import 'package:blog_project/routes/blog_list_main_content/view.dart';
+import 'package:blog_project/routes/welcome/inner_layer.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/configuration.dart';
 import 'package:blog_project/vars/django_function.dart';
@@ -68,9 +68,9 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
                           ),
                           Tab(
                             icon: Icon(Icons.local_fire_department),
-                            text: '热门文章',
+                            text: '推荐',
                           ),
-                          Tab(icon: Icon(Icons.access_time), text: '最近文章'),
+                          Tab(icon: Icon(Icons.access_time), text: '其他'),
                         ],
                       ),
                     ),
@@ -80,20 +80,11 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
                       children: [
                         TitleCard(
                           title: '天气',
-                          child: SizedBox(
+                          child:
+                          // Text('暂无')
+                          SizedBox(
                               height: 120,
-                              child: HttpBuilder<WeatherBeanEntity>(
-                                url: Const.weather,
-                                builder2: (json) {
-                                  return Column(
-                                    children: [
-                                      (json.weatherinfo.weather.contains('雨'))?Icon(Icons.cloud): Icon(Icons.wb_sunny),
-                                      Text(json.weatherinfo.city),
-                                      Text(json.weatherinfo.weather)
-                                    ],
-                                  );
-                                },
-                              )
+                              child: Text('暂无')
                               // Icon(Icons.wb_sunny),
                               ),
                         ),
@@ -107,37 +98,39 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
             ),
           ),
           TitleCard(
-            title: '标签云',
+            title: '博客公告',
             child: Padding(
                 padding: EdgeInsets.only(top: 20),
-                child: HttpBuilder<List<TagIdEntity>>(
-                    url: DjangoUrl.getUserTags(Config.user),
-                    builder: (c, j) => Wrap(
-                          children: List.generate(
-                              j.length,
-                              (index) => HttpBuilder<TagNameEntity>(
-                                    url: DjangoUrl.getTagNameById(
-                                        j[index].tagId),
-                                    builder: (c1, j1) => GestureDetector(
-                                        onTap: () {
-                                          logic.toTagList(home: true);
-                                        },
-                                        child: Chip(label: Text(j1.tagName))),
-                                  )),
-                        ))),
+                child: Text('即将正式上线')
+                // HttpBuilder<List<TagIdEntity>>(
+                //     url: DjangoUrl.getUserTags(Config.user),
+                //     builder: (c, j) => Wrap(
+                //           children: List.generate(
+                //               j.length,
+                //               (index) => HttpBuilder<TagNameEntity>(
+                //                     url: DjangoUrl.getTagNameById(
+                //                         j[index].tagId),
+                //                     builder: (c1, j1) => GestureDetector(
+                //                         onTap: () {
+                //                           logic.toTagList(home: true);
+                //                         },
+                //                         child: Chip(label: Text(j1.tagName))),
+                //                   )),
+                //         ))
+            ),
           ),
           TitleCard(
-            title: '统计',
+            title: '小游戏',
             child: Align(
               alignment: Alignment.centerLeft,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("文章：132 篇"),
-                  Text("评论：510 条"),
-                  Text("访问总量：67,021次"),
-                  Text("运行时长：2年219天"),
-                  Text("最后更新：2天前"),
+                  Row(
+                    children: [
+                      Text("击剑游戏 hot"),Icon(Icons.local_fire_department,color: Colors.red,)
+                    ],
+                  )
                 ],
               ),
             ),

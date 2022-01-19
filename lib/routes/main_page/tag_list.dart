@@ -1,5 +1,5 @@
 import 'package:blog_project/entity/artile_title_item_entity.dart';
-import 'package:blog_project/routes/main_page/main_content/logic.dart';
+import 'package:blog_project/routes/blog_list_main_content/logic.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/vars/configuration.dart';
 import 'package:blog_project/vars/django_function.dart';

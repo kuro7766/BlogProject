@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../right_page_list.dart';
+import 'right_page_list.dart';
 
 
 

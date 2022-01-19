@@ -1,5 +1,6 @@
-import 'package:blog_project/routes/main_page/main_content/logic.dart';
-import 'package:blog_project/routes/welcome/part/l_list/l_list_widgets.dart';
+import 'package:blog_project/config.dart';
+import 'package:blog_project/routes/blog_list_main_content/logic.dart';
+import 'package:blog_project/routes/welcome/l_list_widgets.dart';
 import 'package:blog_project/util/js_util.dart';
 import 'package:blog_project/vars/consts.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
@@ -58,7 +59,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                   child: new TextField(
                     controller: textEditingController,
                     decoration: new InputDecoration(
-                      labelText: '搜索',
+                      labelText: '  搜索',
                       border: new OutlineInputBorder(
                         borderSide: new BorderSide(color: Const.searchBarColor),
                         borderRadius: const BorderRadius.all(
@@ -84,38 +85,42 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
               color: Const.barColor,
               onTap: () {
                 logic.state.search(textEditingController.text);
-                textEditingController.text='';
+                textEditingController.text = '';
               },
               child: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: Cfg.isMobile
+                      ? EdgeInsets.only(
+                          left: Cfg.mobileHomeIconPadding,
+                          right: Cfg.mobileHomeIconPadding)
+                      : EdgeInsets.all(30.0),
                   alignment: Alignment.center,
                   child: Icon(Icons.search))),
           Expanded(child: Container()),
 
           // Container(child: SizedBox(width: 300,child: HtmlEmbedView(url: Const.music[0]))),
-          OverlapInkwell(
-            color: Const.barColor,
-            onTap: () {
-              // Get.toNamed('/login');
-              JSUtil.call(function: 'redirect', params: [Const.eruptUrl]);
-            },
-
-            child: SizedBox(
-              height: Const.barHeight,
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Text('登录'),
-                  Icon(Icons.login),
-                  SizedBox(
-                    width: 30,
-                  )
-                ],
-              ),
-            ),
-          ),
+          // OverlapInkwell(
+          //   color: Const.barColor,
+          //   onTap: () {
+          //     // Get.toNamed('/login');
+          //     JSUtil.call(function: 'redirect', params: [Const.eruptUrl]);
+          //   },
+          //
+          //   child: SizedBox(
+          //     height: Const.barHeight,
+          //     child: Row(
+          //       children: [
+          //         SizedBox(
+          //           width: 30,
+          //         ),
+          //         Text('登录'),
+          //         Icon(Icons.login),
+          //         SizedBox(
+          //           width: 30,
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // ),
         ],
       );
 
@@ -132,21 +137,32 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                     child: Material(
                       color: Colors.transparent,
                       child: InkWell(
-                        onTap: () {},
-                        child: SizedBox(
-                          height: Const.barHeight,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.home,
-                                color: Colors.white,
-                              ),
-                              Text(
-                                Const.leftTopTitle,
-                                style: TextStyle(color: Colors.white),
-                              )
-                            ],
+                        onTap: () {
+                          logic.toArticleList(home: true);
+                        },
+                        child: Padding(
+                          padding: Cfg.isMobile
+                              ? EdgeInsets.only(
+                                  left: Cfg.mobileHomeIconPadding,
+                                  right: Cfg.mobileHomeIconPadding)
+                              : EdgeInsets.only(),
+                          child: SizedBox(
+                            height: Const.barHeight,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.home,
+                                  color: Colors.white,
+                                ),
+                                Cfg.isMobile
+                                    ? Container()
+                                    : Text(
+                                        Const.leftTopTitle,
+                                        style: TextStyle(color: Colors.white),
+                                      )
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -169,7 +185,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
               Expanded(
                 flex: Const.leftFlex,
                 child: Container(
-                  color: Color(0xff3A3F51),
+                  // color: Color(0xff3A3F51),
                   child: LUserContentList(),
                 ),
               ),

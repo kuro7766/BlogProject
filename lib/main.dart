@@ -3,7 +3,7 @@ import 'package:blog_project/init_web_markdown.dart';
 import 'package:blog_project/routes/404.dart';
 import 'package:blog_project/routes/login/login_page.dart';
 import 'package:blog_project/routes/login/user_manage.dart';
-import 'package:blog_project/routes/welcome/part/welcome/entrance_page.dart';
+import 'package:blog_project/routes/welcome/entrance_page_initializer.dart';
 import 'package:blog_project/vars/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -41,7 +41,7 @@ class CheckLoginMiddleWare extends GetMiddleware {
 
 StatelessWidget getApp() {
   return GetMaterialApp(
-    title: 'My Blog',
+    title: 'kuroの小站',
     initialRoute: '/',
     getPages: [
       GetPage(
@@ -66,7 +66,7 @@ StatelessWidget getApp() {
       // GetPage(name: '/', page: () => Route404()),
       GetPage(name: '/entrance', page: () => MainPage())
     ],
-    debugShowCheckedModeBanner: true,
+    debugShowCheckedModeBanner: false,
     // showPerformanceOverlay: true,
     theme: ThemeData(
       primarySwatch: Colors.blue,

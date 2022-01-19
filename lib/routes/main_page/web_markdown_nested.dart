@@ -8,8 +8,8 @@ import 'package:blog_project/widgets/reusable/http_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'main_content/logic.dart';
-import 'main_content/state.dart';
+import '../blog_list_main_content/logic.dart';
+import '../blog_list_main_content/state.dart';
 
 class WebMarkdownNested extends StatelessWidget {
   final MainContentLogic logic = Get.put(MainContentLogic());

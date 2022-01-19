@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:blog_project/config.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/widgets/only/markdown_web.dart';
 import 'package:event_bus/event_bus.dart';
@@ -63,7 +64,7 @@ class _ManageInnerLayerState extends State<ManageInnerLayer> {
                   child:
                       Align(alignment: Alignment.topCenter, child: widget.left),
                   flex: 5),
-              Expanded(flex: 2, child: widget.right)
+              Cfg.isMobile?Container():Expanded(flex: 2, child: widget.right)
             ],
           ),
         ),

@@ -63,10 +63,12 @@ dependencies:
 ## laochenzi 博客依赖-----------------------
 
   # state management
+  ua_client_hints: ^1.1.0
   get: ^3.26.0
   get_storage: ^1.4.0
   event_bus: ^2.0.0
 
+  user_agent_parser: ^0.0.1+2
   url_strategy: ^0.2.0
 
   # -------------almost necessary for every projects-------------
@@ -80,6 +82,9 @@ dependencies:
 #  flutter_web_ui: any
 #  font_awesome_flutter: ^8.5.0
   should_rebuild: 0.1.2
+  path: ^1.8.0
+  url_encoder: ^0.0.3
+  flutter_markdown: ^0.6.9
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -95,7 +100,11 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/markdown/
+    - assets/
+    - assets/r/
+#   assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
