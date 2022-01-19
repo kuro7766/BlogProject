@@ -27,10 +27,10 @@ jobs:
     - run: flutter pub get
     - run: flutter build web
 
-#    - name: Commit files
-#      run: |
-#        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-#        git config --local user.name "github-actions[bot]"
+    - name: config for github bot
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
 #        git commit -m "Add changes" -a
 
     - run: git add -f ./build/web
@@ -41,7 +41,7 @@ jobs:
         git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/$GITHUB_REPOSITORY
 
         git commit -m "Automated report"
-        git push
+        git push origin local_website
 
 #    - run: flutter analyze
 #    - run: flutter test --platform chrome
