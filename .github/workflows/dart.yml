@@ -21,12 +21,18 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
         channel: stable
+    - run: git checkout local_website
 
 #    - run: flutter config --enable-web
     - run: flutter pub get
     - run: flutter build web
-    - run: pwd
+    - run: git add ./build/web && git commit -m "github action robot" && git push -u origin local_website
     - run: find ./
+    - run: |
+        git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/$GITHUB_REPOSITORY
+        git checkout local_website
+        git commit -am "Automated report"
+        git push
 #    - run: flutter analyze
 #    - run: flutter test --platform chrome
 #    - run: flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=https://cdn.jsdelivr.net/npm/canvaskit-wasm@0.24.0/bin/
