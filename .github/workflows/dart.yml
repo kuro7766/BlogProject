@@ -37,11 +37,17 @@ jobs:
     - run: git commit -m "auto changes"
 
     - run: find ./
-    - run: |
-        git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/$GITHUB_REPOSITORY
 
-        git commit -m "Automated report"
-        git push origin local_website
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+       github_token: ${{ secrets.PAT }}
+       branch: local_website
+#    - run: |
+#        git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/$GITHUB_REPOSITORY
+#
+#        git commit -m "Automated report"
+#        git push origin local_website
 
 #    - run: flutter analyze
 #    - run: flutter test --platform chrome
