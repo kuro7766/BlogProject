@@ -22,6 +22,10 @@ class LUserContentList extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         TitleCard(
+          title: '联系方式',
+          child: Text('2280315050@qq.com'),
+        ),
+        TitleCard(
           title: '广告',
           child: Text('广告位出租'),
         ),TitleCard(

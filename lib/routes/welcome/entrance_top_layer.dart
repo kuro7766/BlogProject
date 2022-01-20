@@ -140,7 +140,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                   //   target: Offset(100, 100),
                   //   widget: Container(width: 100, height: 100, color: Colors.red),
                   // );
-                  attach(c, Alignment.bottomCenter, WhiteBorder(
+                  attach(c, Cfg.isMobile?Alignment.centerLeft:Alignment.bottomLeft, WhiteBorder(
                     child: Container(
                       color: Colors.white70,
                       child: SizedBox(
