@@ -1,6 +1,7 @@
 import 'package:blog_project/entity/user_state_info.dart';
 import 'package:blog_project/init_web_markdown.dart';
 import 'package:blog_project/routes/404.dart';
+import 'package:blog_project/routes/blog_list_main_content/logic.dart';
 import 'package:blog_project/routes/login/login_page.dart';
 import 'package:blog_project/routes/login/user_manage.dart';
 import 'package:blog_project/routes/welcome/entrance_page_initializer.dart';
@@ -47,7 +48,11 @@ Widget getApp() {
       // if (Get.isCurrent<LoginPage>()) {
       //   return false;
       // }
-      return true;
+      if(Get.find<MainContentLogic>().state.viewType.value==0){
+        return true;
+      }
+      Get.find<MainContentLogic>().toArticleList(home: true);
+      return false;
     },
     child: GetMaterialApp(
       title: 'kuroの小站',

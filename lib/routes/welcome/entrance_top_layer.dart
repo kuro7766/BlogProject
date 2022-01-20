@@ -10,6 +10,7 @@ import 'package:blog_project/vars/consts.dart';
 import 'package:blog_project/widgets/attatcher.dart';
 import 'package:blog_project/widgets/iframe_widget.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
+import 'package:blog_project/widgets/reusable/white_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -50,7 +51,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
     //     CurveTween(curve: Curves.fastOutSlowIn).animate(controller);
   }
 
-  topRightRow() =>
+  Widget topRightRow() =>
       Row(
         children: [
           SizedBox(
@@ -113,19 +114,22 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                   child: Icon(Icons.search))),
           // Expanded(child: Container()),
           Visibility(
-            child: ShouldRebuild<IframeWidget>(
-                shouldRebuild: (oldWidget, newWidget) => false,
-                child:IframeWidget(
-                  // 'https://music.163.com/outchain/player?type=2&id=26131698&auto=1&height=66',
-                  'https://music.163.com/outchain/player?type=2&id=419594766&auto=1&height=66',
-                  width: 300,
-                  height: 200,
-                ) ),
+            child: Obx(() {
+              return ShouldRebuild<IframeWidget>(
+                  shouldRebuild: (oldWidget, newWidget) => oldWidget.url!=newWidget.url,
+                  child: IframeWidget(
+                    // 'https://music.163.com/outchain/player?type=2&id=26131698&auto=1&height=66',
+                    // 'https://music.163.com/outchain/player?type=2&id=419594766&auto=1&height=66',
+                    Const.music[logic.state.musicIframeUrlIndex.value][0],
+                    width: 300,
+                    height: 200,
+                  ));
+            }),
             // maintainSize: true,
             // maintainAnimation: true,
             // maintainState: true,
-            visible: Cfg.isMobile?false:true,
-          )  ,
+            visible: Cfg.isMobile ? false : true,
+          ),
           Visibility(
             visible: true,
             child: Builder(builder: (c) {
@@ -136,10 +140,22 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                   //   target: Offset(100, 100),
                   //   widget: Container(width: 100, height: 100, color: Colors.red),
                   // );
-                  attach(c,Alignment.bottomCenter,SizedBox(
-                    width: 200,
-                    height: 200,
-                    child: Column(children: [Text('暂时没有歌曲')],),
+                  attach(c, Alignment.bottomCenter, WhiteBorder(
+                    child: Container(
+                      color: Colors.white70,
+                      child: SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: Column(children: List.generate(Const.music
+                            .length, (index) =>
+                            ListTile(
+                              title: Text(Const.music[index][1]),
+                              onTap: () {
+                                logic.state.musicIframeUrlIndex.value = index;
+                              },
+                            )),),
+                      ),
+                    ),
                   ));
                 },
                 icon: Icon(Icons.music_video_rounded),

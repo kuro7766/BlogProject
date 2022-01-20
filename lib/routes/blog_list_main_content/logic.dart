@@ -41,7 +41,7 @@ class MainContentLogic extends GetxController {
     state.viewType(4);
   }
 
-  void toArticle(String articleId) {
+  void toMarkdownArticle(String articleId) {
     // state.viewType.value = 1;
     // state.articleId.value = articleId;
     state.viewType(5);
@@ -58,7 +58,7 @@ class MainContentLogic extends GetxController {
     });
   }
 
-  toTagList({home = false}) {
+  void toTagList({home = false}) {
     state.viewType.value = 2;
     if (home) state.tagCurrentPage.value = 1;
     _showBanner();
@@ -76,7 +76,7 @@ class MainContentLogic extends GetxController {
     state.currentPage.value = (target);
   }
 
-  void toPage(int page) {
+  void toArticlePage(int page) {
     state.currentPage.value = page;
     _showBanner();
   }

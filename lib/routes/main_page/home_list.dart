@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:html';
 import 'dart:math';
 
+import 'package:blog_project/_articles/_indexes.dart';
 import 'package:blog_project/entity/article_id_entity.dart';
 import 'package:blog_project/entity/article_item_entity.dart';
 import 'package:blog_project/routes/main_page/main_base_widget.dart';
@@ -10,6 +11,7 @@ import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/simple_http_builder.dart';
 import 'package:blog_project/vars/configuration.dart';
 import 'package:blog_project/vars/django_function.dart';
+import 'package:blog_project/widgets/asset_markdown.dart';
 import 'package:blog_project/widgets/only/image_item.dart';
 import 'package:blog_project/widgets/only/page_index_button.dart';
 import 'package:blog_project/widgets/only/titile_widget.dart';
@@ -64,62 +66,54 @@ class HomeList extends MainContentBaseStatelessWidget {
         //       // p.basename(data[index]))
         //       Uri.decodeFull(p.basename(data[index]))}')),
         // );
-        return Column(children: List.generate( data.length, ( index) {
-          return SimpleHttpBuilder(
-            httpFuture: (() async {
-              var s =
-              await rootBundle.loadString(Uri.decodeFull(data[index]));
-              // Dbg.log(s);
-              return ResponseContent.success(
-                  [Uri.decodeFull(p.basename(data[index])), s]);
-            })(),
-            builder: (tuple) {
-              var mdContent = tuple[1];
-              var title = tuple[0].replaceFirst('\.md', '');
-              return GestureDetector(
-                onTap: (){
-                  logic.toArticle(data[index]);
-
-                },
-                child: TitleCard(
-                  title: '$title',
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      // color: Colors.orangeAccent,
-                      child: Stack(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
-                            child: MarkdownBody(
-                              data: '$mdContent'
-                                  .substring(0, min(200, '$mdContent'.length))
-                                  .replaceFirst(title, ''),
-                              selectable: true,
-                              onTapLink:
-                                  (String text, String href, String title) async {
-                                var fail=!await launch(href);
-                                if(fail){
-                                  Get.snackbar('Error', 'Could not open link',snackPosition: SnackPosition.BOTTOM);
-                                }
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+        return Column(
+          children: [
+            ...List.generate(
+              data.length,
+              (index) {
+                return SimpleHttpBuilder(
+                  httpFuture: (() async {
+                    var s = await rootBundle
+                        .loadString(Uri.decodeFull(data[index]));
+                    // Dbg.log(s);
+                    return ResponseContent.success(
+                        [Uri.decodeFull(p.basename(data[index])), s]);
+                  })(),
+                  builder: (tuple) {
+                    var mdContent = tuple[1];
+                    var title = tuple[0].replaceFirst('\.md', '');
+                    var articleDescription='$mdContent'
+                        .substring(
+                        0, min(200, '$mdContent'.length))
+                        .replaceFirst(title, '');
+                    return GestureDetector(
+                      onTap: () {
+                        logic.toMarkdownArticle(data[index]);
+                      },
+                      child: AssetMarkdown(resource: data[index],digestSubStringLength: 200,),
+                    );
+                    // return Markdown(
+                    //   shrinkWrap: true,
+                    //   selectable: true,
+                    //   data: dd,
+                    // );
+                  },
+                );
+              },
+            ),
+            ...List.generate(indexes.length,(idx){
+              return UnifiedMarkdown(
+                title: '自定义',
+                child: GestureDetector(
+                  onTap: (){
+                    // logic.toArticle(indexes[idx]);
+                  },
+                  child: indexes[idx](),
                 ),
               );
-              // return Markdown(
-              //   shrinkWrap: true,
-              //   selectable: true,
-              //   data: dd,
-              // );
-            },
-          );
-        },
-        ),);
+            })
+          ],
+        );
 
         // return Text('$data');
       },

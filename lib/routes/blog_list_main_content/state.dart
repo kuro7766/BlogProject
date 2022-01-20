@@ -16,12 +16,16 @@ class MainContentState {
 
   //主页浏览页码，从1开始
   RxInt currentPage;
+
   RxInt articleId;
   RxString articleAssetResource;
 
   //tagList浏览页码
   RxInt tagCurrentPage;
+
   RxString search;
+
+  RxInt musicIframeUrlIndex;
 
   MainContentState() {
     init();
@@ -34,6 +38,7 @@ class MainContentState {
     tagCurrentPage = 1.obs;
     search = ''.obs;
     articleAssetResource=''.obs;
+    musicIframeUrlIndex = 0.obs;
   }
 
   get observeMain => [viewType.value, currentPage.value];

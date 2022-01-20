@@ -4,11 +4,11 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 var attach = (BuildContext context, AlignmentGeometry alignment,Widget widget) async {
   SmartDialog.showAttach(
     targetContext: context,
-    isPenetrateTemp: true,
+    isPenetrateTemp: false,
     alignmentTemp: alignment,
     clickBgDismissTemp: true,
     widget: widget,
-
   );
-  await Future.delayed(Duration(milliseconds: 350));
+  // await Future.delayed(Duration(milliseconds: 350));
+  // SmartDialog.dismiss();
 };
