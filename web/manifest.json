@@ -1,6 +1,6 @@
 {
-    "name": "blog_project",
-    "short_name": "blog_project",
+    "name": "kuroの小站",
+    "short_name": "kuroの小站",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

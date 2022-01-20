@@ -14,7 +14,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../vars/consts.dart';
+import '../../consts.dart';
 
 class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
     with SingleTickerProviderStateMixin {

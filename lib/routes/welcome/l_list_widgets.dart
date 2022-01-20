@@ -2,7 +2,7 @@ import 'package:blog_project/config.dart';
 import 'package:blog_project/entity/new1_public_info_entity.dart';
 import 'package:blog_project/routes/blog_list_main_content/logic.dart';
 import 'package:blog_project/vars/configuration.dart';
-import 'package:blog_project/vars/consts.dart';
+import 'package:blog_project/consts.dart';
 import 'package:blog_project/vars/django_function.dart';
 import 'package:blog_project/widgets/only/l_item.dart';
 import 'package:blog_project/widgets/only/titile_widget.dart';

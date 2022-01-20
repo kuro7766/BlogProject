@@ -7,7 +7,7 @@ import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../vars/consts.dart';
+import '../../consts.dart';
 
 class ManageInnerLayer extends StatefulWidget {
   final Widget left;

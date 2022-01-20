@@ -7,7 +7,7 @@ import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/js_util.dart';
 import 'package:blog_project/vars/configuration.dart';
-import 'package:blog_project/vars/consts.dart';
+import 'package:blog_project/consts.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

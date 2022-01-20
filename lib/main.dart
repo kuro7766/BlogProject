@@ -5,7 +5,7 @@ import 'package:blog_project/routes/blog_list_main_content/logic.dart';
 import 'package:blog_project/routes/login/login_page.dart';
 import 'package:blog_project/routes/login/user_manage.dart';
 import 'package:blog_project/routes/welcome/entrance_page_initializer.dart';
-import 'package:blog_project/vars/consts.dart';
+import 'package:blog_project/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';

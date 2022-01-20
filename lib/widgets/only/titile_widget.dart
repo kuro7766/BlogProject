@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../vars/consts.dart';
+import '../../consts.dart';
 
 class TitleCard extends StatelessWidget {
   final String title;

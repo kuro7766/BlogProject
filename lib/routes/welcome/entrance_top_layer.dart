@@ -6,7 +6,7 @@ import 'package:blog_project/routes/welcome/l_list_widgets.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/js_util.dart';
 import 'package:blog_project/util/simple_http_builder.dart';
-import 'package:blog_project/vars/consts.dart';
+import 'package:blog_project/consts.dart';
 import 'package:blog_project/widgets/attatcher.dart';
 import 'package:blog_project/widgets/iframe_widget.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
@@ -151,6 +151,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                             ListTile(
                               title: Text(Const.music[index][1]),
                               onTap: () {
+                                SmartDialog.dismiss();
                                 logic.state.musicIframeUrlIndex.value = index;
                               },
                             )),),

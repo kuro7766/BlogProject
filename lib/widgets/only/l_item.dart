@@ -1,7 +1,7 @@
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
 import 'package:flutter/material.dart';
 
-import '../../vars/consts.dart';
+import '../../consts.dart';
 
 class LItem extends StatelessWidget {
   final IconData iconData;

@@ -1,4 +1,4 @@
-import 'package:blog_project/vars/consts.dart';
+import 'package:blog_project/consts.dart';
 import 'package:flutter/material.dart';
 
 class WhiteBorder extends StatelessWidget {

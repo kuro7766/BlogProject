@@ -1,4 +1,4 @@
-import 'consts.dart';
+import '../consts.dart';
 class DjangoUrl {
     static execSql(sql_str) =>Const.baseUrl + 'blog?type=exec_sql&sql_str=$sql_str';
     static getArticleContent(article_id) =>Const.baseUrl + 'blog?type=get_article_content&article_id=$article_id';
