@@ -78,7 +78,7 @@ Widget getApp() {
             page: () => Route404(),
             middlewares: [CheckLoginMiddleWare()]),
         // GetPage(name: '/', page: () => Route404()),
-        GetPage(name: '/entrance', page: () => MainPage())
+        GetPage(name: '/entrance', page: () => MainPage()),
       ],
       debugShowCheckedModeBanner: false,
       navigatorObservers: [FlutterSmartDialog.observer],

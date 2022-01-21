@@ -36,8 +36,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
-
-
     JSUtil.call(function: 'setTitle', params: []);
 
     controller = new AnimationController(
