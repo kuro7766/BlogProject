@@ -114,25 +114,26 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                   alignment: Alignment.center,
                   child: Icon(Icons.search))),
           // Expanded(child: Container()),
-          Visibility(
-            child: Obx(() {
-              return ShouldRebuild<IframeWidget>(
-                  shouldRebuild: (oldWidget, newWidget) =>
-                  oldWidget.url != newWidget.url,
-                  child: IframeWidget(
-                    // 'https://music.163.com/outchain/player?type=2&id=26131698&auto=1&height=66',
-                    // 'https://music.163.com/outchain/player?type=2&id=419594766&auto=1&height=66',
-                    Const.music[logic.state.musicIframeUrlIndex.value][0],
-                    width: 300,
-                    height: 200,
-                  ));
-              // return logic.state.globalMusicWidget;
-            }),
-            // maintainSize: true,
-            // maintainAnimation: true,
-            // maintainState: true,
-            visible: Cfg.isMobile ? false : true,
-          ),
+          // Visibility(
+          //   child: Obx(() {
+          //     return ShouldRebuild<IframeWidget>(
+          //         shouldRebuild: (oldWidget, newWidget) =>
+          //         oldWidget.url != newWidget.url,
+          //         child: IframeWidget(
+          //           // 'https://music.163.com/outchain/player?type=2&id=26131698&auto=1&height=66',
+          //           // 'https://music.163.com/outchain/player?type=2&id=419594766&auto=1&height=66',
+          //           Const.music[logic.state.musicIframeUrlIndex.value][0],
+          //           width: 300,
+          //           height: 200,
+          //         ));
+          //     // return logic.state.globalMusicWidget;
+          //   }),
+          //   // maintainSize: true,
+          //   // maintainAnimation: true,
+          //   // maintainState: true,
+          //   // visible: Cfg.isMobile ? false : true,
+          //   visible: false,
+          // ),
           Visibility(
             visible: true,
             child: Builder(builder: (c) {
@@ -155,7 +156,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                               title: Text(Const.music[index][1]),
                               onTap: () {
                                 SmartDialog.dismiss();
-                                logic.state.musicIframeUrlIndex.value = index;
+                                logic.musicState.playingIndex.value = index;
                               },
                             )),),
                       ),

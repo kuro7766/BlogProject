@@ -26,7 +26,7 @@ jobs:
 #    - run: flutter config --enable-web
     - run: flutter pub get
 #    - run: flutter build web
-    - run: flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=/lib/
+    - run: flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=/BlogProject/build/web/lib/
 
 #    - run: git checkout deployment
 

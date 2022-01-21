@@ -30,7 +30,6 @@ class MainContentState {
 
   RxString search;
 
-  RxInt musicIframeUrlIndex;
 
   MainContentState() {
     init();
@@ -43,7 +42,6 @@ class MainContentState {
     tagCurrentPage = 1.obs;
     search = ''.obs;
     articleAssetResource = ''.obs;
-    musicIframeUrlIndex = 0.obs;
   }
 
   get observeMain => [viewType.value, currentPage.value];
