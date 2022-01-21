@@ -12,21 +12,21 @@ import 'package:event_bus/event_bus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:should_rebuild/should_rebuild.dart';
+import 'package:blog_project/widgets/ShouldRebuild.dart';
 import 'package:ua_client_hints/ua_client_hints.dart';
 import 'package:user_agent_parser/user_agent_parser.dart';
 import 'dart:io' show Platform; //at the top
 
 import 'inner_layer.dart';
 
-class MainPage extends StatefulWidget {
+class EntrancePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _MainPageState();
+    return _EntrancePageState();
   }
 }
 
-class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
+class _EntrancePageState extends State<EntrancePage> with TickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
   var barHeight = Const.barHeight;
@@ -60,7 +60,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                 ),
                 Expanded(
                   flex: Const.rightFlex,
-                  child: buildCombineList(),
+                  child: buildInnerCombineList(),
                 ),
               ],
             ),
@@ -74,12 +74,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     // log2(3, 'rbuild33333');
     // Dbg.log( Platform.operatingSystem); //in your code
 
-    //todo 更改路由
-    if (Get.currentRoute.startsWith('/entrance') &&
-        !Get.parameters.containsKey('user')) {
-      //todo something went wrong
-      Future.microtask(() => Get.offNamed('/404'));
-      return Container();
+    Dbg.log(Get.currentRoute,'entrance');
+
+    if (Get.currentRoute.startsWith('/entrance') &&!Get.parameters.containsKey('user')) {
+      // Future.microtask(() => Get.offNamed('/404'));
+      // return Container();
     } else {
       Config.user = Get.parameters['user'] ?? Config.user;
     }
@@ -103,7 +102,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             )));
   }
 
-  Widget buildCombineList() {
+  Widget buildInnerCombineList() {
     return NotificationListener(
         onNotification: (t) {
           if (t is ScrollUpdateNotification && t.depth == 0) {

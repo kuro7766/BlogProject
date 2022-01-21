@@ -7,6 +7,7 @@ import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/js_util.dart';
 import 'package:blog_project/util/simple_http_builder.dart';
 import 'package:blog_project/consts.dart';
+import 'package:blog_project/widgets/ShouldRebuild.dart';
 import 'package:blog_project/widgets/attatcher.dart';
 import 'package:blog_project/widgets/iframe_widget.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
@@ -15,7 +16,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:should_rebuild/should_rebuild.dart';
+import 'package:blog_project/widgets/ShouldRebuild.dart';
 import 'package:http/http.dart' as http;
 
 class EntranceTopLayer extends StatefulWidget {
@@ -116,7 +117,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
           Visibility(
             child: Obx(() {
               return ShouldRebuild<IframeWidget>(
-                  shouldRebuild: (oldWidget, newWidget) => oldWidget.url!=newWidget.url,
+                  shouldRebuild: (oldWidget, newWidget) =>
+                  oldWidget.url != newWidget.url,
                   child: IframeWidget(
                     // 'https://music.163.com/outchain/player?type=2&id=26131698&auto=1&height=66',
                     // 'https://music.163.com/outchain/player?type=2&id=419594766&auto=1&height=66',
@@ -124,6 +126,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                     width: 300,
                     height: 200,
                   ));
+              // return logic.state.globalMusicWidget;
             }),
             // maintainSize: true,
             // maintainAnimation: true,
@@ -159,7 +162,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                     ),
                   ));
                 },
-                icon: Icon(Icons.music_video_rounded),
+                icon: Icon(Icons.menu,),
               );
             }),
           )

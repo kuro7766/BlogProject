@@ -6,6 +6,7 @@ import 'package:blog_project/routes/login/login_page.dart';
 import 'package:blog_project/routes/login/user_manage.dart';
 import 'package:blog_project/routes/welcome/entrance_page_initializer.dart';
 import 'package:blog_project/consts.dart';
+import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -22,11 +23,18 @@ void main() {
   // })();
 }
 
-class CheckLoginMiddleWare extends GetMiddleware {
+class MiddleWare extends GetMiddleware {
   @override
   RouteSettings redirect(String route) {
+    Dbg.log(route, 'CheckLoginMiddleWare');
     if(route=='/'){
-      return RouteSettings(name: '/entrance?user=a');
+      return RouteSettings(name: '/entrance');
+    }
+    if(route=='/entrance'){
+      return null;
+    }
+    if(route.startsWith('/entrance')){
+      return RouteSettings(name: '/entrance',arguments: Get.parameters);
     }
     if (route == '/login') {
       if (GetStorage().hasData('token')) {
@@ -48,6 +56,7 @@ Widget getApp() {
       // if (Get.isCurrent<LoginPage>()) {
       //   return false;
       // }
+      Get.snackbar('back', 'message ${Get.find<MainContentLogic>().state.viewType.value}');
       if(Get.find<MainContentLogic>().state.viewType.value==0){
         return true;
       }
@@ -56,29 +65,30 @@ Widget getApp() {
     },
     child: GetMaterialApp(
       title: 'kuroの小站',
-      initialRoute: '/',
+      initialRoute: '/entrance',
+      // onGenerateRoute: ,
       getPages: [
         GetPage(
             name: '/login',
             page: () {
               return LoginPage();
             },
-            middlewares: [CheckLoginMiddleWare()]),
+            middlewares: [MiddleWare()]),
         GetPage(
             name: '/manage',
             page: () {
               return UserManage('');
             },
-            middlewares: [CheckLoginMiddleWare()]),
+            middlewares: [MiddleWare()]),
 
-        GetPage(name: '/404', page: () => Route404()),
+        GetPage(name: '/404', page: () => Route404(),middlewares:[MiddleWare()]),
         // this is default page
         GetPage(
             name: '/',
             page: () => Route404(),
-            middlewares: [CheckLoginMiddleWare()]),
+            middlewares: [MiddleWare()]),
         // GetPage(name: '/', page: () => Route404()),
-        GetPage(name: '/entrance', page: () => MainPage()),
+        GetPage(name: '/entrance', page: () => EntrancePage(),middlewares: [MiddleWare()]),
       ],
       debugShowCheckedModeBanner: false,
       navigatorObservers: [FlutterSmartDialog.observer],

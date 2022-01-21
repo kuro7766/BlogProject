@@ -1,6 +1,12 @@
+import 'dart:async';
+import 'dart:html';
+import 'dart:math';
+import 'dart:typed_data';
+
 import 'package:blog_project/config.dart';
 import 'package:blog_project/entity/new1_public_info_entity.dart';
 import 'package:blog_project/routes/blog_list_main_content/logic.dart';
+import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/vars/configuration.dart';
 import 'package:blog_project/consts.dart';
 import 'package:blog_project/vars/django_function.dart';
@@ -10,6 +16,7 @@ import 'package:blog_project/widgets/reusable/http_builder.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,29 +25,59 @@ class LUserContentList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Cfg.isMobile?Container(color: Colors.white10,):Padding(
-      padding: const EdgeInsets.only(top:8.0),
-      child: Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TitleCard(
-            title: '联系方式',
-            child: Text('2280315050@qq.com'),
-          ),
-          TitleCard(
-            title: '广告',
-            child: Text('一个朋友\nvx:lh168b 王者代练/陪玩 黑奴在线'),
-          ),TitleCard(
-            title: '广告',
-            child: Text('广告位出租'),
-          ),TitleCard(
-            title: '广告',
-            child: Text('广告位出租'),
-          ),
-        ],
-      ),
-    );
+
+    // add it to your class as a static member
+
+    Dbg.log('fff');
+    return Cfg.isMobile
+        ? Container(
+            color: Colors.white10,
+          )
+        : Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // TitleCard(
+                //   title: 'Debug',
+                //   child: GridView(
+                //     shrinkWrap: true,
+                //     children: [
+                //       ElevatedButton(
+                //           onPressed: () {
+                //             // Get.find<MainContentLogic>().toArticleList(home: true);
+                //             Get.offNamed(
+                //                 '/entrance?user=dslfjk${Random().nextInt(99)}',
+                //                 preventDuplicates: true);
+                //             // Get.currentRoute
+                //           },
+                //           child: Text('1')),
+                //
+                //     ],
+                //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                //         crossAxisCount: 3),
+                //   ),
+                // ),
+                TitleCard(
+                  title: '联系方式',
+                  child: Text('2280315050@qq.com'),
+                ),
+                TitleCard(
+                  title: '广告',
+                  child: Text('一个朋友\nvx:lh168b 王者代练/陪玩 黑奴在线'),
+                ),
+                TitleCard(
+                  title: '广告',
+                  child: Text('广告位出租'),
+                ),
+                TitleCard(
+                  title: '广告',
+                  child: Text('广告位出租'),
+                ),
+              ],
+            ),
+          );
 //     return HttpBuilder<New1PublicInfoEntity>(
 //         url: DjangoUrl.getUserPublicInfoByName(Config.user),
 //         builder: (context, j) {

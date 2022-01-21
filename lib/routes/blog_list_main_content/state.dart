@@ -1,4 +1,9 @@
+import 'package:blog_project/widgets/iframe_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:blog_project/widgets/ShouldRebuild.dart';
+
+import '../../consts.dart';
 
 class MainContentState {
   /// | 序号 | 内容 |
@@ -31,13 +36,13 @@ class MainContentState {
     init();
   }
 
-  void init(){
+  void init() {
     viewType = 0.obs;
     currentPage = 1.obs;
     articleId = 0.obs;
     tagCurrentPage = 1.obs;
     search = ''.obs;
-    articleAssetResource=''.obs;
+    articleAssetResource = ''.obs;
     musicIframeUrlIndex = 0.obs;
   }
 
