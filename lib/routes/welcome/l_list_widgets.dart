@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:html';
 import 'dart:math';
 import 'dart:typed_data';
@@ -18,15 +19,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LUserContentList extends StatelessWidget {
-  final MainContentLogic logic = Get.put(MainContentLogic());
+  final GlobalLogic logic = Get.put(GlobalLogic());
 
   @override
   Widget build(BuildContext context) {
 
     // add it to your class as a static member
+
 
     Dbg.log('fff');
     return Cfg.isMobile

@@ -21,7 +21,7 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
   int page = 1;
   Animation<RelativeRect> animation;
   AnimationController controller;
-  final MainContentLogic logic = Get.put(MainContentLogic());
+  final GlobalLogic logic = Get.put(GlobalLogic());
 
   @override
   void initState() {

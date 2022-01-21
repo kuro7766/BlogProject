@@ -29,7 +29,7 @@ class EntranceTopLayer extends StatefulWidget {
 }
 
 class _EntranceTopLayerState extends State<EntranceTopLayer> {
-  MainContentLogic logic = Get.put(MainContentLogic());
+  GlobalLogic logic = Get.put(GlobalLogic());
   TextEditingController textEditingController;
 
 

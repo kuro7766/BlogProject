@@ -25,7 +25,7 @@ import 'package:url_encoder/url_encoder.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../blog_list_main_content/logic.dart';
-import '../blog_list_main_content/state.dart';
+import '../blog_list_main_content/state_global.dart';
 import 'package:path/path.dart' as p;
 
 class HomeList extends MainContentBaseStatelessWidget {

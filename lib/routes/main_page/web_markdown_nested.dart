@@ -9,11 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../blog_list_main_content/logic.dart';
-import '../blog_list_main_content/state.dart';
+import '../blog_list_main_content/state_global.dart';
 
 class WebMarkdownNested extends StatelessWidget {
-  final MainContentLogic logic = Get.put(MainContentLogic());
-  final MainContentState state = Get.find<MainContentLogic>().state;
+  final GlobalLogic logic = Get.put(GlobalLogic());
+  final MainContentState state = Get.find<GlobalLogic>().state;
 
   @override
   Widget build(BuildContext context) {

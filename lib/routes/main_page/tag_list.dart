@@ -17,7 +17,7 @@ class TagList extends StatefulWidget {
 
 class _TagListState extends State<TagList> {
   int page = 0;
-  MainContentLogic logic = Get.put(MainContentLogic());
+  GlobalLogic logic = Get.put(GlobalLogic());
 
   @override
   Widget build(BuildContext context) {

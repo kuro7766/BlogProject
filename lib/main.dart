@@ -56,11 +56,11 @@ Widget getApp() {
       // if (Get.isCurrent<LoginPage>()) {
       //   return false;
       // }
-      Get.snackbar('back', 'message ${Get.find<MainContentLogic>().state.viewType.value}');
-      if(Get.find<MainContentLogic>().state.viewType.value==0){
+      Get.snackbar('back', 'message ${Get.find<GlobalLogic>().state.viewType.value}');
+      if(Get.find<GlobalLogic>().state.viewType.value==0){
         return true;
       }
-      Get.find<MainContentLogic>().toArticleList(home: true);
+      Get.find<GlobalLogic>().toArticleList(home: true);
       return false;
     },
     child: GetMaterialApp(

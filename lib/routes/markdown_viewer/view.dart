@@ -16,7 +16,7 @@ class _MarkdownViewerComponentState extends State<MarkdownViewerComponent> {
 
   @override
   Widget build(BuildContext context) {
-    return AssetMarkdown(resource:Get.find<MainContentLogic>().state.articleAssetResource.value);
+    return AssetMarkdown(resource:Get.find<GlobalLogic>().state.articleAssetResource.value);
   }
 
   @override
