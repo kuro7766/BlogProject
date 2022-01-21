@@ -3,7 +3,7 @@ import 'package:just_audio/just_audio.dart';
 
 class MusicState {
   var loaded = false.obs;
-  var playingIndex = 0.obs;
+  var playingIndex = (-1).obs;
   final player = AudioPlayer();
   final List<String> musicAssetList=[];
 }

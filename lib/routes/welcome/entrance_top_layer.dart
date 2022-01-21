@@ -139,7 +139,78 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                 onPressed: () async {
                   var musicState = logic.musicState;
                   var player = musicState.player;
+
+                  attach(
+                      c,
+                      Cfg.isMobile
+                          ? Alignment.centerLeft
+                          : Alignment.bottomLeft, Obx(() {
+                    // musicState.loaded.value;
+                    return musicState.loaded.value
+                        ?
+                        // true?
+                        WhiteBorder(
+                            color: Colors.white70,
+                            child: Container(
+                              child: SizedBox(
+                                width: 400,
+                                height: 200,
+                                child: Column(
+                                  children: List.generate(
+                                      musicState.musicAssetList.length,
+                                      (index) => ListTile(
+                                            title: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Visibility(
+                                                  visible: index ==
+                                                      musicState
+                                                          .playingIndex.value,
+                                                  child: Icon(Icons
+                                                      .pause_circle_outline),
+                                                ),
+                                                SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Text(Uri.decodeFull(musicState
+                                                        .musicAssetList[index]
+                                                        .replaceFirst(
+                                                            'assets/music/',
+                                                            ''))
+                                                    // .replaceFirst(r'.mp3', '')
+                                                    ),
+                                              ],
+                                            ),
+                                            onTap: () async {
+                                              SmartDialog.dismiss();
+
+                                              if (musicState.playingIndex ==
+                                                  index) {
+                                                player.stop();
+                                                musicState.playingIndex.value =
+                                                    -1;
+                                              } else {
+                                                logic.musicState.playingIndex
+                                                    .value = index;
+                                                await player.seek(
+                                                    Duration(milliseconds: 0),
+                                                    index: index);
+                                                musicState.player.play();
+                                              }
+                                            },
+                                          )),
+                                ),
+                              ),
+                            ),
+                          )
+                        : Text('loading...');
+                  }));
+
                   if (!musicState.loaded.value) {
+                    // if (false) {
+                    await Future.delayed(Duration(milliseconds: 500));
+                    // await attach(context,Alignment.center,Text('加载中'));
                     Dbg.log('source', 'x');
                     // var duration = await player.setAsset('assets/data/snow.mp3');
                     // player.play(); // Usually you don't want to wait for playback to finish.
@@ -192,7 +263,9 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                     // await player.seekToPrevious();
                     // // Jump to the beginning of track3.mp3.
                     // await player.seek(Duration(milliseconds: 0), index: 2);
+                    Dbg.log('finished');
                     musicState.loaded.value = true;
+                    // await SmartDialog.dismiss();
                   }
 
                   // SmartDialog.showAttach(
@@ -200,35 +273,6 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                   //   target: Offset(100, 100),
                   //   widget: Container(width: 100, height: 100, color: Colors.red),
                   // );
-                  await attach(
-                      c,
-                      Cfg.isMobile
-                          ? Alignment.centerLeft
-                          : Alignment.bottomLeft,
-                      WhiteBorder(
-                        color: Colors.white70,
-                        child: Container(
-                          child: SizedBox(
-                            width: 200,
-                            height: 200,
-                            child: Column(
-                              children: List.generate(
-                                  musicState.musicAssetList.length,
-                                  (index) => ListTile(
-                                        title: Text(
-                                            musicState.musicAssetList[index].replaceFirst('assets/music/', '')
-                                                // .replaceFirst(r'.mp3', '')
-                                        ),
-                                        onTap: () {
-                                          SmartDialog.dismiss();
-                                          logic.musicState.playingIndex.value =index;
-                                          musicState.player.play();
-                                        },
-                                      )),
-                            ),
-                          ),
-                        ),
-                      ));
                 },
                 icon: Icon(
                   Icons.menu,
@@ -236,30 +280,6 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
               );
             }),
           )
-          // Container(child: SizedBox(width: 300,child: HtmlEmbedView(url: Const.music[0]))),
-          // OverlapInkwell(
-          //   color: Const.barColor,
-          //   onTap: () {
-          //     // Get.toNamed('/login');
-          //     JSUtil.call(function: 'redirect', params: [Const.eruptUrl]);
-          //   },
-          //
-          //   child: SizedBox(
-          //     height: Const.barHeight,
-          //     child: Row(
-          //       children: [
-          //         SizedBox(
-          //           width: 30,
-          //         ),
-          //         Text('登录'),
-          //         Icon(Icons.login),
-          //         SizedBox(
-          //           width: 30,
-          //         )
-          //       ],
-          //     ),
-          //   ),
-          // ),
         ],
       );
 
