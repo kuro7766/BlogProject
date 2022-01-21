@@ -52,22 +52,9 @@ class HomeList extends MainContentBaseStatelessWidget {
     return SimpleHttpBuilder(
       httpFuture: getAssets(),
       builder: (data) {
-        // for (var c in data) {
-        //   Dbg.log(p.basename(c));
-        //   Dbg.log(Uri.decodeFull(c), 's');
-        //   (() async {
-        //     var s = await rootBundle.loadString(Uri.decodeFull(c));
-        //     Dbg.log(s);
-        //   })();
-        // }
-        // return Column(
-        //   children: List.generate(data.length, (index) => Text('${
-        //       // urlEncode(text:
-        //       // p.basename(data[index]))
-        //       Uri.decodeFull(p.basename(data[index]))}')),
-        // );
         return Column(
           children: [
+            // markdown blog
             ...List.generate(
               data.length,
               (index) {
@@ -90,7 +77,7 @@ class HomeList extends MainContentBaseStatelessWidget {
                       onTap: () {
                         logic.toMarkdownArticle(data[index]);
                       },
-                      child: AssetMarkdown(resource: data[index],digestSubStringLength: 200,),
+                      child: AssetMarkdown(resource: data[index],digestSubStringLength: 200,useMask: true,),
                     );
                     // return Markdown(
                     //   shrinkWrap: true,
@@ -101,6 +88,7 @@ class HomeList extends MainContentBaseStatelessWidget {
                 );
               },
             ),
+            // custom blog
             ...List.generate(indexes.length,(idx){
               return UnifiedItem(
                 title: '自定义',

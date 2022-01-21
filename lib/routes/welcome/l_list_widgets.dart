@@ -18,24 +18,28 @@ class LUserContentList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Cfg.isMobile?Container(color: Colors.white10,):Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        TitleCard(
-          title: '联系方式',
-          child: Text('2280315050@qq.com'),
-        ),
-        TitleCard(
-          title: '广告',
-          child: Text('广告位出租'),
-        ),TitleCard(
-          title: '广告',
-          child: Text('广告位出租'),
-        ),TitleCard(
-          title: '广告',
-          child: Text('广告位出租'),
-        ),
-      ],
+    return Cfg.isMobile?Container(color: Colors.white10,):Padding(
+      padding: const EdgeInsets.only(top:8.0),
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TitleCard(
+            title: '联系方式',
+            child: Text('2280315050@qq.com'),
+          ),
+          TitleCard(
+            title: '广告',
+            child: Text('一个朋友\nvx:lh168b 王者代练/陪玩 黑奴在线'),
+          ),TitleCard(
+            title: '广告',
+            child: Text('广告位出租'),
+          ),TitleCard(
+            title: '广告',
+            child: Text('广告位出租'),
+          ),
+        ],
+      ),
     );
 //     return HttpBuilder<New1PublicInfoEntity>(
 //         url: DjangoUrl.getUserPublicInfoByName(Config.user),
