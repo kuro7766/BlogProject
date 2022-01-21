@@ -64,7 +64,7 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
                         tabs: [
                           Tab(
                             icon: Icon(Icons.wb_sunny),
-                            text: '天气',
+                            text: '讨论',
                           ),
                           Tab(
                             icon: Icon(Icons.local_fire_department),
@@ -78,18 +78,19 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
                   Expanded(
                     child: TabBarView(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: TitleCard(
-                            title: '天气',
-                            child:
-                            // Text('暂无')
-                            SizedBox(
-                                height: 120,
-                                child: Text('暂无')
-                                // Icon(Icons.wb_sunny),
-                                ),
-                          ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: TitleCard(
+                                title: 'qq群',
+                                child:
+                                // Text('fda')
+                                Text('暂无')
+                              ),
+                            ),
+                            
+                          ],
                         ),
                         Icon(Icons.directions_transit),
                         Icon(Icons.directions_bike),

@@ -87,6 +87,7 @@ dependencies:
   flutter_markdown: ^0.6.9
   flutter_screenutil: ^5.1.0
   flutter_smart_dialog: ^3.3.1
+  after_layout: ^1.1.0
 
 dev_dependencies:
   flutter_test:

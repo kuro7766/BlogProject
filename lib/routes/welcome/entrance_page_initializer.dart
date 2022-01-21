@@ -36,41 +36,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    (()  {
-      var userAgent1 = JSUtil.call(function: 'getUA', params: []);
-      Dbg.log(userAgent1);
 
-      RegExp regExp = new RegExp(
-        r"\(.*?\)",
-        // r"^WS{1,2}:\/\/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:56789",
-        caseSensitive: false,
-        multiLine: true,
-      );
-
-      var s1 = (regExp.stringMatch(userAgent1));
-
-      if (s1.contains('iPhone')) {
-        Cfg.isMobile = true;
-      } else if (s1.contains('Android')) {
-        Cfg.isMobile = true;
-      } else if (s1.contains('Win')) {
-        Cfg.isMobile = false;
-      } else {
-        Cfg.isMobile = false;
-      }
-      Dbg.log('isMobile ${Cfg.isMobile}');
-
-      // UserAgentParser parser = UserAgentParser();
-      // // String userAgent1 = 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1';
-      // Result result = parser.parseResult(userAgent1);
-      //
-      // print(result.browser.name); // Chrome
-      // print(result.browser.unformattedName); // CriOS
-      //
-      // print(result.browser.version); // 87.0.4280.77
-      // print(result.browser
-      //     .parsedWithRegex); // r'(?<unformattedName>crmo|crios)\/(?<version>[\w\.]+)'
-    })();
 
     JSUtil.call(function: 'setTitle', params: []);
 

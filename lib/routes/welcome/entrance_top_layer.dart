@@ -141,8 +141,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                   //   widget: Container(width: 100, height: 100, color: Colors.red),
                   // );
                   attach(c, Cfg.isMobile?Alignment.centerLeft:Alignment.bottomLeft, WhiteBorder(
+                    color: Colors.white70,
                     child: Container(
-                      color: Colors.white70,
                       child: SizedBox(
                         width: 200,
                         height: 200,

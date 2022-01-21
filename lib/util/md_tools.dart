@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-mixin  BaseArticle {
-  static List articles=[
+mixin  BaseArticleScripts {
 
-  ];
 
   static m(data) => MarkdownBody(
         data: data,
