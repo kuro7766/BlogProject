@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:blog_project/config.dart';
 import 'package:blog_project/routes/blog_list_main_content/logic.dart';
@@ -14,10 +15,12 @@ import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
 import 'package:blog_project/widgets/reusable/white_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:blog_project/widgets/ShouldRebuild.dart';
 import 'package:http/http.dart' as http;
+import 'package:just_audio/just_audio.dart';
 
 class EntranceTopLayer extends StatefulWidget {
   final Animation<double> animation;
@@ -31,7 +34,6 @@ class EntranceTopLayer extends StatefulWidget {
 class _EntranceTopLayerState extends State<EntranceTopLayer> {
   GlobalLogic logic = Get.put(GlobalLogic());
   TextEditingController textEditingController;
-
 
   @override
   void dispose() {
@@ -52,14 +54,10 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
     //     CurveTween(curve: Curves.fastOutSlowIn).animate(controller);
   }
 
-  Widget topRightRow() =>
-      Row(
+  Widget topRightRow() => Row(
         children: [
           SizedBox(
-            width: MediaQuery
-                .of(context)
-                .size
-                .width / 3,
+            width: MediaQuery.of(context).size.width / 3,
             // height: 200,
             child: Container(
               padding: EdgeInsets.only(left: 10),
@@ -108,8 +106,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
               child: Container(
                   padding: Cfg.isMobile
                       ? EdgeInsets.only(
-                      left: Cfg.mobileHomeIconPadding,
-                      right: Cfg.mobileHomeIconPadding)
+                          left: Cfg.mobileHomeIconPadding,
+                          right: Cfg.mobileHomeIconPadding)
                       : EdgeInsets.all(30.0),
                   alignment: Alignment.center,
                   child: Icon(Icons.search))),
@@ -138,32 +136,103 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
             visible: true,
             child: Builder(builder: (c) {
               return IconButton(
-                onPressed: () {
+                onPressed: () async {
+                  var musicState = logic.musicState;
+                  var player = musicState.player;
+                  if (!musicState.loaded.value) {
+                    Dbg.log('source', 'x');
+                    // var duration = await player.setAsset('assets/data/snow.mp3');
+                    // player.play(); // Usually you don't want to wait for playback to finish.
+
+                    // >> To get paths you need these 2 lines
+                    final manifestContent =
+                        await rootBundle.loadString('AssetManifest.json');
+
+                    final Map<String, dynamic> manifestMap =
+                        json.decode(manifestContent);
+                    // >> To get paths you need these 2 lines
+
+                    final assetPaths = manifestMap.keys.toList();
+
+                    // var s=await rootBundle.loadString(imagePaths[0].replaceFirst('assets/', ''));
+                    // Dbg.log(s,'kkk');
+                    var musics = (assetPaths
+                        .where((element) => element.startsWith('assets/music/'))
+                        .toList());
+                    musicState.musicAssetList
+                      ..clear()
+                      ..addAll(musics);
+                    await player.setAudioSource(
+                      ConcatenatingAudioSource(
+                        // Start loading next item just before reaching it.
+                        useLazyPreparation: true,
+                        // default
+                        // Customise the shuffle algorithm.
+                        shuffleOrder: DefaultShuffleOrder(),
+                        // default
+                        // Specify the items in the playlist.
+                        children: List.generate(
+                            musics.length,
+                            (index) => AudioSource.uri(
+                                Uri.parse('asset:///${musics[index]}')))
+                        // [
+                        //   AudioSource.uri(Uri.parse("https://example.com/track1.mp3")),
+                        //   AudioSource.uri(Uri.parse("https://example.com/track2.mp3")),
+                        //   AudioSource.uri(Uri.parse("https://example.com/track3.mp3")),
+                        // ]
+                        ,
+                      ),
+                      // Playback will be prepared to start from track1.mp3
+                      initialIndex: 0, // default
+                      // Playback will be prepared to start from position zero.
+                      initialPosition: Duration.zero, // default
+                    );
+                    // player.play();
+                    // await player.seekToNext();
+                    // await player.seekToPrevious();
+                    // // Jump to the beginning of track3.mp3.
+                    // await player.seek(Duration(milliseconds: 0), index: 2);
+                    musicState.loaded.value = true;
+                  }
+
                   // SmartDialog.showAttach(
                   //   targetContext: c,
                   //   target: Offset(100, 100),
                   //   widget: Container(width: 100, height: 100, color: Colors.red),
                   // );
-                  attach(c, Cfg.isMobile?Alignment.centerLeft:Alignment.bottomLeft, WhiteBorder(
-                    color: Colors.white70,
-                    child: Container(
-                      child: SizedBox(
-                        width: 200,
-                        height: 200,
-                        child: Column(children: List.generate(Const.music
-                            .length, (index) =>
-                            ListTile(
-                              title: Text(Const.music[index][1]),
-                              onTap: () {
-                                SmartDialog.dismiss();
-                                logic.musicState.playingIndex.value = index;
-                              },
-                            )),),
-                      ),
-                    ),
-                  ));
+                  await attach(
+                      c,
+                      Cfg.isMobile
+                          ? Alignment.centerLeft
+                          : Alignment.bottomLeft,
+                      WhiteBorder(
+                        color: Colors.white70,
+                        child: Container(
+                          child: SizedBox(
+                            width: 200,
+                            height: 200,
+                            child: Column(
+                              children: List.generate(
+                                  musicState.musicAssetList.length,
+                                  (index) => ListTile(
+                                        title: Text(
+                                            musicState.musicAssetList[index].replaceFirst('assets/music/', '')
+                                                // .replaceFirst(r'.mp3', '')
+                                        ),
+                                        onTap: () {
+                                          SmartDialog.dismiss();
+                                          logic.musicState.playingIndex.value =index;
+                                          musicState.player.play();
+                                        },
+                                      )),
+                            ),
+                          ),
+                        ),
+                      ));
                 },
-                icon: Icon(Icons.menu,),
+                icon: Icon(
+                  Icons.menu,
+                ),
               );
             }),
           )
@@ -194,8 +263,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
         ],
       );
 
-  topScrollBar() =>
-      SizeTransition(
+  topScrollBar() => SizeTransition(
         sizeFactor: widget.animation,
         child: SizedBox(
           height: Const.barHeight,
@@ -214,8 +282,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                         child: Padding(
                           padding: Cfg.isMobile
                               ? EdgeInsets.only(
-                              left: Cfg.mobileHomeIconPadding,
-                              right: Cfg.mobileHomeIconPadding)
+                                  left: Cfg.mobileHomeIconPadding,
+                                  right: Cfg.mobileHomeIconPadding)
                               : EdgeInsets.only(),
                           child: SizedBox(
                             height: Const.barHeight,
@@ -229,9 +297,9 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                                 Cfg.isMobile
                                     ? Container()
                                     : Text(
-                                  Const.leftTopTitle,
-                                  style: TextStyle(color: Colors.white),
-                                )
+                                        Const.leftTopTitle,
+                                        style: TextStyle(color: Colors.white),
+                                      )
                               ],
                             ),
                           ),
@@ -262,8 +330,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
               ),
               Expanded(
                 child: Container(
-                  // color: Colors.red,
-                ),
+                    // color: Colors.red,
+                    ),
                 flex: Const.rightFlex,
               )
             ],

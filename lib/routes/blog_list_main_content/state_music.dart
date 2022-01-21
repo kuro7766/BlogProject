@@ -1,6 +1,9 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:just_audio/just_audio.dart';
 
-class MusicState{
-  var playing=false.obs;
-  var playingIndex=0.obs;
+class MusicState {
+  var loaded = false.obs;
+  var playingIndex = 0.obs;
+  final player = AudioPlayer();
+  final List<String> musicAssetList=[];
 }

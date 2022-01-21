@@ -33,10 +33,10 @@ class Const {
   static const loginImgUrl = 'http://kuroweb.cf/picture/1615892316837.jpg';
   static const emptyImgUrl = 'http://kuroweb.cf/picture/1615892316837.jpg';
 
-  static var music = [
-    ["//music.163.com/outchain/player?type=2&id=28561001&auto=1&height=66","BOYS DON'T CRY - Key Sounds Label"],
-    ["https://music.163.com/outchain/player?type=2&id=26131698&auto=1&height=66","恋文 - やなぎなぎ"],
-  ];
+  // static var music = [
+  //   ["//music.163.com/outchain/player?type=2&id=28561001&auto=1&height=66","BOYS DON'T CRY - Key Sounds Label"],
+  //   ["https://music.163.com/outchain/player?type=2&id=26131698&auto=1&height=66","恋文 - やなぎなぎ"],
+  // ];
 
   static const lTitleColor = Colors.white;
   static const lTitleSize = 20.0;

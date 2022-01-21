@@ -21,59 +21,6 @@ class GlobalLogic extends GetxController {
   @override
   onInit(){
     super.onInit();
-    (()async{
-      if(musicState.playing.value){
-        return;
-      }
-      Dbg.log('source','x');
-      final player = AudioPlayer();
-      // var duration = await player.setAsset('assets/data/snow.mp3');
-      // player.play(); // Usually you don't want to wait for playback to finish.
-
-      // >> To get paths you need these 2 lines
-      final manifestContent = await rootBundle.loadString('AssetManifest.json');
-
-      final Map<String, dynamic> manifestMap = json.decode(manifestContent);
-      // >> To get paths you need these 2 lines
-
-      final imagePaths = manifestMap.keys.toList();
-
-      // var s=await rootBundle.loadString(imagePaths[0].replaceFirst('assets/', ''));
-      // Dbg.log(s,'kkk');
-      var musics=(imagePaths
-          .where((element) => element.startsWith('assets/music/'))
-          .toList());
-
-      await player.setAudioSource(
-        ConcatenatingAudioSource(
-          // Start loading next item just before reaching it.
-          useLazyPreparation: true, // default
-          // Customise the shuffle algorithm.
-          shuffleOrder: DefaultShuffleOrder(), // default
-          // Specify the items in the playlist.
-          children:
-          List.generate(musics.length, (index) => AudioSource.uri(Uri.parse('asset:///${musics[index]}')))
-          // [
-          //   AudioSource.uri(Uri.parse("https://example.com/track1.mp3")),
-          //   AudioSource.uri(Uri.parse("https://example.com/track2.mp3")),
-          //   AudioSource.uri(Uri.parse("https://example.com/track3.mp3")),
-          // ]
-          ,
-        ),
-        // Playback will be prepared to start from track1.mp3
-        initialIndex: 0, // default
-        // Playback will be prepared to start from position zero.
-        initialPosition: Duration.zero, // default
-      );
-      // player.play();
-      // await player.seekToNext();
-      // await player.seekToPrevious();
-      // // Jump to the beginning of track3.mp3.
-      // await player.seek(Duration(milliseconds: 0), index: 2);
-
-      musicState.playing.value=true;
-
-    }());
   }
 
   GlobalLogic() {
