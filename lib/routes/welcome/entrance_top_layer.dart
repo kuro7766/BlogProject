@@ -142,9 +142,9 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
 
                   attach(
                       c,
-                      Cfg.isMobile
-                          ? Alignment.centerLeft
-                          : Alignment.bottomLeft, Obx(() {
+                      // Cfg.isMobile
+                      //     ? Alignment.centerLeft:
+                Alignment.bottomLeft, Obx(() {
                     // musicState.loaded.value;
                     return musicState.loaded.value
                         ?
@@ -153,7 +153,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                             color: Colors.white70,
                             child: Container(
                               child: SizedBox(
-                                width: 400,
+                                width: 300,
                                 height: 200,
                                 child: Column(
                                   children: List.generate(
