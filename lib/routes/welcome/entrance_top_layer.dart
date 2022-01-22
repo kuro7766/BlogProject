@@ -142,8 +142,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
 
                   attach(
                       c,
-                      // Cfg.isMobile
-                      //     ? Alignment.centerLeft:
+                      Cfg.isMobile
+                          ? Alignment.center:
                       Alignment.bottomLeft, Obx(() {
                     // musicState.loaded.value;
                     return musicState.loaded.value
