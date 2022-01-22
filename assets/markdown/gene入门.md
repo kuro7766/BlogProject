@@ -1,5 +1,6 @@
 # gene入门
 
+
 数据下载的网站
 
 https://db.cngb.org/gisaid/
