@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:blog_project/entity/token_entity.dart';
 import 'package:blog_project/util/http_request.dart';
 import 'package:blog_project/consts.dart';
-import 'package:blog_project/vars/django_function.dart';
+import 'package:blog_project/unused/django_function.dart';
 import 'package:blog_project/widgets/only/base_scaffold.dart';
 import 'package:blog_project/widgets/reusable/over_lap_inkwell.dart';
 import 'package:blog_project/widgets/reusable/white_border.dart';

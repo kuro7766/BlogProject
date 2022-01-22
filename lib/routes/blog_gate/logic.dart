@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:js';
 
 import 'package:blog_project/entity/show_banner_event.dart';
-import 'package:blog_project/routes/blog_list_main_content/state_music.dart';
+import 'package:blog_project/routes/blog_gate/state_music.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:event_bus/event_bus.dart';

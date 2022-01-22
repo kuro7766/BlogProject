@@ -1,12 +1,12 @@
 import 'package:blog_project/entity/tag_id_entity.dart';
 import 'package:blog_project/entity/tag_name_entity.dart';
 import 'package:blog_project/entity/weather_bean_entity.dart';
-import 'package:blog_project/routes/blog_list_main_content/logic.dart';
-import 'package:blog_project/routes/blog_list_main_content/view.dart';
+import 'package:blog_project/routes/blog_gate/logic.dart';
+import 'package:blog_project/routes/blog_gate/view.dart';
 import 'package:blog_project/routes/welcome/inner_layer.dart';
 import 'package:blog_project/util/debug.dart';
-import 'package:blog_project/vars/configuration.dart';
-import 'package:blog_project/vars/django_function.dart';
+import 'package:blog_project/unused/configuration.dart';
+import 'package:blog_project/unused/django_function.dart';
 import 'package:blog_project/widgets/only/inner_layer.dart';
 import 'package:blog_project/widgets/only/titile_widget.dart';
 import 'package:blog_project/widgets/reusable/http_builder.dart';

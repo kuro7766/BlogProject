@@ -6,7 +6,7 @@ import 'package:blog_project/routes/welcome/entrance_top_layer.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/js_util.dart';
-import 'package:blog_project/vars/configuration.dart';
+import 'package:blog_project/unused/configuration.dart';
 import 'package:blog_project/consts.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/cupertino.dart';

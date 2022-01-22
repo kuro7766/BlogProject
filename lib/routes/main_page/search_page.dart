@@ -1,8 +1,8 @@
 import 'package:blog_project/entity/artile_title_item_entity.dart';
 import 'package:blog_project/routes/main_page/main_base_widget.dart';
 import 'package:blog_project/util/debug.dart';
-import 'package:blog_project/vars/configuration.dart';
-import 'package:blog_project/vars/django_function.dart';
+import 'package:blog_project/unused/configuration.dart';
+import 'package:blog_project/unused/django_function.dart';
 import 'package:blog_project/widgets/only/data_titile_item.dart';
 import 'package:blog_project/widgets/reusable/http_builder.dart';
 import 'package:flutter/material.dart';

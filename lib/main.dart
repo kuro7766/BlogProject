@@ -1,9 +1,9 @@
 import 'package:blog_project/entity/user_state_info.dart';
 import 'package:blog_project/init_web_markdown.dart';
 import 'package:blog_project/routes/404.dart';
-import 'package:blog_project/routes/blog_list_main_content/logic.dart';
-import 'package:blog_project/routes/login/login_page.dart';
-import 'package:blog_project/routes/login/user_manage.dart';
+import 'package:blog_project/routes/blog_gate/logic.dart';
+import 'package:blog_project/routes/login_unused/login_page.dart';
+import 'package:blog_project/routes/login_unused/user_manage.dart';
 import 'package:blog_project/routes/welcome/entrance_page_initializer.dart';
 import 'package:blog_project/consts.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';

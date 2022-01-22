@@ -1,4 +1,4 @@
-import 'package:blog_project/vars/configuration.dart';
+import 'package:blog_project/unused/configuration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

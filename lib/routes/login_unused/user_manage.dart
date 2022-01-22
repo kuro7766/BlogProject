@@ -1,6 +1,6 @@
-import 'package:blog_project/routes/login/article_related/article_manage_page.dart';
-import 'package:blog_project/routes/login/friend_link_related/frind_link_page.dart';
-import 'package:blog_project/routes/login/personal_info/personal_info_submit.dart';
+import 'package:blog_project/routes/login_unused/article_manage_page.dart';
+import 'package:blog_project/routes/login_unused/frind_link_page.dart';
+import 'package:blog_project/routes/login_unused/personal_info_submit.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/widgets/only/app_bar.dart';
 import 'package:blog_project/widgets/only/base_scaffold.dart';
@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'article_related/realese_page.dart';
+import 'realese_page.dart';
 
 class UserManage extends StatefulWidget {
   final String info;

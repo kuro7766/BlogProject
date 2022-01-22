@@ -1,4 +1,4 @@
-import 'package:blog_project/routes/blog_list_main_content/logic.dart';
+import 'package:blog_project/routes/blog_gate/logic.dart';
 import 'package:blog_project/widgets/asset_markdown.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

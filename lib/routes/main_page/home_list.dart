@@ -9,8 +9,8 @@ import 'package:blog_project/routes/main_page/main_base_widget.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/simple_http_builder.dart';
-import 'package:blog_project/vars/configuration.dart';
-import 'package:blog_project/vars/django_function.dart';
+import 'package:blog_project/unused/configuration.dart';
+import 'package:blog_project/unused/django_function.dart';
 import 'package:blog_project/widgets/asset_markdown.dart';
 import 'package:blog_project/widgets/only/image_item.dart';
 import 'package:blog_project/widgets/only/page_index_button.dart';
@@ -24,8 +24,8 @@ import 'package:get/get.dart';
 import 'package:url_encoder/url_encoder.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../blog_list_main_content/logic.dart';
-import '../blog_list_main_content/state_global.dart';
+import '../blog_gate/logic.dart';
+import '../blog_gate/state_global.dart';
 import 'package:path/path.dart' as p;
 
 class HomeList extends MainContentBaseStatelessWidget {
