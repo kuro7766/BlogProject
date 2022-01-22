@@ -144,7 +144,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                       c,
                       // Cfg.isMobile
                       //     ? Alignment.centerLeft:
-                Alignment.bottomLeft, Obx(() {
+                      Alignment.bottomLeft, Obx(() {
                     // musicState.loaded.value;
                     return musicState.loaded.value
                         ?
@@ -153,41 +153,51 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                             color: Colors.white70,
                             child: Container(
                               child: SizedBox(
-                                width: 300,
+                                width: 200,
                                 height: 200,
                                 child: Column(
                                   children: List.generate(
                                       musicState.musicAssetList.length,
-                                      (index) => ListTile(
-                                            title: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Visibility(
-                                                  visible: index ==
-                                                      musicState
-                                                          .playingIndex.value,
-                                                  child: Icon(Icons
-                                                      .pause_circle_outline),
-                                                ),
-                                                SizedBox(
-                                                  width: 20,
-                                                ),
-                                                Text(Uri.decodeFull(musicState
-                                                        .musicAssetList[index]
-                                                        .replaceFirst(
+                                      (index) => GestureDetector(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(top:8.0,bottom: 8),
+                                              child: Row(
+                                                // crossAxisAlignment:
+                                                //     CrossAxisAlignment.center,
+                                                children: [
+                                                  Visibility(
+                                                    visible: index ==
+                                                        musicState
+                                                            .playingIndex.value,
+                                                    child: Icon(Icons
+                                                        .pause_circle_outline),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(
+                                                      Uri.decodeFull(
+                                                        musicState
+                                                            .musicAssetList[index]
+                                                            .replaceFirst(
                                                             'assets/music/',
-                                                            ''))
-                                                    // .replaceFirst(r'.mp3', '')
+                                                            ''),
+                                                      ),
+                                                      // .replaceFirst(r'.mp3', ''),
+                                                      overflow:
+                                                      TextOverflow.ellipsis,
                                                     ),
-                                              ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                             onTap: () async {
                                               SmartDialog.dismiss();
 
                                               if (musicState.playingIndex ==
                                                   index) {
-                                                player.stop();
+                                                player.pause();
                                                 musicState.playingIndex.value =
                                                     -1;
                                               } else {
@@ -233,6 +243,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                     musicState.musicAssetList
                       ..clear()
                       ..addAll(musics);
+
                     await player.setAudioSource(
                       ConcatenatingAudioSource(
                         // Start loading next item just before reaching it.
@@ -257,7 +268,31 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                       initialIndex: 0, // default
                       // Playback will be prepared to start from position zero.
                       initialPosition: Duration.zero, // default
+                      preload: true,
+
                     );
+                    player.playerStateStream.listen((state) {
+                      Dbg.log('$state', 'state.toString()');
+
+                      if(state.playing){
+                        if(state.processingState==ProcessingState.completed){
+                          musicState.playingIndex.value=-1;
+                        }else if(state.processingState==ProcessingState.ready){
+                          musicState.playingIndex.value=player.currentIndex;
+                        }
+                      }else{
+                        musicState.playingIndex.value=-1;
+                      }
+
+                      // if (state.playing) ... else ...
+                      // switch (state.processingState) {
+                      // case ProcessingState.idle: ...
+                      // case ProcessingState.loading: ...
+                      // case ProcessingState.buffering: ...
+                      // case ProcessingState.ready: ...
+                      // case ProcessingState.completed: ...
+                      // }
+                    });
                     // player.play();
                     // await player.seekToNext();
                     // await player.seekToPrevious();
