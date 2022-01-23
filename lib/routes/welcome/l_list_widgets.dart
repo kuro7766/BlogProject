@@ -39,8 +39,8 @@ class LUserContentList extends StatelessWidget {
         : Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // TitleCard(
                 //   title: 'Debug',
@@ -75,6 +75,9 @@ class LUserContentList extends StatelessWidget {
                   child: Text('广告位出租'),
                 ),
                 TitleCard(
+                  title: '广告',
+                  child: Text('广告位出租'),
+                ),  TitleCard(
                   title: '广告',
                   child: Text('广告位出租'),
                 ),

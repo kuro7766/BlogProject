@@ -165,12 +165,15 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                                                 // crossAxisAlignment:
                                                 //     CrossAxisAlignment.center,
                                                 children: [
-                                                  Visibility(
-                                                    visible: index ==
-                                                        musicState
-                                                            .playingIndex.value,
-                                                    child: Icon(Icons
-                                                        .pause_circle_outline),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(left:8.0,top: 2),
+                                                    child: Visibility(
+                                                      visible: index ==
+                                                          musicState
+                                                              .playingIndex.value,
+                                                      child: Icon(Icons
+                                                          .pause_circle_outline),
+                                                    ),
                                                   ),
                                                   SizedBox(
                                                     width: 10,
