@@ -143,7 +143,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                   attach(
                       c,
                       Cfg.isMobile
-                          ? Alignment.center:
+                          ? Alignment.centerLeft:
                       Alignment.bottomLeft, Obx(() {
                     // musicState.loaded.value;
                     return musicState.loaded.value
@@ -253,10 +253,24 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                         shuffleOrder: DefaultShuffleOrder(),
                         // default
                         // Specify the items in the playlist.
-                        children: List.generate(
+                        children:
+
+                        // List.generate(
+                        //     musics.length,
+                        //     (index) => AudioSource.uri(
+                        //         Uri.parse('asset:///${musics[index]}')))
+
+                        List.generate(
                             musics.length,
-                            (index) => AudioSource.uri(
-                                Uri.parse('asset:///${musics[index]}')))
+                            (index) =>
+
+                                // HlsAudioSource(
+                                // Uri.parse('asset:///${musics[index]}'))
+
+                            DashAudioSource(Uri.parse('asset:///${musics[index]}')),
+
+                    )
+
                         // [
                         //   AudioSource.uri(Uri.parse("https://example.com/track1.mp3")),
                         //   AudioSource.uri(Uri.parse("https://example.com/track2.mp3")),
@@ -265,10 +279,10 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                         ,
                       ),
                       // Playback will be prepared to start from track1.mp3
-                      initialIndex: 0, // default
+                      // initialIndex: 0, // default
                       // Playback will be prepared to start from position zero.
                       initialPosition: Duration.zero, // default
-                      preload: true,
+                      preload: false,
 
                     );
                     player.playerStateStream.listen((state) {
