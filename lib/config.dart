@@ -1,6 +1,7 @@
 import 'package:blog_project/util/js_util.dart';
 
 class Cfg {
+  static var debug=false;
   // static var __isMobile=false;
   // static var __isMobileInitialized=false;
   // static var __isMobile= false;

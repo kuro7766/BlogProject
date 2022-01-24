@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:blog_project/config.dart';
 import 'package:blog_project/entity/article_content_entity.dart';
 import 'package:blog_project/entity/article_id_entity.dart';
 import 'package:blog_project/entity/article_item_entity.dart';
@@ -36,8 +37,8 @@ class MainContentPage extends StatelessWidget {
       state.observeMain;
       log2(0, 'outer2build');
       log2(0, '${state.observeMain[0]}${state.observeMain[1]}');
-      // switch (state.viewType.value) {
-      switch (6) {
+      switch (Cfg.debug?6:state.viewType.value) {
+      // switch (6) {
         case 0:
           return HomeList();
         case 1:
