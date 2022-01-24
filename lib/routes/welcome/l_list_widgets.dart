@@ -11,6 +11,7 @@ import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/unused/configuration.dart';
 import 'package:blog_project/consts.dart';
 import 'package:blog_project/unused/django_function.dart';
+import 'package:blog_project/widgets/iframe_widget.dart';
 import 'package:blog_project/widgets/only/l_item.dart';
 import 'package:blog_project/widgets/only/titile_widget.dart';
 import 'package:blog_project/widgets/reusable/http_builder.dart';

@@ -19,6 +19,7 @@ class AssetMarkdown extends StatelessWidget {
   final sizeNotifier = (Size(0, 0)).obs;
   final useMask;
 
+
   AssetMarkdown(
       {Key key,
       this.resource,

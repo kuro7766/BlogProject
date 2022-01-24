@@ -7,6 +7,7 @@ import 'package:blog_project/routes/welcome/inner_layer.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/unused/configuration.dart';
 import 'package:blog_project/unused/django_function.dart';
+import 'package:blog_project/widgets/iframe_widget.dart';
 import 'package:blog_project/widgets/only/inner_layer.dart';
 import 'package:blog_project/widgets/only/titile_widget.dart';
 import 'package:blog_project/widgets/reusable/http_builder.dart';
@@ -68,7 +69,7 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
                           ),
                           Tab(
                             icon: Icon(Icons.local_fire_department),
-                            text: '推荐',
+                            text: 'github',
                           ),
                           Tab(icon: Icon(Icons.access_time), text: '其他'),
                         ],
@@ -92,7 +93,9 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
                             
                           ],
                         ),
-                        Icon(Icons.directions_transit),
+                        // Icon(Icons.directions_transit),
+                        IframeWidget('https://github-readme-stats.vercel.app/api?username=kuro7766',height: 400,),
+
                         Icon(Icons.directions_bike),
                       ],
                     ),

@@ -87,7 +87,7 @@ class GlobalLogic extends GetxController {
     state.currentPage.value = (target);
   }
 
-  void toArticlePage(int page) {
+  void toArticleListPage(int page) {
     state.currentPage.value = page;
     _showBanner();
   }

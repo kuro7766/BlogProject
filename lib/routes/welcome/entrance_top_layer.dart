@@ -143,8 +143,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                   attach(
                       c,
                       Cfg.isMobile
-                          ? Alignment.centerLeft:
-                      Alignment.bottomLeft, Obx(() {
+                          ? Alignment.centerLeft
+                          : Alignment.bottomLeft, Obx(() {
                     // musicState.loaded.value;
                     return musicState.loaded.value
                         ?
@@ -157,20 +157,24 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                                 height: 200,
                                 child: Column(
                                   children: List.generate(
-                                      musicState.musicAssetList.length,
+                                      musicState.musicList.length,
                                       (index) => GestureDetector(
                                             child: Padding(
-                                              padding: const EdgeInsets.only(top:8.0,bottom: 8),
+                                              padding: const EdgeInsets.only(
+                                                  top: 8.0, bottom: 8),
                                               child: Row(
                                                 // crossAxisAlignment:
                                                 //     CrossAxisAlignment.center,
                                                 children: [
                                                   Padding(
-                                                    padding: const EdgeInsets.only(left:8.0,top: 2),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 8.0, top: 2),
                                                     child: Visibility(
                                                       visible: index ==
                                                           musicState
-                                                              .playingIndex.value,
+                                                              .playingIndex
+                                                              .value,
                                                       child: Icon(Icons
                                                           .pause_circle_outline),
                                                     ),
@@ -180,16 +184,13 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                                                   ),
                                                   Expanded(
                                                     child: Text(
-                                                      Uri.decodeFull(
-                                                        musicState
-                                                            .musicAssetList[index]
-                                                            .replaceFirst(
-                                                            'assets/music/',
-                                                            ''),
-                                                      ),
+                                                      musicState.musicList[index]['name'],
+                                                      // Uri.decodeFull(
+                                                      //   musicState.musicList[index]['name'],
+                                                      // ),
                                                       // .replaceFirst(r'.mp3', ''),
                                                       overflow:
-                                                      TextOverflow.ellipsis,
+                                                          TextOverflow.ellipsis,
                                                     ),
                                                   ),
                                                 ],
@@ -222,30 +223,32 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
 
                   if (!musicState.loaded.value) {
                     // if (false) {
-                    await Future.delayed(Duration(milliseconds: 500));
-                    // await attach(context,Alignment.center,Text('加载中'));
-                    Dbg.log('source', 'x');
-                    // var duration = await player.setAsset('assets/data/snow.mp3');
-                    // player.play(); // Usually you don't want to wait for playback to finish.
 
-                    // >> To get paths you need these 2 lines
-                    final manifestContent =
-                        await rootBundle.loadString('AssetManifest.json');
-
-                    final Map<String, dynamic> manifestMap =
-                        json.decode(manifestContent);
-                    // >> To get paths you need these 2 lines
-
-                    final assetPaths = manifestMap.keys.toList();
+                    // await Future.delayed(Duration(milliseconds: 500));
+                    // // await attach(context,Alignment.center,Text('加载中'));
+                    // Dbg.log('source', 'x');
+                    // // var duration = await player.setAsset('assets/data/snow.mp3');
+                    // // player.play(); // Usually you don't want to wait for playback to finish.
+                    //
+                    // // >> To get paths you need these 2 lines
+                    // final manifestContent =
+                    //     await rootBundle.loadString('AssetManifest.json');
+                    //
+                    // final Map<String, dynamic> manifestMap =
+                    //     json.decode(manifestContent);
+                    // // >> To get paths you need these 2 lines
+                    //
+                    // final assetPaths = manifestMap.keys.toList();
 
                     // var s=await rootBundle.loadString(imagePaths[0].replaceFirst('assets/', ''));
                     // Dbg.log(s,'kkk');
-                    var musics = (assetPaths
-                        .where((element) => element.startsWith('assets/music/'))
-                        .toList());
-                    musicState.musicAssetList
-                      ..clear()
-                      ..addAll(musics);
+
+                    // var musics = (assetPaths
+                    //     .where((element) => element.startsWith('assets/music/'))
+                    //     .toList());
+                    // musicState.musicAssetList
+                    //   ..clear()
+                    //   ..addAll(musics);
 
                     await player.setAudioSource(
                       ConcatenatingAudioSource(
@@ -258,47 +261,59 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                         // Specify the items in the playlist.
                         children:
 
-                        // List.generate(
-                        //     musics.length,
-                        //     (index) => AudioSource.uri(
-                        //         Uri.parse('asset:///${musics[index]}')))
-
+                            // List.generate(
+                            //     musics.length,
+                            //     (index) => AudioSource.uri(
+                            //         Uri.parse('asset:///${musics[index]}')))
+                        //     [
+                        //   DashAudioSource(Uri.parse()),
+                        // ]
                         List.generate(
-                            musics.length,
-                            (index) =>
+                          musicState.musicList.length,
+                              (index){
+                            Dbg.log(musicState.musicList[index]['url'],'path');
+                            Dbg.log(index,'path');
+                            return DashAudioSource(Uri.parse('https://m804.music.126.net/20220124003144/c0a096f2eccc7f7822101a90f8e1ddd7/jdyyaac/515e/525f/025f/f4398d7e34e5e34574b4556a2de2e95c.m4a?authSecret=0000017e87b096ad033d0aaba61a198a'));
+                              }
+                          // HlsAudioSource(
+                          // Uri.parse('asset:///${musics[index]}'))
+                          ),
 
-                                // HlsAudioSource(
-                                // Uri.parse('asset:///${musics[index]}'))
-
-                            DashAudioSource(Uri.parse('asset:///${musics[index]}')),
-
-                    )
+                        // List.generate(
+                        //   musics.length,
+                        //       (index) =>
+                        //   // HlsAudioSource(
+                        //   // Uri.parse('asset:///${musics[index]}'))
+                        //   DashAudioSource(
+                        //       Uri.parse('asset:///${musics[index]}')),
+                        // )
 
                         // [
                         //   AudioSource.uri(Uri.parse("https://example.com/track1.mp3")),
                         //   AudioSource.uri(Uri.parse("https://example.com/track2.mp3")),
                         //   AudioSource.uri(Uri.parse("https://example.com/track3.mp3")),
                         // ]
-                        ,
+
                       ),
                       // Playback will be prepared to start from track1.mp3
                       // initialIndex: 0, // default
                       // Playback will be prepared to start from position zero.
                       initialPosition: Duration.zero, // default
                       preload: false,
-
                     );
                     player.playerStateStream.listen((state) {
                       Dbg.log('$state', 'state.toString()');
 
-                      if(state.playing){
-                        if(state.processingState==ProcessingState.completed){
-                          musicState.playingIndex.value=-1;
-                        }else if(state.processingState==ProcessingState.ready){
-                          musicState.playingIndex.value=player.currentIndex;
+                      if (state.playing) {
+                        if (state.processingState ==
+                            ProcessingState.completed) {
+                          musicState.playingIndex.value = -1;
+                        } else if (state.processingState ==
+                            ProcessingState.ready) {
+                          musicState.playingIndex.value = player.currentIndex;
                         }
-                      }else{
-                        musicState.playingIndex.value=-1;
+                      } else {
+                        musicState.playingIndex.value = -1;
                       }
 
                       // if (state.playing) ... else ...

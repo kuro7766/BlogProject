@@ -10,6 +10,7 @@ import 'package:blog_project/routes/main_page/search_page.dart';
 import 'package:blog_project/routes/main_page/tag_list.dart';
 import 'package:blog_project/routes/main_page/web_markdown_nested.dart';
 import 'package:blog_project/routes/markdown_viewer/view.dart';
+import 'package:blog_project/routes/writting_test/view.dart';
 import 'package:blog_project/tests.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/unused/configuration.dart';
@@ -35,7 +36,8 @@ class MainContentPage extends StatelessWidget {
       state.observeMain;
       log2(0, 'outer2build');
       log2(0, '${state.observeMain[0]}${state.observeMain[1]}');
-      switch (state.viewType.value) {
+      // switch (state.viewType.value) {
+      switch (6) {
         case 0:
           return HomeList();
         case 1:
@@ -48,6 +50,8 @@ class MainContentPage extends StatelessWidget {
           return SearchList();
         case 5:
           return MarkdownViewerComponent();
+        case 6:
+          return WrittingTestComponent();
           // break;
       }
       return Container(
