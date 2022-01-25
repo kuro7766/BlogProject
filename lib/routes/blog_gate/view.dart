@@ -16,6 +16,7 @@ import 'package:blog_project/tests.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/unused/configuration.dart';
 import 'package:blog_project/unused/django_function.dart';
+import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/widgets/only/app_bar.dart';
 import 'package:blog_project/widgets/only/image_item.dart';
 import 'package:blog_project/widgets/only/markdown_web.dart';
@@ -35,9 +36,10 @@ class MainContentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       state.observeMain;
-      log2(0, 'outer2build');
-      log2(0, '${state.observeMain[0]}${state.observeMain[1]}');
-      switch (Cfg.debug?6:state.viewType.value) {
+      // log2(0, 'outer2build');
+      // log2(0, '${state.observeMain[0]}${state.observeMain[1]}');
+      Dbg.log('ourter','b');
+      switch (Cfg.previewMarkdown?6:state.viewType.value) {
       // switch (6) {
         case 0:
           return HomeList();
