@@ -7,7 +7,7 @@ class MusicState {
   final player = AudioPlayer();
 
   static String neteaseMusicId(String id) {
-    return 'http://music.163.com/song/media/outer/url?id=$id.mp3';
+    return 'https://music.163.com/song/media/outer/url?id=$id.mp3';
   }
 
   List musicList = [

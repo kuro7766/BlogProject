@@ -147,9 +147,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                           : Alignment.bottomLeft, Obx(() {
                     // musicState.loaded.value;
                     return musicState.loaded.value
-                        ?
-                        // true?
-                        WhiteBorder(
+                        ?WhiteBorder(
                             color: Colors.white70,
                             child: Container(
                               child: SizedBox(
@@ -273,7 +271,8 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                               (index){
                             Dbg.log(musicState.musicList[index]['url'],'path');
                             Dbg.log(index,'path');
-                            return DashAudioSource(Uri.parse('https://m804.music.126.net/20220124003144/c0a096f2eccc7f7822101a90f8e1ddd7/jdyyaac/515e/525f/025f/f4398d7e34e5e34574b4556a2de2e95c.m4a?authSecret=0000017e87b096ad033d0aaba61a198a'));
+                            // return DashAudioSource(Uri.parse('https://m804.music.126.net/20220124003144/c0a096f2eccc7f7822101a90f8e1ddd7/jdyyaac/515e/525f/025f/f4398d7e34e5e34574b4556a2de2e95c.m4a?authSecret=0000017e87b096ad033d0aaba61a198a'));
+                            return DashAudioSource(Uri.parse(musicState.musicList[index]['url']));
                               }
                           // HlsAudioSource(
                           // Uri.parse('asset:///${musics[index]}'))
