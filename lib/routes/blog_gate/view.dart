@@ -39,7 +39,7 @@ class MainContentPage extends StatelessWidget {
       // log2(0, 'outer2build');
       // log2(0, '${state.observeMain[0]}${state.observeMain[1]}');
       Dbg.log('ourter','b');
-      switch (Cfg.previewMarkdown?6:state.viewType.value) {
+      switch (WrittingTestComponent.previewMarkdown?6:state.viewType.value) {
       // switch (6) {
         case 0:
           return HomeList();

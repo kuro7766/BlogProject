@@ -5,7 +5,7 @@ import 'package:markdown/markdown.dart' as md;
 
 class B2BlockSyntax extends md.BlockSyntax {
   // static const String _pattern = r'.*\[\[warning\]\](.*)$';
-  static const String _pattern = r'.*warning(.*)$';
+  static const String _pattern = r'^(.*)warning.*$';
   @override
   RegExp get pattern => RegExp(_pattern);
 
@@ -13,7 +13,7 @@ class B2BlockSyntax extends md.BlockSyntax {
 
   @override
   md.Node parse(md.BlockParser parser) {
-    Dbg.log('w','wrn');
+    Dbg.log(parser.current,'wrn');
 
     var childLines = parseChildLines(parser);
 
@@ -29,6 +29,11 @@ class B2BlockSyntax extends md.BlockSyntax {
 }
 
 class WarningBuilder extends MarkdownElementBuilder {
+  @override
+  void visitElementBefore(md.Element element) {
+    super.visitElementBefore(element);
+    Dbg.log(element.textContent,'xxx');
+  }
 
   @override
   Widget visitText(md.Text text, TextStyle preferredStyle) {

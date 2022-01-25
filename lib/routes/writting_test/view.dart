@@ -9,6 +9,9 @@ import 'logic.dart';
 import 'package:markdown/markdown.dart' as m;
 
 class WrittingTestComponent extends StatefulWidget {
+
+  // static var previewMarkdown=true;
+  static var previewMarkdown=false;
   @override
   _WrittingTestComponentState createState() => _WrittingTestComponentState();
 }
@@ -53,7 +56,7 @@ class _WrittingTestComponentState extends State<WrittingTestComponent> {
             """
 B Hello **bold**
 sfdasd
- ggg[[warning]] warning **bold**
+xxx warning **bold**
 """
             // """
             // B Hello **bold**
