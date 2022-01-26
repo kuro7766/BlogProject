@@ -94,6 +94,7 @@ dependencies:
   just_audio: ^0.9.18
 #  assets_audio_player_web: ^3.0.3+9
 #  assets_audio_player: ^3.0.3+9
+  syntax_highlighter: ^0.1.1
 
 dev_dependencies:
   flutter_test:

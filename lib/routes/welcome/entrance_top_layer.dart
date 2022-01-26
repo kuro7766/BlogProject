@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:blog_project/config.dart';
 import 'package:blog_project/routes/blog_gate/logic.dart';
-import 'package:blog_project/routes/welcome/l_list_widgets.dart';
+import 'package:blog_project/routes/welcome/left_list_widgets.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/js_util.dart';
 import 'package:blog_project/util/simple_http_builder.dart';

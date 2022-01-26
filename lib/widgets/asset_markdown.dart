@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:blog_project/util/getx_debug_tool.dart';
+import 'package:blog_project/util/my_code_style.dart';
 import 'package:blog_project/util/simple_http_builder.dart';
 import 'package:blog_project/widgets/measure_size.dart';
 import 'package:flutter/cupertino.dart';
@@ -49,6 +50,7 @@ class AssetMarkdown extends StatelessWidget {
               UnifiedItem(
                 title: title,
                 child: MarkdownBody(
+                  syntaxHighlighter: HighLight(),
                   data: (digestSubStringLength <= 0
                           ? '$mdContent'
                           : mdContent.substring(0,

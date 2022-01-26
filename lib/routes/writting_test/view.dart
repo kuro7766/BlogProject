@@ -22,42 +22,22 @@ class _WrittingTestComponentState extends State<WrittingTestComponent> {
 
   @override
   Widget build(BuildContext context) {
-
-    // final m.Document document = m.Document(
-    //     extensionSet: m.ExtensionSet.gitHubFlavored,
-    //     encodeHtml: false,
-    //     inlineSyntaxes: [TaskListSyntax()]);
-    // // final List<String> lines = data.split(RegExp(r'(\r?\n)|(\r?\t)|(\r)'));
-    // List<m.Node> nn=document.parseInline('''
-    // 另外还需要考虑自定义能力，getx mvc页面仍然可以使用，呈现的仍然是stateless widget，因此用mixin更为合适，mixin应该提供如下信息：
-    // - 组件预览效果
-    // - 组件标题
-    // ''');
-    // for(var n in nn){
-    //
-    //   Dbg.log(n.runtimeType,'R');
-    //   Dbg.log(n is m.Element,'R');
-    // }
-    // List<m.Node> nodes = document.parseLines(lines);
-    // _tocList = LinkedHashMap();
-    // _helper = MarkdownHelper(wConfig: widgetConfig);
-    // _widgets = [];
-    // nodes.forEach((element) {
-    //   _widgets.add(_generatorWidget(element, childMargin));
-    // });
-
-
     return Align(
       alignment: Alignment.topLeft,
       child: Wrap(
         children: [
           MarkdownBody(
             data:
-            """
-B Hello **bold**
-sfdasd
-xxx warning **bold**
 """
+
+"""
+
+//             """
+// B Hello **bold**
+// sfdasd
+// xxx warning **bold**
+// """r
+
             // """
             // B Hello **bold**
             //
