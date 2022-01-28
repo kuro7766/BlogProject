@@ -13,6 +13,9 @@
 在local_website分支提交，之后ci自动提交到deployment分支，需要配置github action push的教程中的密钥，详情见github workflow 文件中使用的内容以及参考github action对应说明
 
 # 编译运行
+
+dart compile exe .\lib\exe_tool\a.dart -o a.exe
+
 flutter run -d chrome --web-port=8080 --web-hostname=127.0.0.1
 
 # 参考文章

@@ -95,6 +95,7 @@ dependencies:
 #  assets_audio_player_web: ^3.0.3+9
 #  assets_audio_player: ^3.0.3+9
   syntax_highlighter: ^0.1.1
+  process_run: ^0.12.2+2
 
 dev_dependencies:
   flutter_test:
@@ -114,8 +115,8 @@ flutter:
   assets:
     - assets/markdown/
     - assets/
-    - assets/r/
-    - assets/generated/
+#    - assets/r/
+#    - assets/generated/
     - assets/data/
     - assets/music/
 #   assets:

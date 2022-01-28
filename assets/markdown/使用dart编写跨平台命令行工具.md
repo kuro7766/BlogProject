@@ -25,3 +25,9 @@ dart create -t console-full cli
 dart compile exe .\example\main.dart -o dart_runnable.exe
 
 接下来我们就可以并运行对应的文件，会自动找到程序的main入口，exe是executable的意思在不同平台上别一会生成不同平台上的可执行文件。
+
+
+
+
+
+

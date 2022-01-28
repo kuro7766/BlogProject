@@ -7,7 +7,8 @@ import 'logic.dart';
 
 class MarkdownViewerComponent extends StatefulWidget {
   @override
-  _MarkdownViewerComponentState createState() => _MarkdownViewerComponentState();
+  _MarkdownViewerComponentState createState() =>
+      _MarkdownViewerComponentState();
 }
 
 class _MarkdownViewerComponentState extends State<MarkdownViewerComponent> {
@@ -16,7 +17,16 @@ class _MarkdownViewerComponentState extends State<MarkdownViewerComponent> {
 
   @override
   Widget build(BuildContext context) {
-    return AssetMarkdown(resource:Get.find<GlobalLogic>().state.articleAssetResource.value);
+    return Column(
+      children: [
+        AssetMarkdown(
+            resource: Get.find<GlobalLogic>().state.articleAssetResource.value),
+        //底部小人
+        SizedBox(
+          height: 200,
+        )
+      ],
+    );
   }
 
   @override
