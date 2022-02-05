@@ -16,9 +16,16 @@ Future<List<FileSystemEntity>> dirContents(Directory dir) {
 
 void main() async {
   var assetFiles = await dirContents(Directory('assets/markdown'));
-  articleInfoAndMetas=articleInfoAndMetas.where((element) => element['type']=='markdown').toList();
+  var widgetArticles=articleInfoAndMetas.where((element){
+    // print(element['type']);
+    return element['type']=='widget';
+  }).toList();
+  articleInfoAndMetas = articleInfoAndMetas
+      .where((element) => element['type'] == 'markdown')
+      .toList();
+  // print(articleInfoAndMetas);
 
-  var scriptMeta={};
+  print(widgetArticles);
   //         .where((element) async {
   //   var f = File(element.path);
   //   var content =await f.readAsString();
@@ -32,10 +39,10 @@ void main() async {
     // print(value.path);
     var t = stat.changed.millisecondsSinceEpoch;
 
-    print(t);
+    // print(t);
 
     var formatPath = value.path.replaceAll('\\', '/');
-    print(formatPath);
+    // print(formatPath);
 
     dynamic preObject = null;
     var shouldUpdateMarkdown = articleInfoAndMetas.where((dict) {
@@ -52,8 +59,9 @@ void main() async {
         'path': formatPath,
         'time': t,
         'type': 'markdown',
+        'tag': '',
         'builder': '()=>UniMd(path: "$formatPath")',
-        'checked':true
+        'checked': true
       });
     } else {
       // articleInfoAndMetas.add({
@@ -64,24 +72,26 @@ void main() async {
       //   'builder': '()=>UniMd(path: "${preObject['path']}")'
       // });
       articleInfoAndMetas.forEach((dict) {
-        if(dict['path'] == formatPath){
-          dict['builder']='()=>UniMd(path: "$formatPath")';
-          dict['checked']=true;
+        if (dict['path'] == formatPath) {
+          dict['builder'] = '()=>UniMd(path: "$formatPath")';
+          dict['checked'] = true;
         }
       });
     }
   }
 
-  articleInfoAndMetas=articleInfoAndMetas.where((element) => element.containsKey('checked')).toList();
+  articleInfoAndMetas = articleInfoAndMetas
+      .where((element) => element.containsKey('checked'))
+      .toList();
 
-  print(articleInfoAndMetas);
+  // print(articleInfoAndMetas);
 
   for (var element in (await dirContents(Directory('lib/_articles')))) {
     var f = File(element.path);
     var content = await f.readAsString();
     var match = RegExp(
-        r'(?<=@ArticleMetaData\()[\d\D]*?\)[\s\S]*?class\s[\w\d\_]+(?=\s)',
-        multiLine: true)
+            r'(?<=@ArticleMetaData\()[\d\D]*?\)[\s\S]*?class\s[\w\d\_]+(?=\s)',
+            multiLine: true)
         .stringMatch(content);
 
     if (match == null) continue;
@@ -89,11 +99,15 @@ void main() async {
     var className = RegExp(r'(?<=class\s)[\w\d\_]+').stringMatch(match);
     print(metaJson);
     print(className);
-
+    // print(widgetArticles);
+    var pre = widgetArticles
+        .where((ez) => ez['path'] == element.path.replaceAll('\\', '/'))
+        .toList();
+    // print(pre);
     articleInfoAndMetas.add({
-      'id': Uuid().v4(),
+      'id': pre.length > 0 ? pre[0]['id'] : Uuid().v4(),
       'import':
-      "import 'package:blog_project/${element.path.replaceAll('\\', '/').replaceAll('lib/', '')}';",
+          "import 'package:blog_project/${element.path.replaceAll('\\', '/').replaceAll('lib/', '')}';",
       'time': DateTime.parse(metaJson['date']).millisecondsSinceEpoch,
       'path': element.path.replaceAll('\\', '/'),
       'type': 'widget',
@@ -121,20 +135,20 @@ void main() async {
   var imports = [];
   var ss2 = [];
   var imports2 = [];
-  var ss3=[];
-  var index=0;
+  var ss3 = [];
+  var index = 0;
   articleInfoAndMetas.forEach((element) {
-    ss.add("{'path':'${element['path']}','tag':'','id':'${element['id']}','time':${element['time']},'type':'${element['type']}'},");
+    ss.add(
+        "{'path':'${element['path']}','tag':'${element['tag']}','id':'${element['id']}','time':${element['time']},'type':'${element['type']}'},");
     ss3.add("'${element['id']}':$index,");
     ss2.add(
         "{'id':'${element['id']}','builder':${element['builder']},'type':'${element['type']}'},");
     // print(s);
     if (element['type'] == 'widget') {
-      print(element['import']);
+      // print(element['import']);
       imports2.add(element['import']);
     }
     index++;
-
   });
   var scripts =
       ("${imports2.join('\n')}\nimport 'package:blog_project/routes/article/unified_markdown.dart';\nvar articleInfoAndMetasBuilder=[\n${ss2.join('\n')}\n];\n"
@@ -144,6 +158,6 @@ void main() async {
   File(manualIndexesInfo).writeAsString("""
 List<dynamic> articleInfoAndMetas = \n[${ss.join('\n')}];
   """);
-  print(ss);
+  // print(ss);
 //var articleInfoAndMetas = [];
 }
