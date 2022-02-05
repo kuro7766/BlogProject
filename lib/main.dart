@@ -1,3 +1,4 @@
+import 'package:blog_project/_articles/first_article.dart';
 import 'package:blog_project/entity/user_state_info.dart';
 import 'package:blog_project/init_web_markdown.dart';
 import 'package:blog_project/routes/404.dart';
@@ -13,7 +14,19 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:reflectable/reflectable.dart';
+
+// class MyReflectable extends Reflectable {
+//   const MyReflectable() : super(invokingCapability);
+// }
+// const myReflectable = MyReflectable();
+// const a=10;
+// @myReflectable
 void main() {
+  // Annotate with this class to enable reflection.
+
+  // myReflectable.annotatedClasses;
+
   init();
   runApp(getApp());
 

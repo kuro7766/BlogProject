@@ -38,8 +38,7 @@ class MainContentPage extends StatelessWidget {
       state.observeMain;
       // log2(0, 'outer2build');
       // log2(0, '${state.observeMain[0]}${state.observeMain[1]}');
-      Dbg.log('ourter','b');
-      switch (WrittingTestComponent.previewMarkdown?6:state.viewType.value) {
+      switch (WritingTestComponent.previewMarkdown?6:state.viewType.value) {
       // switch (6) {
         case 0:
           return HomeList();
@@ -52,9 +51,9 @@ class MainContentPage extends StatelessWidget {
         case 4:
           return SearchList();
         case 5:
-          return MarkdownViewerComponent();
+          return UnifiedViewerComponent();
         case 6:
-          return WrittingTestComponent();
+          return WritingTestComponent();
           // break;
       }
       return Container(

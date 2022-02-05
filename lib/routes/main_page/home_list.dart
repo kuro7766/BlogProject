@@ -2,16 +2,20 @@ import 'dart:convert';
 import 'dart:html';
 import 'dart:math';
 
-import 'package:blog_project/_articles/_indexes.dart';
+import 'package:blog_project/indexes/generated_framework_widget_indexes.dart';
 import 'package:blog_project/entity/article_id_entity.dart';
 import 'package:blog_project/entity/article_item_entity.dart';
+import 'package:blog_project/routes/article/unified.dart';
+import 'package:blog_project/routes/article/unified_impl.dart';
 import 'package:blog_project/routes/main_page/main_base_widget.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
+import 'package:blog_project/util/global_controller.dart';
 import 'package:blog_project/util/simple_http_builder.dart';
 import 'package:blog_project/unused/configuration.dart';
 import 'package:blog_project/unused/django_function.dart';
 import 'package:blog_project/widgets/asset_markdown.dart';
+import 'package:blog_project/widgets/cover_widget.dart';
 import 'package:blog_project/widgets/only/image_item.dart';
 import 'package:blog_project/widgets/only/page_index_button.dart';
 import 'package:blog_project/widgets/only/titile_widget.dart';
@@ -28,89 +32,118 @@ import '../blog_gate/logic.dart';
 import '../blog_gate/state_global.dart';
 import 'package:path/path.dart' as p;
 
+// 数据来源
+// 1.markdown
+// 2.自定义组件（生成的）
 class HomeList extends MainContentBaseStatelessWidget {
-  Future<ResponseContent> getAssets() async {
-    // >> To get paths you need these 2 lines
-    final manifestContent = await rootBundle.loadString('AssetManifest.json');
-
-    final Map<String, dynamic> manifestMap = json.decode(manifestContent);
-    // >> To get paths you need these 2 lines
-
-    final imagePaths = manifestMap.keys.toList();
-    Dbg.log(imagePaths.where((element) => element.endsWith('md')), 'kk');
-    // var s=await rootBundle.loadString(imagePaths[0].replaceFirst('assets/', ''));
-    // Dbg.log(s,'kkk');
-    return ResponseContent.success(imagePaths
-        .where((element) => element.startsWith('assets/markdown/'))
-        .toList());
-  }
-
   @override
   Widget build(BuildContext context) {
-    // getAssets();
-    // return Text('hi');
-    return SimpleHttpBuilder(
-      httpFuture: getAssets(),
-      builder: (data) {
-        return Column(
+    return Column(
+      children: [
+        // custom blog
+        ...List.generate(() {
+          var length = articleInfoAndMetasBuilder.length;
+          var leftItems = articleInfoAndMetasBuilder.length -
+              GlobalController.instance.currentStartIndex;
+          var pageShow = 10;
+          return min(leftItems, pageShow);
+        }(), (idx) {
+          // return Text('rrr');
+          // Dbg.log(articleInfoAndMetasBuilder[idx]['builder'],'rrr');
+          return GestureDetector(
+            onTap: () {
+              logic.toArticleById(articleInfoAndMetasBuilder[
+                  GlobalController.instance.currentStartIndex + idx]['id']);
+            },
+            child: ((articleInfoAndMetasBuilder[
+                        GlobalController.instance.currentStartIndex + idx]
+                    ['builder'] as Function)() as UnifiedWritingImpl)
+                .descriptionWidget,
+          );
+        }),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // markdown blog
-            ...List.generate(
-              data.length,
-              (index) {
-                return SimpleHttpBuilder(
-                  httpFuture: (() async {
-                    var s = await rootBundle
-                        .loadString(Uri.decodeFull(data[index]));
-                    // Dbg.log(s);
-                    return ResponseContent.success(
-                        [Uri.decodeFull(p.basename(data[index])), s]);
-                  })(),
-                  builder: (tuple) {
-                    var mdContent = tuple[1];
-                    var title = tuple[0].replaceFirst('\.md', '');
-                    var articleDescription='$mdContent'
-                        .substring(
-                        0, min(200, '$mdContent'.length))
-                        .replaceFirst(title, '');
-                    return GestureDetector(
-                      onTap: () {
-                        logic.toMarkdownArticle(data[index]);
-                      },
-                      child: AssetMarkdown(resource: data[index],digestSubStringLength: 200,useMask: true,),
-                    );
-                    // return Markdown(
-                    //   shrinkWrap: true,
-                    //   selectable: true,
-                    //   data: dd,
-                    // );
-                  },
-                );
+            IconButton(
+              onPressed: () {
+                GlobalController.instance.currentStartIndex -= 10;
+                if (GlobalController.instance.currentStartIndex < 0) {
+                  GlobalController.instance.currentStartIndex = 0;
+                }
               },
+              icon: Icon(Icons.keyboard_arrow_left),
             ),
-            // custom blog
-            ...List.generate(indexes.length,(idx){
-              return UnifiedItem(
-                title: '自定义',
-                child: GestureDetector(
-                  onTap: (){
-                    // logic.toArticle(indexes[idx]);
-                  },
-                  child: indexes[idx](),
-                ),
-              );
-            }),
-            SizedBox(height: 200,)
+            IconButton(
+              onPressed: () {
+                GlobalController.instance.currentStartIndex += 10;
+                if (GlobalController.instance.currentStartIndex >
+                    articleInfoAndMetasBuilder.length - 10) {
+                  GlobalController.instance.currentStartIndex =
+                      articleInfoAndMetasBuilder.length - 10;
+                }
+              },
+              icon: Icon(Icons.keyboard_arrow_right),
+            ),
           ],
-        );
-
-        // return Text('$data');
-      },
+        ),
+        SizedBox(
+          height: 200,
+        ),
+      ],
     );
   }
 }
 
+// Future<ResponseContent> getAssets() async {
+//   // >> To get paths you need these 2 lines
+//   final manifestContent = await rootBundle.loadString('AssetManifest.json');
+//
+//   final Map<String, dynamic> manifestMap = json.decode(manifestContent);
+//   // >> To get paths you need these 2 lines
+//
+//   final imagePaths = manifestMap.keys.toList();
+//   Dbg.log(imagePaths.where((element) => element.endsWith('md')), 'kk');
+//   // var s=await rootBundle.loadString(imagePaths[0].replaceFirst('assets/', ''));
+//   // Dbg.log(s,'kkk');
+//   return ResponseContent.success(imagePaths
+//       .where((element) => element.startsWith('assets/markdown/'))
+//       .toList());
+// }
 
+// markdown blog
+// ...List.generate(
+//   data.length,
+//   (index) {
+//     return SimpleHttpBuilder(
+//       httpFuture: (() async {
+//         var s = await rootBundle
+//             .loadString(Uri.decodeFull(data[index]));
+//         // Dbg.log(s);
+//         return ResponseContent.success(
+//             [Uri.decodeFull(p.basename(data[index])), s]);
+//       })(),
+//       builder: (tuple) {
+//         var mdContent = tuple[1];
+//         var title = tuple[0].replaceFirst('\.md', '');
+//         var articleDescription='$mdContent'
+//             .substring(
+//             0, min(200, '$mdContent'.length))
+//             .replaceFirst(title, '');
+//         return GestureDetector(
+//           onTap: () {
+//             logic.toMarkdownArticle(data[index]);
+//           },
+//           child: CoverMarkdown(resource: data[index],digestSubStringLength: 200,useMask: true,),
+//         );
+//         // return Markdown(
+//         //   shrinkWrap: true,
+//         //   selectable: true,
+//         //   data: dd,
+//         // );
+//       },
+//     );
+//   },
+// ),
 
 // return HttpBuilder<List<ArticleIdEntity>>(
 //   url: DjangoUrl.selectArticleIdByUserName(Config.user),
@@ -188,5 +221,16 @@ class HomeList extends MainContentBaseStatelessWidget {
 //         }),
 //       )),
 //     );
+//   },
+// );
+
+// getAssets();
+// return Text('hi');
+// return SimpleHttpBuilder(
+//   httpFuture: getAssets(),
+//   builder: (data) {
+//     return
+//
+//     // return Text('$data');
 //   },
 // );

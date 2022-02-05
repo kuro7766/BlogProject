@@ -52,11 +52,11 @@ class GlobalLogic extends GetxController {
     state.viewType(4);
   }
 
-  void toMarkdownArticle(String articleId) {
+  void toArticleById(String articleId) {
     // state.viewType.value = 1;
     // state.articleId.value = articleId;
     state.viewType(5);
-    state.articleAssetResource(articleId);
+    state.articleId(articleId);
     _showBanner();
   }
 

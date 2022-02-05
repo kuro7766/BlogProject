@@ -18,6 +18,11 @@ dart compile exe .\lib\exe_tool\a.dart -o a.exe
 
 flutter run -d chrome --web-port=8080 --web-hostname=127.0.0.1
 
+# config
+
+用户编辑:
+editable_article_info_and_meta_indexes.dart
+
 # 参考文章
 https://www.cxyzjd.com/article/tower888/115371706
 https://www.fonts.net.cn/fonts-zh-6.html

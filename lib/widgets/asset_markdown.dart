@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:blog_project/routes/article/unified.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/my_code_style.dart';
 import 'package:blog_project/util/simple_http_builder.dart';
@@ -14,24 +15,30 @@ import 'package:url_launcher/url_launcher.dart';
 import 'only/titile_widget.dart';
 import 'package:path/path.dart' as p;
 
-class AssetMarkdown extends StatelessWidget {
+class CoverMarkdown extends StatelessWidget {
   final String resource;
   final int digestSubStringLength;
-  final sizeNotifier = (Size(0, 0)).obs;
+  final __sizeNotifier = (Size(0, 0)).obs;
   final useMask;
+  final String title;
+  final String resourceString;
 
-
-  AssetMarkdown(
+  CoverMarkdown(
       {Key key,
       this.resource,
       this.digestSubStringLength = 0,
-      this.useMask = false})
+      this.useMask = false,
+      this.title,
+      this.resourceString})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SimpleHttpBuilder(
       httpFuture: (() async {
+        if (resourceString != null) {
+          return ResponseContent.success([this.title ?? '无标题', resourceString]);
+        }
         var s = await rootBundle.loadString(Uri.decodeFull(resource));
         // Dbg.log(s);
         return ResponseContent.success(
@@ -40,10 +47,12 @@ class AssetMarkdown extends StatelessWidget {
       builder: (tuple) {
         var mdContent = tuple[1];
         var title = tuple[0].replaceFirst('\.md', '');
+        mdContent = mdContent.replaceAll(RegExp(r'(^"""|"""$)'), '');
+
         return MeasureSize(
           onChange: (size) {
             Dbg.log('$size');
-            if (useMask) sizeNotifier.value = size;
+            if (useMask) __sizeNotifier.value = size;
           },
           child: Stack(
             children: [
@@ -68,8 +77,8 @@ class AssetMarkdown extends StatelessWidget {
               ),
               Obx(() {
                 return Container(
-                  height: sizeNotifier.value.height,
-                  width: sizeNotifier.value.width,
+                  height: __sizeNotifier.value.height,
+                  width: __sizeNotifier.value.width,
                   color: Colors.transparent,
                 );
                 // return Container();
@@ -90,30 +99,6 @@ class AssetMarkdown extends StatelessWidget {
         //   data: dd,
         // );
       },
-    );
-  }
-}
-
-class UnifiedItem extends StatelessWidget {
-  final Widget child;
-  final String title;
-
-  const UnifiedItem({Key key, this.child, this.title}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TitleCard(
-      title: '$title',
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Container(
-          // color: Colors.orangeAccent,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: child,
-          ),
-        ),
-      ),
     );
   }
 }

@@ -12,14 +12,15 @@ import 'package:url_launcher/url_launcher.dart';
 import 'logic.dart';
 import 'package:markdown/markdown.dart' as m;
 
-class WrittingTestComponent extends StatefulWidget {
+class WritingTestComponent extends StatefulWidget {
   // static var previewMarkdown = true;
-  static get previewMarkdown=>_WrittingTestComponentState.previewMarkdown;
+  static get previewMarkdown => _WritingTestComponentState.previewMarkdown;
+
   @override
-  _WrittingTestComponentState createState() => _WrittingTestComponentState();
+  _WritingTestComponentState createState() => _WritingTestComponentState();
 }
 
-class _WrittingTestComponentState extends State<WrittingTestComponent> {
+class _WritingTestComponentState extends State<WritingTestComponent> {
   final logic = Get.put(WrittingTestLogic());
   final state = Get.find<WrittingTestLogic>().state;
 
@@ -29,38 +30,45 @@ class _WrittingTestComponentState extends State<WrittingTestComponent> {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topLeft,
-      child: MarkdownBody(
-        data: ["""
-x
-"""].last
+      child: Column(
+        children: [
+          MarkdownBody(
+            data: [
+"""
 
-        // http://kuroweb.tk/picture/16433054765217948.jpg
+"""
+            ].last,
+
+            // http://kuroweb.tk/picture/16433054765217948.jpg
 //             """
 // B Hello **bold**
 // sfdasd
 // xxx warning **bold**
 // """r
 
-        // """
-        // B Hello **bold**
-        //
-        // [[warning]] warning **bold**
-        // """
-        ,
-        selectable: true,
-        builders: <String, MarkdownElementBuilder>{
-          'warning': WarningBuilder(),
-        },
-        blockSyntaxes: [
-          B2BlockSyntax(),
+            // """
+            // B Hello **bold**
+            //
+            // [[warning]] warning **bold**
+            // """
+
+            selectable: true,
+            builders: <String, MarkdownElementBuilder>{
+              'warning': WarningBuilder(),
+            },
+            blockSyntaxes: [
+              B2BlockSyntax(),
+            ],
+            onTapLink: (String text, String href, String title) async {
+              var fail = !await launch(href);
+              if (fail) {
+                Get.snackbar('Error', 'Could not open link',
+                    snackPosition: SnackPosition.BOTTOM);
+              }
+            },
+          ),
+          SizedBox(height: 300),
         ],
-        onTapLink: (String text, String href, String title) async {
-          var fail = !await launch(href);
-          if (fail) {
-            Get.snackbar('Error', 'Could not open link',
-                snackPosition: SnackPosition.BOTTOM);
-          }
-        },
       ),
     );
   }

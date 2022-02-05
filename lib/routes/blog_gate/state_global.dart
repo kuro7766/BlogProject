@@ -22,8 +22,7 @@ class MainContentState {
   //主页浏览页码，从1开始
   RxInt currentPage;
 
-  RxInt articleId;
-  RxString articleAssetResource;
+  RxString articleId;
 
   //tagList浏览页码
   RxInt tagCurrentPage;
@@ -38,10 +37,9 @@ class MainContentState {
   void init() {
     viewType = 0.obs;
     currentPage = 1.obs;
-    articleId = 0.obs;
+    articleId = ''.obs;
     tagCurrentPage = 1.obs;
     search = ''.obs;
-    articleAssetResource = ''.obs;
   }
 
   get observeMain => [viewType.value, currentPage.value];
