@@ -1,0 +1,9 @@
+# gene入门
+
+
+数据下载的网站
+
+https://db.cngb.org/gisaid/
+
+https://ngdc.cncb.ac.cn/ncov/release_genome
+
