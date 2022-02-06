@@ -1,11 +1,11 @@
 import 'package:blog_project/_articles/first_article.dart';
 import 'package:blog_project/routes/article/unified_markdown.dart';
 var articleInfoAndMetasBuilder=[
-{'id':'34f130b3-53c2-4229-9373-c3667fb4fa92','builder':()=>UniMd(path: "assets/markdown/机器学习路线.md"),'type':'markdown'},
+{'id':'f7d0bf2a-fa02-4ee7-8b2f-ba25498e6a17','builder':()=>UniMd(path: "assets/markdown/机器学习路线.md"),'type':'markdown'},
+{'id':'37d74e4c-a803-4c72-908a-3a44f2c8d0d2','builder':()=>UniMd(path: "assets/markdown/论文阅读技巧.md"),'type':'markdown'},
 {'id':'d6cce490-9a87-4f72-92e1-f98f4adcb30e','builder':()=>UniMd(path: "assets/markdown/plan.md"),'type':'markdown'},
 {'id':'6b5ab2ce-30f0-47c8-af0a-f8687e50e340','builder':()=>FirstAr(),'type':'widget'},
 {'id':'7d3718e5-70a5-4b07-a447-bb9a9bb7ee2c','builder':()=>UniMd(path: "assets/markdown/cuda配置.md"),'type':'markdown'},
-{'id':'3458004a-db5a-411b-835a-0e76980c54f0','builder':()=>UniMd(path: "assets/markdown/nes游戏联机对战教程.md"),'type':'markdown'},
 {'id':'4d5bbb3f-c1f8-4551-8a71-1de55e475ef8','builder':()=>UniMd(path: "assets/markdown/个人项目总结.md"),'type':'markdown'},
 {'id':'32c37e90-3ad8-49e5-ac98-1c2cbedbdfd5','builder':()=>UniMd(path: "assets/markdown/使用dart编写跨平台命令行工具.md"),'type':'markdown'},
 {'id':'d70345a1-fc9a-4d6d-bb00-3f7873913236','builder':()=>UniMd(path: "assets/markdown/博客创建的动机.md"),'type':'markdown'},
@@ -25,11 +25,11 @@ var articleInfoAndMetasBuilder=[
 {'id':'84327be3-270f-4f7e-85df-f686c2b0e04e','builder':()=>UniMd(path: "assets/markdown/lb第二季op.md"),'type':'markdown'},
 {'id':'f514adf4-61fe-4b6f-8a3f-65259a0db55b','builder':()=>UniMd(path: "assets/markdown/ML优质博客收集.md"),'type':'markdown'},
 ];
-var articleInfoAndMetasQuickIndex={'34f130b3-53c2-4229-9373-c3667fb4fa92':0,
-'d6cce490-9a87-4f72-92e1-f98f4adcb30e':1,
-'6b5ab2ce-30f0-47c8-af0a-f8687e50e340':2,
-'7d3718e5-70a5-4b07-a447-bb9a9bb7ee2c':3,
-'3458004a-db5a-411b-835a-0e76980c54f0':4,
+var articleInfoAndMetasQuickIndex={'f7d0bf2a-fa02-4ee7-8b2f-ba25498e6a17':0,
+'37d74e4c-a803-4c72-908a-3a44f2c8d0d2':1,
+'d6cce490-9a87-4f72-92e1-f98f4adcb30e':2,
+'6b5ab2ce-30f0-47c8-af0a-f8687e50e340':3,
+'7d3718e5-70a5-4b07-a447-bb9a9bb7ee2c':4,
 '4d5bbb3f-c1f8-4551-8a71-1de55e475ef8':5,
 '32c37e90-3ad8-49e5-ac98-1c2cbedbdfd5':6,
 'd70345a1-fc9a-4d6d-bb00-3f7873913236':7,

@@ -63,7 +63,7 @@ class GlobalLogic extends GetxController {
   void toArticleList({home = false}) {
     Future.microtask(() {
       state.viewType.value = 0;
-      if (home) state.currentPage.value = 1;
+      if (home) state.currentPage.value = 0;
       _showBanner();
       _loseTextFieldFocus();
     });
@@ -71,7 +71,7 @@ class GlobalLogic extends GetxController {
 
   void toTagList({home = false}) {
     state.viewType.value = 2;
-    if (home) state.tagCurrentPage.value = 1;
+    if (home) state.tagCurrentPage.value = 0;
     _showBanner();
   }
 

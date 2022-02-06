@@ -11,6 +11,7 @@ import 'package:blog_project/routes/main_page/main_base_widget.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/global_controller.dart';
+import 'package:blog_project/util/obx_widget.dart';
 import 'package:blog_project/util/simple_http_builder.dart';
 import 'package:blog_project/unused/configuration.dart';
 import 'package:blog_project/unused/django_function.dart';
@@ -38,58 +39,63 @@ import 'package:path/path.dart' as p;
 class HomeList extends MainContentBaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // custom blog
-        ...List.generate(() {
-          var length = articleInfoAndMetasBuilder.length;
-          var leftItems = articleInfoAndMetasBuilder.length -
-              GlobalController.instance.currentStartIndex;
-          var pageShow = 10;
-          return min(leftItems, pageShow);
-        }(), (idx) {
-          // return Text('rrr');
-          // Dbg.log(articleInfoAndMetasBuilder[idx]['builder'],'rrr');
-          return GestureDetector(
-            onTap: () {
-              logic.toArticleById(articleInfoAndMetasBuilder[
-                  GlobalController.instance.currentStartIndex + idx]['id']);
-            },
-            child: ((articleInfoAndMetasBuilder[
-                        GlobalController.instance.currentStartIndex + idx]
-                    ['builder'] as Function)() as UnifiedWritingImpl)
-                .descriptionWidget,
-          );
-        }),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+    return ObxObserveWidget(
+      [Get.find<GlobalLogic>().state.currentPage],
+      () {
+        return Column(
           children: [
-            IconButton(
-              onPressed: () {
-                GlobalController.instance.currentStartIndex -= 10;
-                if (GlobalController.instance.currentStartIndex < 0) {
-                  GlobalController.instance.currentStartIndex = 0;
-                }
-              },
-              icon: Icon(Icons.keyboard_arrow_left),
+            // custom blog
+            ...List.generate(() {
+              var length = articleInfoAndMetasBuilder.length;
+              var leftItems = articleInfoAndMetasBuilder.length -
+                  GlobalController.instance.currentStartIndex;
+              var pageShow = 10;
+              return min(leftItems, pageShow);
+            }(), (idx) {
+              // return Text('rrr');
+              // Dbg.log(articleInfoAndMetasBuilder[idx]['builder'],'rrr');
+              return GestureDetector(
+                onTap: () {
+                  logic.toArticleById(articleInfoAndMetasBuilder[
+                      GlobalController.instance.currentStartIndex + idx]['id']);
+                },
+                child: ((articleInfoAndMetasBuilder[
+                            GlobalController.instance.currentStartIndex + idx]
+                        ['builder'] as Function)() as UnifiedWritingImpl)
+                    .descriptionWidget,
+              );
+            }),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    GlobalController.instance.currentStartIndex -= 10;
+                    if (GlobalController.instance.currentStartIndex < 0) {
+                      GlobalController.instance.currentStartIndex = 0;
+                    }
+                  },
+                  icon: Icon(Icons.keyboard_arrow_left),
+                ),
+                IconButton(
+                  onPressed: () {
+                    GlobalController.instance.currentStartIndex += 10;
+                    if (GlobalController.instance.currentStartIndex >
+                        articleInfoAndMetasBuilder.length - 10) {
+                      GlobalController.instance.currentStartIndex =
+                          articleInfoAndMetasBuilder.length - 10;
+                    }
+                  },
+                  icon: Icon(Icons.keyboard_arrow_right),
+                ),
+              ],
             ),
-            IconButton(
-              onPressed: () {
-                GlobalController.instance.currentStartIndex += 10;
-                if (GlobalController.instance.currentStartIndex >
-                    articleInfoAndMetasBuilder.length - 10) {
-                  GlobalController.instance.currentStartIndex =
-                      articleInfoAndMetasBuilder.length - 10;
-                }
-              },
-              icon: Icon(Icons.keyboard_arrow_right),
+            SizedBox(
+              height: 200,
             ),
           ],
-        ),
-        SizedBox(
-          height: 200,
-        ),
-      ],
+        );
+      }
     );
   }
 }

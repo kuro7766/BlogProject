@@ -363,7 +363,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                       color: Colors.transparent,
                       child: InkWell(
                         onTap: () {
-                          logic.toArticleList(home: true);
+                          logic.toArticleList(home: false);
                         },
                         child: Padding(
                           padding: Cfg.isMobile

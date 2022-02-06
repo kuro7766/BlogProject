@@ -36,9 +36,9 @@ class MainContentState {
 
   void init() {
     viewType = 0.obs;
-    currentPage = 1.obs;
+    currentPage = 0.obs;
     articleId = ''.obs;
-    tagCurrentPage = 1.obs;
+    tagCurrentPage = 0.obs;
     search = ''.obs;
   }
 

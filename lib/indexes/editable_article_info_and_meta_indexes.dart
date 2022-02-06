@@ -1,9 +1,9 @@
 List<dynamic> articleInfoAndMetas = 
-[{'path':'assets/markdown/机器学习路线.md','tag':'','id':'34f130b3-53c2-4229-9373-c3667fb4fa92','time':1644084283000,'type':'markdown'},
+[{'path':'assets/markdown/机器学习路线.md','tag':'','id':'f7d0bf2a-fa02-4ee7-8b2f-ba25498e6a17','time':1644128624000,'type':'markdown'},
+{'path':'assets/markdown/论文阅读技巧.md','tag':'','id':'37d74e4c-a803-4c72-908a-3a44f2c8d0d2','time':1644128624000,'type':'markdown'},
 {'path':'assets/markdown/plan.md','tag':'aaavdd','id':'d6cce490-9a87-4f72-92e1-f98f4adcb30e','time':1644081194000,'type':'markdown'},
 {'path':'lib/_articles/first_article.dart','tag':'null','id':'6b5ab2ce-30f0-47c8-af0a-f8687e50e340','time':1644077085000,'type':'widget'},
 {'path':'assets/markdown/cuda配置.md','tag':'','id':'7d3718e5-70a5-4b07-a447-bb9a9bb7ee2c','time':1644041682000,'type':'markdown'},
-{'path':'assets/markdown/nes游戏联机对战教程.md','tag':'','id':'3458004a-db5a-411b-835a-0e76980c54f0','time':1643991249000,'type':'markdown'},
 {'path':'assets/markdown/个人项目总结.md','tag':'','id':'4d5bbb3f-c1f8-4551-8a71-1de55e475ef8','time':1643991249000,'type':'markdown'},
 {'path':'assets/markdown/使用dart编写跨平台命令行工具.md','tag':'','id':'32c37e90-3ad8-49e5-ac98-1c2cbedbdfd5','time':1643991249000,'type':'markdown'},
 {'path':'assets/markdown/博客创建的动机.md','tag':'','id':'d70345a1-fc9a-4d6d-bb00-3f7873913236','time':1643991249000,'type':'markdown'},
