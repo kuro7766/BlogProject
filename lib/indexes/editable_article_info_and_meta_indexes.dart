@@ -1,6 +1,7 @@
 List<dynamic> articleInfoAndMetas = 
-[{'path':'assets/markdown/机器学习路线.md','tag':'','id':'f7d0bf2a-fa02-4ee7-8b2f-ba25498e6a17','time':1644128624000,'type':'markdown'},
-{'path':'assets/markdown/论文阅读技巧.md','tag':'','id':'37d74e4c-a803-4c72-908a-3a44f2c8d0d2','time':1644128624000,'type':'markdown'},
+[{'path':'assets/markdown/kaggle 入门总结.md','tag':'','id':'0841a718-f6ab-4ee4-a6d5-be6e1ef2ce44','time':1644134895000,'type':'markdown'},
+{'path':'assets/markdown/机器学习路线.md','tag':'','id':'ca602923-830d-4c47-aed1-3093eaebc939','time':1644134895000,'type':'markdown'},
+{'path':'assets/markdown/论文阅读技巧.md','tag':'','id':'ce68b90f-d14b-44d5-a208-cf6d15e06632','time':1644134895000,'type':'markdown'},
 {'path':'assets/markdown/plan.md','tag':'aaavdd','id':'d6cce490-9a87-4f72-92e1-f98f4adcb30e','time':1644081194000,'type':'markdown'},
 {'path':'lib/_articles/first_article.dart','tag':'null','id':'6b5ab2ce-30f0-47c8-af0a-f8687e50e340','time':1644077085000,'type':'widget'},
 {'path':'assets/markdown/cuda配置.md','tag':'','id':'7d3718e5-70a5-4b07-a447-bb9a9bb7ee2c','time':1644041682000,'type':'markdown'},
