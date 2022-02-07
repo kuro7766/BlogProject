@@ -1,4 +1,4 @@
-# colab ipynb一键生成pdf
+colab ipynb一键生成pdf
 
 把以下代码输入单元格里，并输入当前文件名称 current_notebook_name，运行即可在content/ 目录下找到pdf文件
 
