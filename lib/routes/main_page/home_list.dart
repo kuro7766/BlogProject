@@ -11,6 +11,7 @@ import 'package:blog_project/routes/main_page/main_base_widget.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/global_controller.dart';
+import 'package:blog_project/util/mixin/evnetbus_mixin.dart';
 import 'package:blog_project/util/obx_widget.dart';
 import 'package:blog_project/util/simple_http_builder.dart';
 import 'package:blog_project/unused/configuration.dart';
@@ -18,6 +19,7 @@ import 'package:blog_project/unused/django_function.dart';
 import 'package:blog_project/widgets/asset_markdown.dart';
 import 'package:blog_project/widgets/cover_widget.dart';
 import 'package:blog_project/widgets/only/image_item.dart';
+import 'package:blog_project/widgets/only/inner_layer.dart';
 import 'package:blog_project/widgets/only/page_index_button.dart';
 import 'package:blog_project/widgets/only/titile_widget.dart';
 import 'package:blog_project/widgets/reusable/http_builder.dart';
@@ -74,6 +76,7 @@ class HomeList extends MainContentBaseStatelessWidget {
                     if (GlobalController.instance.currentStartIndex < 0) {
                       GlobalController.instance.currentStartIndex = 0;
                     }
+                    fireEvent(ManageInnerLayerState, 'top');
                   },
                   icon: Icon(Icons.keyboard_arrow_left),
                 ),
@@ -85,6 +88,7 @@ class HomeList extends MainContentBaseStatelessWidget {
                       GlobalController.instance.currentStartIndex =
                           articleInfoAndMetasBuilder.length - 10;
                     }
+                    fireEvent(ManageInnerLayerState, 'top');
                   },
                   icon: Icon(Icons.keyboard_arrow_right),
                 ),

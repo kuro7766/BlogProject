@@ -40,15 +40,20 @@ class MiddleWare extends GetMiddleware {
   @override
   RouteSettings redirect(String route) {
     Dbg.log(route, 'CheckLoginMiddleWare');
+
     if(route=='/'){
       return RouteSettings(name: '/entrance');
     }
+
     if(route=='/entrance'){
       return null;
     }
+
     if(route.startsWith('/entrance')){
+      Dbg.log(Get.parameters,'gar');
       return RouteSettings(name: '/entrance',arguments: Get.parameters);
     }
+
     if (route == '/login') {
       if (GetStorage().hasData('token')) {
         return RouteSettings(name: '/manage');
@@ -78,7 +83,8 @@ Widget getApp() {
     },
     child: GetMaterialApp(
       title: 'kuroの小站',
-      initialRoute: '/entrance',
+      // initialRoute: '/entrance',
+      initialRoute: '/',
       // onGenerateRoute: ,
       getPages: [
         GetPage(

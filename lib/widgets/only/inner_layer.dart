@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:blog_project/config.dart';
 import 'package:blog_project/util/debug.dart';
+import 'package:blog_project/util/mixin/evnetbus_mixin.dart';
 import 'package:blog_project/widgets/only/markdown_web.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +17,10 @@ class ManageInnerLayer extends StatefulWidget {
   ManageInnerLayer({this.left, this.right});
 
   @override
-  _ManageInnerLayerState createState() => _ManageInnerLayerState();
+  ManageInnerLayerState createState() => ManageInnerLayerState();
 }
 
-class _ManageInnerLayerState extends State<ManageInnerLayer> {
+class ManageInnerLayerState extends State<ManageInnerLayer> with StateEventBusReceiverMixin,BaseEventBusMixin{
   ScrollController controller;
   StreamSubscription _scrollStreamSubscription;
 
@@ -34,6 +35,13 @@ class _ManageInnerLayerState extends State<ManageInnerLayer> {
       if (target < 0) target = 0;
       controller?.jumpTo(target);
     });
+  }
+
+  @override
+  void receiveEvent(message) {
+    if(message=='top'){
+      controller?.animateTo(0, duration: Duration(milliseconds: 300), curve: Curves.ease);
+    }
   }
 
   @override
