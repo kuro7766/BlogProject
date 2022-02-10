@@ -19,16 +19,19 @@ Future<List<FileSystemEntity>> dirContents(Directory dir) {
 void main() async {
   var dirs = (await dirContents(Directory(('assets/markdown'))));
   print(dirs);
-  await Directory(p.join('assets/',
-      'generated')).create();
+  await Directory(p.join('assets/', 'generated')).create();
   var shell = Shell(stdoutEncoding: Encoding.getByName('utf-8'));
   for (var i = 0; i < dirs.length; i++) {
     var element = dirs[i];
 
     var old = Directory(element.path);
-
+    // is element a directory?
+    if (element is Directory) {
+    } else {
+      await shell.run('''tools/MdConverter "${element.path}"''');
+    }
     // element.rename(p.join(element.parent.path,p.basename(element.path)));
-    await shell.run('''tools/MdConverter "${element.path}"''');
+    // await shell.run('''tools/MdConverter "${element.path}"''');
     // await Future.delayed(Duration(milliseconds: 200));
 
     // var tmp = (p.join(element.parent.parent.path, 'generated',
@@ -49,9 +52,9 @@ void main() async {
   print(dirs);
   // return;
 
-  var to=await Directory(p.join('assets/',
-      'generated',
-      '${DateTime.now().millisecondsSinceEpoch}')).create();
+  var to = await Directory(p.join(
+          'assets/', 'generated', '${DateTime.now().millisecondsSinceEpoch}'))
+      .create();
   for (var i = 0; i < dirs.length; i++) {
     var element = dirs[i];
     if (p.basename(element.path).startsWith('d-')) {
@@ -59,11 +62,14 @@ void main() async {
       // await File(element.path).rename(
       //     p.join(element.parent.path, 'sss',p.basename(element.path).substring(2)));
     } else {
-      var target=p.join(
-          to.path,
-          p.basename(element.path));
-      print(target);
-      await element.rename(target);
+      // var target = p.join(
+      //     to.path, p.basename(element.path.replaceAll('assets/markdown', '')));
+      // print(target);
+      // await element.rename(target);
+      if (element is Directory) {
+      } else {
+        element.deleteSync();
+      }
       // await Directory((element.path)).rename(target);
     }
   }
@@ -72,8 +78,8 @@ void main() async {
     var element = dirs[i];
     if (p.basename(element.path).startsWith('d-')) {
       // await element.delete();
-      await File(element.path).rename(
-          p.join(Directory.current.path,element.parent.path, 'sss',p.basename(element.path).substring(2)));
+      await File(element.path).rename(p.join(Directory.current.path,
+          element.parent.path, 'sss', p.basename(element.path).substring(2)));
     } else {
       // await Directory(p.fromUri(element.path)).rename(p.join(
       //     element.parent.path,
@@ -82,5 +88,4 @@ void main() async {
       //     p.basename(element.path)));
     }
   }
-
 }

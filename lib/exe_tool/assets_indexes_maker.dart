@@ -16,9 +16,9 @@ Future<List<FileSystemEntity>> dirContents(Directory dir) {
 
 void main() async {
   var assetFiles = await dirContents(Directory('assets/markdown'));
-  var widgetArticles=articleInfoAndMetas.where((element){
+  var widgetArticles = articleInfoAndMetas.where((element) {
     // print(element['type']);
-    return element['type']=='widget';
+    return element['type'] == 'widget';
   }).toList();
   articleInfoAndMetas = articleInfoAndMetas
       .where((element) => element['type'] == 'markdown')
@@ -34,6 +34,11 @@ void main() async {
   // print(assetFiles);
   for (var value in assetFiles) {
     var f = File(value.path);
+    //if f is directory
+    if (value is Directory) {
+      continue;
+    }
+
     var content = await f.readAsString();
     final stat = FileStat.statSync(value.path);
     // print(value.path);
