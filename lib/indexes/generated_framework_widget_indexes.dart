@@ -1,8 +1,8 @@
 import 'package:blog_project/_articles/first_article.dart';
 import 'package:blog_project/routes/article/unified_markdown.dart';
 var articleInfoAndMetasBuilder=[
-{'id':'bf3751c9-174d-4b41-a45b-de067fff1285','builder':()=>UniMd(path: "assets/markdown/leetcode/leetcode笔记_2月.md"),'type':'markdown'},
-{'id':'6c8c389f-2664-4ce0-8fa1-8e85b627befa','builder':()=>UniMd(path: "assets/markdown/pytorch cuda配置.md"),'type':'markdown'},
+{'id':'49a05a84-18fd-463c-9aee-a695c51c4e5e','builder':()=>UniMd(path: "assets/markdown/leetcode/leetcode笔记_2月.md"),'type':'markdown'},
+{'id':'184b22c9-5275-48c5-8af8-4a6e9fd22fa2','builder':()=>UniMd(path: "assets/markdown/pytorch cuda配置.md"),'type':'markdown'},
 {'id':'868a1dc8-1e08-46cf-b919-5fd136be7a21','builder':()=>UniMd(path: "assets/markdown/机器学习路线.md"),'type':'markdown'},
 {'id':'0a8a3697-78ee-4db1-bb1b-0cd2460175f3','builder':()=>UniMd(path: "assets/markdown/概念速查.md"),'type':'markdown'},
 {'id':'8162d495-8892-4cba-89d7-f87230f8cf95','builder':()=>UniMd(path: "assets/markdown/论文阅读技巧.md"),'type':'markdown'},
@@ -30,8 +30,8 @@ var articleInfoAndMetasBuilder=[
 {'id':'84327be3-270f-4f7e-85df-f686c2b0e04e','builder':()=>UniMd(path: "assets/markdown/lb第二季op.md"),'type':'markdown'},
 {'id':'f514adf4-61fe-4b6f-8a3f-65259a0db55b','builder':()=>UniMd(path: "assets/markdown/ML优质博客收集.md"),'type':'markdown'},
 ];
-var articleInfoAndMetasQuickIndex={'bf3751c9-174d-4b41-a45b-de067fff1285':0,
-'6c8c389f-2664-4ce0-8fa1-8e85b627befa':1,
+var articleInfoAndMetasQuickIndex={'49a05a84-18fd-463c-9aee-a695c51c4e5e':0,
+'184b22c9-5275-48c5-8af8-4a6e9fd22fa2':1,
 '868a1dc8-1e08-46cf-b919-5fd136be7a21':2,
 '0a8a3697-78ee-4db1-bb1b-0cd2460175f3':3,
 '8162d495-8892-4cba-89d7-f87230f8cf95':4,
