@@ -28,7 +28,7 @@ class Const {
   static const barColor = Color(0xFF7266BA);
   static const appBarColor = Color(0xFF7266BA);
 
-  static get normalTextSize => Cfg.isMobile ? 35.0 : 22.0;
+  static get normalTextSize => Cfg.isMobile ? 30.0 : 22.0;
   static const rListDefaultGap = 25.0;
   static const loginDividerHeight = 50.0;
   static const defaultUser = 'kuro';

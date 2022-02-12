@@ -30,6 +30,7 @@ class TitleCard extends StatelessWidget {
                         fontSize: Const.normalTextSize),
                   ),
                 ),
+                SizedBox(height: 20,),
                 child
               ],
             ),
