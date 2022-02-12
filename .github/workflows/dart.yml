@@ -40,7 +40,7 @@ jobs:
     - run: git add -f ./build/web
     - run: git commit -m "auto changes"
 
-    - run: find ./
+    # - run: find ./
 
     - name: Push changes
       uses: ad-m/github-push-action@master
