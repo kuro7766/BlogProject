@@ -24,7 +24,7 @@ jobs:
         channel: stable
     - run: git checkout local_website
 
-    - run: format.bat
+    - run: ./format.bat
 #    - run: flutter config --enable-web
     - run: flutter pub get
     - run: flutter build web
