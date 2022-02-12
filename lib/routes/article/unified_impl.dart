@@ -32,11 +32,11 @@ abstract class UnifiedWritingImpl {
   int get widgetDescriptionSlices => 1;
 
   Widget get thisWidget => this as Widget;
-
+  Widget get descriptionWidgetContent => widgets==null?Container():Column(
+    children: [...widgets?.sublist(0, widgetDescriptionSlices)],
+  );
   Widget get descriptionWidget => UnifiedItem(
     title: metaInfo['title'],
-    child: Column(
-          children: [...widgets?.sublist(0, widgetDescriptionSlices)],
-        ),
+    child: descriptionWidgetContent,
   );
 }

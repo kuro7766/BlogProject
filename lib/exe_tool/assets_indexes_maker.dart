@@ -92,6 +92,10 @@ void main() async {
   // print(articleInfoAndMetas);
 
   for (var element in (await dirContents(Directory('lib/_articles')))) {
+    // if directory
+    if (element is Directory) {
+      continue;
+    }
     var f = File(element.path);
     var content = await f.readAsString();
     var match = RegExp(
