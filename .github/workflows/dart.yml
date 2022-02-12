@@ -13,8 +13,8 @@ jobs:
 #    steps:
 #    - run: echo hello world
   build:
-    runs-on: ubuntu-latest
-    # runs-on: windows-latest
+    # runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
 #      with:
@@ -26,8 +26,8 @@ jobs:
 
 #    - run: flutter config --enable-web
     - run: flutter pub get
-#    - run: flutter build web
-    - run: flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=/BlogProject/build/web/lib/
+   - run: flutter build web
+    # - run: flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=/BlogProject/build/web/lib/
 
 #    - run: git checkout deployment
 
