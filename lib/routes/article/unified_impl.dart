@@ -5,7 +5,11 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 ///
-///
+///   快速博客编写工具说明文档。
+// 
+// 　　如果是无状态的组件，一切都将正常工作。
+//
+// 　　如果是在有状态的组件，则需要在状态和组件上面都mix这个类，其中组件的编写都在state里面，而对外展示的一些数据，比如描述的内容，必须在从外层的创建状态上面编写代码。
 ///
 abstract class UnifiedWritingImpl {
   MarkdownBody md(data) => MarkdownBody(

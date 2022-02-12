@@ -2,8 +2,8 @@ import 'package:blog_project/_articles/react1/view.dart';
 import 'package:blog_project/_articles/first_article.dart';
 import 'package:blog_project/routes/article/unified_markdown.dart';
 var articleInfoAndMetasBuilder=[
-{'id':'c66f2e63-bbb7-4fac-ac7f-287b60ee25fe','builder':()=>UniMd(path: "assets/markdown/深度学习工具网站.md"),'type':'markdown'},
-{'id':'9fa29f27-f3f1-4d46-bad5-1d7527c46747','builder':()=>React1Component(),'type':'widget'},
+{'id':'8fb57e6a-b75c-487d-89aa-fd09e33d2590','builder':()=>UniMd(path: "assets/markdown/深度学习工具网站.md"),'type':'markdown'},
+{'id':'9a692590-e540-46a4-a541-aa66e60bf23f','builder':()=>React1Component(),'type':'widget'},
 {'id':'9f063ad9-7181-4f59-ad32-c33631658719','builder':()=>UniMd(path: "assets/markdown/leetcode/leetcode笔记_2月.md"),'type':'markdown'},
 {'id':'bb243588-14d4-401a-a5c3-6fa487db8509','builder':()=>UniMd(path: "assets/markdown/pytorch cuda配置.md"),'type':'markdown'},
 {'id':'868a1dc8-1e08-46cf-b919-5fd136be7a21','builder':()=>UniMd(path: "assets/markdown/机器学习路线.md"),'type':'markdown'},
@@ -33,8 +33,8 @@ var articleInfoAndMetasBuilder=[
 {'id':'84327be3-270f-4f7e-85df-f686c2b0e04e','builder':()=>UniMd(path: "assets/markdown/lb第二季op.md"),'type':'markdown'},
 {'id':'f514adf4-61fe-4b6f-8a3f-65259a0db55b','builder':()=>UniMd(path: "assets/markdown/ML优质博客收集.md"),'type':'markdown'},
 ];
-var articleInfoAndMetasQuickIndex={'c66f2e63-bbb7-4fac-ac7f-287b60ee25fe':0,
-'9fa29f27-f3f1-4d46-bad5-1d7527c46747':1,
+var articleInfoAndMetasQuickIndex={'8fb57e6a-b75c-487d-89aa-fd09e33d2590':0,
+'9a692590-e540-46a4-a541-aa66e60bf23f':1,
 '9f063ad9-7181-4f59-ad32-c33631658719':2,
 'bb243588-14d4-401a-a5c3-6fa487db8509':3,
 '868a1dc8-1e08-46cf-b919-5fd136be7a21':4,

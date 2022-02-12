@@ -5,23 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'logic.dart';
-@ArticleMetaData({
-  "title": "Test",
-  "tag":"",
-  "date": "2022-02-12 21:20:54"
-})
-class React1Component extends StatefulWidget with UnifiedWritingImpl{
+
+@ArticleMetaData({"title": "Test", "tag": "", "date": "2022-02-12 21:20:54"})
+class React1Component extends StatefulWidget with UnifiedWritingImpl {
   @override
   _React1ComponentState createState() => _React1ComponentState();
 
   @override
   // TODO: implement descriptionWidgetContent
-  Widget get descriptionWidgetContent => Column(children: [
-    md('计数器测试')
-  ],);
+  Widget get descriptionWidgetContent => Column(
+        children: [md('计数器测试-新')],
+      );
 }
 
-class _React1ComponentState extends State<React1Component> with UnifiedWritingImpl{
+class _React1ComponentState extends State<React1Component>
+    with UnifiedWritingImpl {
   final logic = Get.put(React1Logic());
   final state = Get.find<React1Logic>().state;
 
