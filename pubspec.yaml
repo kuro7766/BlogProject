@@ -97,6 +97,7 @@ dependencies:
   syntax_highlighter: ^0.1.1
   process_run: ^0.12.2+2
   reflectable: ^3.0.5
+  widget_mask: ^1.0.0
 
 dev_dependencies:
   flutter_test:

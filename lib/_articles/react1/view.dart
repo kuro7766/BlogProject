@@ -3,6 +3,7 @@ import 'package:blog_project/util/annotation/widget_article_meta_data.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:widget_mask/widget_mask.dart';
 
 import 'logic.dart';
 
@@ -35,7 +36,8 @@ class _React1ComponentState extends State<React1Component>
                 onPressed: () {
                   state.counter.value++;
                 },
-                child: Text('click'))
+                child: Text('click')),
+       
           ],
         );
       }),

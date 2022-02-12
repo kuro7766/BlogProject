@@ -14,7 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 abstract class UnifiedWritingImpl {
   MarkdownBody md(data) => MarkdownBody(
         data: data,
-        selectable: true,
+        selectable: false,
         syntaxHighlighter: HighLight(),
         onTapLink: (String text, String href, String title) async {
           var fail = !await launch(href);
