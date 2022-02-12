@@ -21,7 +21,7 @@ class UniMd extends StatelessWidget with UnifiedWritingImpl {
   UniMd({Key key, this.time, this.path, this.tag, this.id}) : super(key: key);
 
   @override
-  Widget get descriptionWidget => UnifiedItem(
+  Widget get DESCRIPTION => UnifiedItem(
         title: p.basename(path).replaceAll('\.md', ''),
         child: contentWidget(false),
       );

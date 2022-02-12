@@ -64,7 +64,7 @@ class HomeList extends MainContentBaseStatelessWidget {
                 child: ((articleInfoAndMetasBuilder[
                             GlobalController.instance.currentStartIndex + idx]
                         ['builder'] as Function)() as UnifiedWritingImpl)
-                    .descriptionWidget,
+                    .DESCRIPTION,
               );
             }),
             Row(
