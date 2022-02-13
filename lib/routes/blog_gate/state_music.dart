@@ -11,6 +11,7 @@ class MusicState {
   }
 
   List musicList = [
-    {'name': "BOYS DON'T CRY", 'url': neteaseMusicId('28561001')}
+    {'name': "BOYS DON'T CRY", 'url': neteaseMusicId('28561001')},
+    {'name': "夜の向日葵", 'url': neteaseMusicId('4937357')},
   ];
 }
