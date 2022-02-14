@@ -8,6 +8,16 @@
 
 # 分布式训练
 
+# 查看conda python环境是否生效
+
+打开我们的cmd命令
+
+输入Python
+
+输入 import sys
+
+输入 print(sys.path)
+
 # 参考
 
 [Previous PyTorch Versions | PyTorch](https://pytorch.org/get-started/previous-versions/)
