@@ -12,7 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 // 　　如果是在有状态的组件，则需要在状态和组件上面都mix这个类，其中组件的编写都在state里面，而对外展示的一些数据，比如描述的内容，必须在从外层的创建状态上面编写代码。
 ///
 abstract class UnifiedWritingImpl {
-  MarkdownBody md(data) => MarkdownBody(
+  MarkdownBody md(String data) => MarkdownBody(
         data: data,
         selectable: false,
         syntaxHighlighter: HighLight(),
