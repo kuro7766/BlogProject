@@ -5,6 +5,8 @@ import 'package:blog_project/entity/show_banner_event.dart';
 import 'package:blog_project/routes/blog_gate/state_music.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
+import 'package:blog_project/util/mixin/evnetbus_mixin.dart';
+import 'package:blog_project/widgets/only/inner_layer.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,6 +35,7 @@ class GlobalLogic extends GetxController {
 
   void _showBanner() {
     _eventBus.fire(ShowBannerEvent());
+    fireEvent(ManageInnerLayerState, 'top');
   }
 
   void changeSearchBarFocus(bool focus) {
