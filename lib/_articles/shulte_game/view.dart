@@ -68,7 +68,7 @@ class _Shulte_gameComponentState extends State<Shulte_gameComponent>
                               child: Text(
                                 '${logic.getValue(x, y)}',
                                 style: TextStyle(
-                                    fontSize: blockItemSize * 0.8,
+                                    fontSize: blockItemSize * 0.5,
                                     color: Colors.black),
                               ),
                             ),
