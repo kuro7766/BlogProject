@@ -7,6 +7,7 @@ import 'package:blog_project/routes/welcome/inner_layer.dart';
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/unused/configuration.dart';
 import 'package:blog_project/unused/django_function.dart';
+import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/widgets/iframe_widget.dart';
 import 'package:blog_project/widgets/only/inner_layer.dart';
 import 'package:blog_project/widgets/only/titile_widget.dart';
@@ -45,6 +46,9 @@ class CenterInnerLayerContainerState extends State<CenterInnerLayerContainer>
   @override
   Widget build(BuildContext context) {
     log2(1, 'rebuild right');
+    // var h=MediaQuery.of(context).size.height;
+    // var w=(MediaQuery.of(context).size.width);
+    // Dbg.log('$w,$h','wh');
     return ManageInnerLayer(
       left: MainContentPage(),
       right: Padding(

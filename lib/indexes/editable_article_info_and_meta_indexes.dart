@@ -1,6 +1,9 @@
 List<dynamic> articleInfoAndMetas = 
-[{'path':'assets/markdown/深度学习工具网站.md','tag':'','id':'a72656bd-d404-4f7d-aa0a-f3b95489d4be','time':1644674377000,'type':'markdown'},
-{'path':'lib/_articles/react1/view.dart','tag':'null','id':'325fb5bb-18cc-4533-8313-35845a8f1dea','time':1644672054000,'type':'widget'},
+[{'path':'lib/_articles/shulte_game/view.dart','tag':'null','id':'89877557-4c0a-4c3a-a4aa-321518c480e1','time':1644898097000,'type':'widget'},
+{'path':'assets/markdown/实习/NLP实习面经收集.md','tag':'','id':'3b46dd0f-5abb-4fd8-bc42-89ed1dd1cc05','time':1644853114000,'type':'markdown'},
+{'path':'assets/markdown/深度学习-学习资料.md','tag':'','id':'40550cf7-e8fa-4524-b98a-e091965abeaf','time':1644687465000,'type':'markdown'},
+{'path':'assets/markdown/深度学习工具网站.md','tag':'','id':'eeaf6ec7-4ec1-4ba0-b04c-d555cda41b77','time':1644687465000,'type':'markdown'},
+{'path':'lib/_articles/react1/view.dart','tag':'null','id':'5a0d645e-daf5-4046-89ba-dbf761745fa0','time':1644672054000,'type':'widget'},
 {'path':'assets/markdown/leetcode/leetcode笔记_2月.md','tag':'','id':'9f063ad9-7181-4f59-ad32-c33631658719','time':1644512985000,'type':'markdown'},
 {'path':'assets/markdown/pytorch cuda配置.md','tag':'','id':'bb243588-14d4-401a-a5c3-6fa487db8509','time':1644512985000,'type':'markdown'},
 {'path':'assets/markdown/机器学习路线.md','tag':'','id':'868a1dc8-1e08-46cf-b919-5fd136be7a21','time':1644465917000,'type':'markdown'},
@@ -27,6 +30,5 @@ List<dynamic> articleInfoAndMetas =
 {'path':'assets/markdown/colab ipynb一键生成pdf.md','tag':'','id':'8553ce10-51c8-4d41-9c4d-1ca58b976828','time':1643991248000,'type':'markdown'},
 {'path':'assets/markdown/gene入门.md','tag':'','id':'975838e3-64fb-43ca-8d07-581466acae8c','time':1643991248000,'type':'markdown'},
 {'path':'assets/markdown/github pages 免服务器实现评论功能.md','tag':'','id':'df3eb1f5-5b81-4b51-85be-8739f6be34d7','time':1643991248000,'type':'markdown'},
-{'path':'assets/markdown/lb第二季op.md','tag':'','id':'84327be3-270f-4f7e-85df-f686c2b0e04e','time':1643991248000,'type':'markdown'},
-{'path':'assets/markdown/ML优质博客收集.md','tag':'','id':'f514adf4-61fe-4b6f-8a3f-65259a0db55b','time':1643991248000,'type':'markdown'},];
+{'path':'assets/markdown/lb第二季op.md','tag':'','id':'84327be3-270f-4f7e-85df-f686c2b0e04e','time':1643991248000,'type':'markdown'},];
   
