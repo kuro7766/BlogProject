@@ -56,7 +56,7 @@ class ManageInnerLayerState extends State<ManageInnerLayer> with StateEventBusRe
   @override
   Widget build(BuildContext context) {
     return ListView(
-      physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      // physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       controller: controller,
       children: [
         SizedBox(
