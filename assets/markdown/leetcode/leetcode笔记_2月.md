@@ -1,3 +1,7 @@
+- leetcode
+
+[hot 100](https://leetcode-cn.com/problem-list/2cktkvj/)
+
 - 动态规划
 
     它的递归思想就是：一条最优路径(方案)切成两段，那么每一段都是一条（局部）最优路径（方案）。

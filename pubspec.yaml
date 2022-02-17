@@ -124,6 +124,7 @@ flutter:
     - assets/markdown/leetcode/
     - assets/markdown/实习/
     - assets/markdown/基础知识/
+    - assets/markdown/DL/
 #   assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
