@@ -34,12 +34,11 @@ class _WritingTestComponentState extends State<WritingTestComponent> {
         children: [
           MarkdownBody(
             data: [
-"""
+              """
 
 """
             ].last,
 
-            // http://kuroweb.tk/picture/16433054765217948.jpg
 //             """
 // B Hello **bold**
 // sfdasd

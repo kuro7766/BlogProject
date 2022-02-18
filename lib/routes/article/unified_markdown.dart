@@ -27,30 +27,38 @@ class UniMd extends StatelessWidget with UnifiedWritingImpl {
       );
 
   Widget contentWidget(var preview) {
-   return SimpleHttpBuilder(
-     httpFuture: (() async {
-       Dbg.log(path);
-       var s = await rootBundle.loadString((path));
-       // Dbg.log(s,'sp');
-       return ResponseContent.success(
-           [(p.basename(path)), s]);
-     })(),
-     builder: (tuple) {
-       // return Text('fdslaj');
-       String mdContent = tuple[1];
-       var title = tuple[0].replaceFirst('\.md', '');
-       mdContent = mdContent.replaceAll(RegExp(r'(^"""|"""$)'), '');
+    return SimpleHttpBuilder(
+      httpFuture: (() async {
+        Dbg.log(path);
+        var s = await rootBundle.loadString((path));
+        // Dbg.log(s,'sp');
+        return ResponseContent.success([(p.basename(path)), s]);
+      })(),
+      builder: (tuple) {
+        // return Text('fdslaj');
+        String mdContent = tuple[1];
+        var title = tuple[0].replaceFirst('\.md', '');
+        mdContent = mdContent.replaceAll(RegExp(r'(^"""|"""$)'), '');
 
-       return MaskWidget(useMask: !preview,child: md(mdContent.substring(0, !preview?min(mdContent.length, 200):mdContent.length)));
-     },
-   );
+        return MaskWidget(
+            useMask: !preview,
+            child: md(mdContent
+                .substring(
+                    0, !preview ? min(mdContent.length, 200) : mdContent.length)
+                ));
+      },
+    );
   }
 
   @override
-  List<Widget> get widgets => [
-        contentWidget(true)
-      ];
+  List<Widget> get widgets => [contentWidget(true)];
 
   @override
-  get metaInfo => {'time': time, 'tag': tag, 'id': id, 'path': path,'title':p.basename(path).replaceAll('\.md', '')};
+  get metaInfo => {
+        'time': time,
+        'tag': tag,
+        'id': id,
+        'path': path,
+        'title': p.basename(path).replaceAll('\.md', '')
+      };
 }
