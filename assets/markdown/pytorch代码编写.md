@@ -12,3 +12,4 @@
     matrix-matrix
     torch.mm(A,B)
     torch.mv(A,x)
+
