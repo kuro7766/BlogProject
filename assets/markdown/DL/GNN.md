@@ -11,12 +11,12 @@ https://easyai.tech/blog/gnn-deepwalk-graphsage/
 
 # DGL 
 图神经网络的算法框架，可以让我们更好的理解图神经网络的构建过程。
-大大减少了图结构描述的复杂程度。
+
 
 ## GCN
 
-# GraphGallery大大减少了图结构描述的复杂程度。
-一个更加傻瓜式的代码框架。
+# GraphGallery
+    一个更加傻瓜式的代码框架。大大减少了图结构描述的复杂程度。
 
 　　https://mp.weixin.qq.com/s/BQckmL3grsXy7Y3Ph-x3Yw
 
