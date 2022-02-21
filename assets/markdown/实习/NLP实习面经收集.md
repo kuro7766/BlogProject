@@ -8,4 +8,14 @@ https://blog.csdn.net/weixin_43485035/article/details/112795290
 [字节跳动校园招聘](https://jobs.bytedance.com/campus/position?keywords=&category=&location=&project=&type=3&job_hot_flag=&current=1&limit=10&external_referral_code=YNWN2X7)
 
 
+# 机器学习面试大纲
 
+https://www.zhihu.com/question/23259302/answer/1136153589
+
+# 论坛&帖子
+
+对白的算法笔记。
+
+牛客jd
+
+三大论坛(清华，北大，北邮人)的jd知识点
