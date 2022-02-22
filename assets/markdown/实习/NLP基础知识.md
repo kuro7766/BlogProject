@@ -8,3 +8,8 @@ https://www.zhihu.com/question/20446337/answer/165277084
 　　生存模型所包含的信息量是比判别模型要多很多的。
 
 　　生成模型的概率加和为1，判定模型是条件概率p(y｜x)。
+
+# word2vec
+
+https://blog.csdn.net/qq_40006058/article/details/121481050
+

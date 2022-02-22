@@ -13,3 +13,4 @@ Action: Arguments can trigger different actions, specified by the action argumen
 - append_const: Save a value defined in the argument specification to a list.
 
 version: Prints version details about the program and then exits.
+

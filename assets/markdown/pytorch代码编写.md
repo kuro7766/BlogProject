@@ -21,3 +21,26 @@
 - @wraps
 
     可以实现函数的多次调用，还可以实现函数在调用失败的时候，再次调用。
+
+    例如，下载出错重试
+
+```
+
+def retry_method_with_fix(fix_method):
+
+    def _creator(func):
+        @wraps(func)
+        def wrapper(self, *args, **kwargs):
+            # pylint: disable=W0703,bare-except
+            try:
+                return func(self, *args, **kwargs)
+            except:
+                fix_method(self)
+                return func(self, *args, **kwargs)
+
+        return wrapper
+
+    # 返回的仍然是一个fun，这个fun是fun的修饰器
+    return _creator
+```
+

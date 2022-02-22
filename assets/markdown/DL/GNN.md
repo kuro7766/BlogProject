@@ -21,3 +21,4 @@ https://easyai.tech/blog/gnn-deepwalk-graphsage/
 　　https://mp.weixin.qq.com/s/BQckmL3grsXy7Y3Ph-x3Yw
 
 　　几行代码就可以实现图神经网络的训练,dgl作为它的一个后端。
+
