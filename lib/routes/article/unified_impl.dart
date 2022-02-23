@@ -1,5 +1,6 @@
 import 'package:blog_project/routes/article/unified.dart';
 import 'package:blog_project/util/my_code_style.dart';
+import 'package:blog_project/widgets/mmarkdown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
@@ -13,19 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 // 　　如果是在有状态的组件，则需要在状态和组件上面都mix这个类，其中组件的编写都在state里面，而对外展示的一些数据，比如描述的内容，必须在从外层的创建状态上面编写代码。
 ///
 abstract class UnifiedWritingImpl {
-  MarkdownBody md(String data) => MarkdownBody(
-        data: data,
-        selectable: true,
-        // selectable: true,
-        syntaxHighlighter: HighLight(),
-        onTapLink: (String text, String href, String title) async {
-          var fail = !await launch(href);
-          if (fail) {
-            Get.snackbar('Error', 'Could not open link',
-                snackPosition: SnackPosition.BOTTOM);
-          }
-        },
-      );
+  Widget md(String data) => MMarkdown(data: data,);
 
   Column c(List<Widget> children) {
     return Column(

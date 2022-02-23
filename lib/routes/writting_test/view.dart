@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:blog_project/util/debug.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
+import 'package:blog_project/widgets/mmarkdown.dart';
 import 'package:blog_project/widgets/test/md_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -32,40 +33,16 @@ class _WritingTestComponentState extends State<WritingTestComponent> {
       alignment: Alignment.topLeft,
       child: Column(
         children: [
-          MarkdownBody(
-            data: [
-              """
+          MMarkdown(data: [
+            r"""
+dfss
+ddfsdfaf
+
+fff$aaa$fffs$bbb$dsdssds
+
 
 """
-            ].last,
-
-//             """
-// B Hello **bold**
-// sfdasd
-// xxx warning **bold**
-// """r
-
-            // """
-            // B Hello **bold**
-            //
-            // [[warning]] warning **bold**
-            // """
-
-            selectable: true,
-            builders: <String, MarkdownElementBuilder>{
-              'warning': WarningBuilder(),
-            },
-            blockSyntaxes: [
-              B2BlockSyntax(),
-            ],
-            onTapLink: (String text, String href, String title) async {
-              var fail = !await launch(href);
-              if (fail) {
-                Get.snackbar('Error', 'Could not open link',
-                    snackPosition: SnackPosition.BOTTOM);
-              }
-            },
-          ),
+          ].last,),
           SizedBox(height: 300),
         ],
       ),
