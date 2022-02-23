@@ -107,7 +107,8 @@ class _EntrancePageState extends State<EntrancePage> with TickerProviderStateMix
         onNotification: (t) {
           if (t is ScrollUpdateNotification && t.depth == 0) {
             log(84, t.metrics.pixels);
-            if (t.scrollDelta > 0.1) {
+            // if (t.scrollDelta > 0.1) {
+            if (t.scrollDelta > 0.0) {
               controller.reverse();
             } else {
               controller.forward();
