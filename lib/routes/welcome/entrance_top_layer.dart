@@ -104,10 +104,10 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                 textEditingController.text = '';
               },
               child: Container(
-                  padding: Cfg.isMobile
+                  padding: DynamicConfig.isMobile
                       ? EdgeInsets.only(
-                          left: Cfg.mobileHomeIconPadding,
-                          right: Cfg.mobileHomeIconPadding)
+                          left: DynamicConfig.mobileHomeIconPadding,
+                          right: DynamicConfig.mobileHomeIconPadding)
                       : EdgeInsets.all(30.0),
                   alignment: Alignment.center,
                   child: Icon(Icons.search))),
@@ -142,7 +142,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
 
                   attach(
                       c,
-                      Cfg.isMobile
+                      DynamicConfig.isMobile
                           ? Alignment.centerLeft
                           : Alignment.bottomLeft, Obx(() {
                     // musicState.loaded.value;
@@ -366,10 +366,10 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                           logic.toArticleList(home: false);
                         },
                         child: Padding(
-                          padding: Cfg.isMobile
+                          padding: DynamicConfig.isMobile
                               ? EdgeInsets.only(
-                                  left: Cfg.mobileHomeIconPadding,
-                                  right: Cfg.mobileHomeIconPadding)
+                                  left: DynamicConfig.mobileHomeIconPadding,
+                                  right: DynamicConfig.mobileHomeIconPadding)
                               : EdgeInsets.only(),
                           child: SizedBox(
                             height: Const.barHeight,
@@ -380,7 +380,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                                   Icons.home,
                                   color: Colors.white,
                                 ),
-                                Cfg.isMobile
+                                DynamicConfig.isMobile
                                     ? Container()
                                     : Text(
                                         Const.leftTopTitle,

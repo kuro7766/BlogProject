@@ -1,6 +1,7 @@
 import 'package:blog_project/util/js_util.dart';
 
-class Cfg {
+// dynamic config
+class DynamicConfig {
   // static var __isMobile=false;
   // static var __isMobileInitialized=false;
   // static var __isMobile= false;
@@ -50,4 +51,6 @@ class Cfg {
 
 //  mobile home padding
   static const mobileHomeIconPadding = 30.0;
+
+  static var blogContentWidth=1000.0;
 }

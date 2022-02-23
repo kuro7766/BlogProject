@@ -52,6 +52,7 @@ class CoverMarkdown extends StatelessWidget {
         return MeasureSize(
           onChange: (size) {
             Dbg.log('$size');
+
             if (useMask) __sizeNotifier.value = size;
           },
           child: Stack(

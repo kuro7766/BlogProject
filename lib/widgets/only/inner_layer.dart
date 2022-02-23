@@ -73,7 +73,7 @@ class ManageInnerLayerState extends State<ManageInnerLayer> with StateEventBusRe
                   child:
                       Align(alignment: Alignment.topCenter, child: widget.left),
                   flex: 5),
-              Cfg.isMobile?Container():Expanded(flex: 2, child: widget.right)
+              DynamicConfig.isMobile?Container():Expanded(flex: 2, child: widget.right)
             ],
           ),
         ),

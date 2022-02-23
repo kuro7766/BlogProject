@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:blog_project/config.dart';
 import 'package:blog_project/util/getx_debug_tool.dart';
 import 'package:blog_project/util/http_request.dart';
 import 'package:blog_project/util/simple_http_builder.dart';
@@ -105,7 +106,10 @@ class LatexTermBuilder extends MarkdownElementBuilder {
         r'http://chart.apis.google.com/chart?cht=tx&chs=20&chl='+element.textContent,fit: BoxFit.fitHeight,
     );
   //  wrap img with maxed width less than 200
-    return SizedBox(height: 15,child: img);
+    return Container(constraints: BoxConstraints(
+      maxHeight: 15,
+      maxWidth: DynamicConfig.blogContentWidth,
+    ),child: img);
   //   return SimpleHttpBuilder(httpFuture: ()async{
   //     var r=await http.post(Uri.parse('https://e1kf0882p7.execute-api.us-east-1.amazonaws.com/default/latex2image'),headers: {
   //       'Content-Type': 'application/json'

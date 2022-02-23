@@ -33,7 +33,7 @@ class LUserContentList extends StatelessWidget {
 
 
     Dbg.log('fff');
-    return Cfg.isMobile
+    return DynamicConfig.isMobile
         ? Container(
             color: Colors.white10,
           )

@@ -20,7 +20,7 @@ class Const {
   // static var leftTopTitle='kuroの小站';
   static const barHeight = 85.0;
 
-  static get leftFlex => Cfg.isMobile ? 0 : 2;
+  static get leftFlex => DynamicConfig.isMobile ? 0 : 2;
   static var iFrameId = 'myiframe';
 
   static const rightFlex = 15;
@@ -28,7 +28,7 @@ class Const {
   static const barColor = Color(0xFF7266BA);
   static const appBarColor = Color(0xFF7266BA);
 
-  static get normalTextSize => Cfg.isMobile ? 30.0 : 22.0;
+  static get normalTextSize => DynamicConfig.isMobile ? 30.0 : 22.0;
   static const rListDefaultGap = 25.0;
   static const loginDividerHeight = 50.0;
   static const defaultUser = 'kuro';
