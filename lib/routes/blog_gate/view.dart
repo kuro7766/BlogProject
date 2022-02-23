@@ -34,7 +34,9 @@ class MainContentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DynamicConfig.blogContentWidth=MediaQuery.of(context).size.width*(5/7);
+    // DynamicConfig.blogContentWidth=MediaQuery.of(context).size.width*(5/7);
+    DynamicConfig.blogContentWidth=MediaQuery.of(context).size.width*(1);
+
     Dbg.log('DynamicConfig.blogContentWidth initialized ... ','important');
     // Dbg.log(,'kl');
     return Obx(() {
