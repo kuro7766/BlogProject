@@ -127,10 +127,10 @@ print "Finished"
 # pprint
 [结构化打印](https://stackoverflow.com/a/261833/14173990)，用于debug
 ```python
->>> import pprint    
->>> stuff = sys.path[:]
->>> stuff.insert(0, stuff)
->>> pprint.pprint(stuff)
+import pprint    
+stuff = sys.path[:]
+stuff.insert(0, stuff)
+pprint.pprint(stuff)
 [<Recursion on list with id=869440>,
  '',
  '/usr/local/lib/python1.5',
@@ -144,19 +144,19 @@ print "Finished"
 # 列举对象的所有方法
 
 ```python
->>> dir("foo")
+dir("foo")
 ['__add__', '__class__', '__contains__', (snipped a bunch), 'title',
  'translate', 'upper', 'zfill']
 ```
 
 # tuple/array unpack
 ```python
->>> first,second,*rest = (1,2,3,4,5,6,7,8)
->>> first
+first,second,*rest = (1,2,3,4,5,6,7,8)
+first
 1
->>> second
+second
 2
->>> rest
+rest
 [3, 4, 5, 6, 7, 8]
 ```
 
@@ -165,12 +165,12 @@ print "Finished"
 >in python 3, you can use a syntax identical to optional arguments in function definition for tuple unpacking:
 
 ```python
->>> first,second,*rest = (1,2,3,4,5,6,7,8)
->>> first
+first,second,*rest = (1,2,3,4,5,6,7,8)
+first
 1
->>> second
+second
 2
->>> rest
+rest
 [3, 4, 5, 6, 7, 8]
 ```
 
@@ -245,11 +245,11 @@ print(scanner.scan("sum = 3*foo + 312.50 + bar"))
 # 数组运算符重写
 
 ```python
->>> class C(object):
+class C(object):
 ...  def __getitem__(self, item):
 ...   return item
 ... 
->>> C()[1:2, ..., 3]
+C()[1:2, ..., 3]
 (slice(1, 2, None), Ellipsis, 3)
 ```
 
@@ -268,17 +268,17 @@ def retrieve_name(var):
 一个类似java注解的东西
 
 ```python
->>> def print_args(function):
->>>     def wrapper(*args, **kwargs):
->>>         print 'Arguments:', args, kwargs
->>>         return function(*args, **kwargs)
->>>     return wrapper
+def print_args(function):
+    def wrapper(*args, **kwargs):
+        print 'Arguments:', args, kwargs
+        return function(*args, **kwargs)
+    return wrapper
 
->>> @print_args
->>> def write(text):
->>>     print text
+@print_args
+def write(text):
+    print text
 
->>> write('foo')
+write('foo')
 Arguments: ('foo',) {}
 foo
 ```
@@ -286,16 +286,16 @@ foo
 # 根据字符串动态生成对象、属性
 
 ```python
->>> NewType = type("NewType", (object,), {"x": "hello"})
->>> n = NewType()
->>> n.x
+NewType = type("NewType", (object,), {"x": "hello"})
+n = NewType()
+n.x
 "hello"
 which is exactly the same as
 
->>> class NewType(object):
->>>     x = "hello"
->>> n = NewType()
->>> n.x
+class NewType(object):
+    x = "hello"
+n = NewType()
+n.x
 "hello"
 ```
 
@@ -314,7 +314,11 @@ else:
 
 # 参考资料
 [Hidden features of Python - Stack Overflow](https://stackoverflow.com/questions/101268/hidden-features-of-python)
+
+
 [python - Getting the name of a variable as a string - Stack Overflow](https://stackoverflow.com/questions/18425225/getting-the-name-of-a-variable-as-a-string)
+
+
 https://stackoverflow.com/questions/880530/can-modules-have-properties-the-same-way-that-objects-can
 
 
