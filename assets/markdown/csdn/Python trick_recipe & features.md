@@ -143,7 +143,6 @@ pprint.pprint(stuff)
 [见此处](https://stackoverflow.com/a/393927/14173990)，这个还不知道有什么妙用
 # 列举对象的所有方法
 
-```python
 dir("foo")
 ['__add__', '__class__', '__contains__', (snipped a bunch), 'title',
  'translate', 'upper', 'zfill']
@@ -225,6 +224,8 @@ Bob how are you?
 Hi, Fred, how are you?
 ```
 re.Scanner()，原sre.Scanner()，可以在正则定义的时候定义回调，更加方便
+
+
 ```python
 import re
 def s_ident(scanner, token): return token
@@ -322,3 +323,6 @@ else:
 https://stackoverflow.com/questions/880530/can-modules-have-properties-the-same-way-that-objects-can
 
 
+# @classmethod 和 static
+
+https://stackoverflow.com/questions/12179271/meaning-of-classmethod-and-staticmethod-for-beginner
