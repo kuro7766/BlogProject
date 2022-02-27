@@ -6,7 +6,8 @@
 
     它的递归思想就是：一条最优路径(方案)切成两段，那么每一段都是一条（局部）最优路径（方案）。
 
-31.
+- 31.下一个序列
+
 ![][0-base64tag-http://kuroweb.com/picture/16445018911504192.jpg]
 
 
@@ -33,7 +34,9 @@
 
 
 
+- 子集，集合，全排列大全
 
+https://leetcode-cn.com/problems/subsets/solution/hui-su-suan-fa-by-powcai-5/
 
 
 
