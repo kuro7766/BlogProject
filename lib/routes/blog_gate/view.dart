@@ -39,7 +39,7 @@ class MainContentPage extends StatelessWidget {
 
     Dbg.log('DynamicConfig.blogContentWidth initialized ... ','important');
     // Dbg.log(,'kl');
-    return Obx(() {
+    return Obx(() {https://github.com/pytorch/text/pull/624
       state.observeMain;
       // log2(0, 'outer2build');
       // log2(0, '${state.observeMain[0]}${state.observeMain[1]}');
