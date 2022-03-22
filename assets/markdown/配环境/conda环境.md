@@ -6,3 +6,4 @@ CondaMemoryError: The conda process ran out of memory. Increase system memory an
 原因可能在于
 https://conda.anaconda.org/conda-forge/win-64/repodata.json
 这个文件包含的对象太多，遍历的复杂度过大，最后的解决办法是。先安装一些大型软件，例如torch环境，然后再运行这个命令，可以减小对内存的依赖
+

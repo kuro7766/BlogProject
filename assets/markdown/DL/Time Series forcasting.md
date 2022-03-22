@@ -34,3 +34,4 @@ self-attention matches queries against keys insensitive to **local context**, �
 我们提出了一种卷机自注意力的方式来获取查询和键值。这样的query，key可以感受到局部的上下文，例如形状。从而提高精度，降低loss。
 
 　　我们降低了时间复杂度，从而对长序列使用这个方法更加的可行。
+

@@ -11,3 +11,5 @@ def torch_pth_to_onnx(model: torch.nn.Module, pth_path, shape_test: tuple):
 
 # 然后将onnx转换成tflite
 
+
+
