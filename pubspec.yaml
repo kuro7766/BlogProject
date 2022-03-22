@@ -98,6 +98,8 @@ dependencies:
   process_run: ^0.12.2+2
   reflectable: ^3.0.5
   widget_mask: ^1.0.0
+  yaml: ^3.1.0
+  json2yaml: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -126,6 +128,7 @@ flutter:
     - assets/markdown/基础知识/
     - assets/markdown/DL/
     - assets/markdown/csdn/
+    - assets/markdown/配环境/
 #   assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

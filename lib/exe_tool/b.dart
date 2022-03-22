@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:process_run/shell.dart';
 import 'package:path/path.dart' as p;
-
+// 把上一个步骤生产文件的前缀去掉
 Future<List<FileSystemEntity>> dirContents(Directory dir) {
   var files = <FileSystemEntity>[];
   var completer = Completer<List<FileSystemEntity>>();

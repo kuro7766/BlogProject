@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:process_run/shell.dart';
 import 'package:path/path.dart' as p;
-//用于转换dart文件
+//用于转换dart文件，生产出来的文件会带一个前缀d-
 
 Future<List<FileSystemEntity>> dirContents(Directory dir) {
   var files = <FileSystemEntity>[];

@@ -24,8 +24,15 @@ jobs:
         channel: stable
     - run: git checkout local_website
 
-    - run: ./format.bat
+    # - run: ./format.bat
+    # 拆解成多个命令，其中yaml，是危险命令，本机不要执行，只作临时编译使用
+    - run: "tools/ass.exe"
+    - run: "tools/a.exe"
+    - run: "tools/b.exe"
+    - run: "tools/c.exe"
+    - run: "tools/d_yaml_parser.exe"
 #    - run: flutter config --enable-web
+# 在这之前修改yaml都可以被看到
     - run: flutter pub get
     - run: flutter build web --web-renderer html
 #    - run: flutter build web --web-renderer html
