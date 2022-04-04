@@ -82,11 +82,15 @@ class HomeList extends MainContentBaseStatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
+                    var pre=GlobalController.instance.currentStartIndex;
+
                     GlobalController.instance.currentStartIndex += 10;
-                    if (GlobalController.instance.currentStartIndex >
-                        articleInfoAndMetasBuilder.length - 10) {
-                      GlobalController.instance.currentStartIndex =
-                          articleInfoAndMetasBuilder.length - 10;
+                    Dbg.log('post ${GlobalController.instance.currentStartIndex}','tag');
+                    if (GlobalController.instance.currentStartIndex >=
+                        articleInfoAndMetasBuilder.length) {
+                      // GlobalController.instance.currentStartIndex =
+                      //     articleInfoAndMetasBuilder.length - 10;
+                      GlobalController.instance.currentStartIndex = pre;
                     }
                     fireEvent(ManageInnerLayerState, 'top');
                   },

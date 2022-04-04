@@ -29,7 +29,7 @@ class UniMd extends StatelessWidget with UnifiedWritingImpl {
   Widget contentWidget(var preview) {
     return SimpleHttpBuilder(
       httpFuture: (() async {
-        Dbg.log(path);
+        // Dbg.log(path);
         var s = await rootBundle.loadString((path));
         // Dbg.log(s,'sp');
         return ResponseContent.success([(p.basename(path)), s]);

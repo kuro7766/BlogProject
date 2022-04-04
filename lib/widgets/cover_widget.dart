@@ -30,7 +30,7 @@ class MaskWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MeasureSize(
       onChange: (size) {
-        Dbg.log('$size');
+        // Dbg.log('$size');
         if (useMask) __sizeNotifier.value = size;
       },
       child: Stack(

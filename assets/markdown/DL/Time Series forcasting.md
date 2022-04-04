@@ -35,3 +35,5 @@ self-attention matches queries against keys insensitive to **local context**, �
 
 　　我们降低了时间复杂度，从而对长序列使用这个方法更加的可行。
 
+
+

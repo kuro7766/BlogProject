@@ -35,3 +35,4 @@ D:\proxychains\proxychains_win32_x64.exe -f D:\proxychains\proxychains.conf %*
 proxy.bat pip install -r requirements.txt
 
 之后就会默认走代理了
+
