@@ -41,70 +41,68 @@ import 'package:path/path.dart' as p;
 class HomeList extends MainContentBaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ObxObserveWidget(
-      [Get.find<GlobalLogic>().state.currentPage],
-      () {
-        return Column(
-          children: [
-            // custom blog
-            ...List.generate(() {
-              var length = articleInfoAndMetasBuilder.length;
-              var leftItems = articleInfoAndMetasBuilder.length -
-                  GlobalController.instance.currentStartIndex;
-              var pageShow = 10;
-              return min(leftItems, pageShow);
-            }(), (idx) {
-              // return Text('rrr');
-              // Dbg.log(articleInfoAndMetasBuilder[idx]['builder'],'rrr');
-              return GestureDetector(
-                onTap: () {
-                  logic.toArticleById(articleInfoAndMetasBuilder[
-                      GlobalController.instance.currentStartIndex + idx]['id']);
+    return ObxObserveWidget([Get.find<GlobalLogic>().state.currentPage], () {
+      return Column(
+        children: [
+          // custom blog
+          ...List.generate(() {
+            var length = articleInfoAndMetasBuilder.length;
+            var leftItems = articleInfoAndMetasBuilder.length -
+                GlobalController.instance.currentStartIndex;
+            var pageShow = 10;
+            return min(leftItems, pageShow);
+          }(), (idx) {
+            // return Text('rrr');
+            // Dbg.log(articleInfoAndMetasBuilder[idx]['builder'],'rrr');
+            return GestureDetector(
+              onTap: () {
+                logic.toArticleById(articleInfoAndMetasBuilder[
+                    GlobalController.instance.currentStartIndex + idx]['id']);
+              },
+              child: ((articleInfoAndMetasBuilder[
+                          GlobalController.instance.currentStartIndex + idx]
+                      ['builder'] as Function)() as UnifiedWritingImpl)
+                  .DESCRIPTION,
+            );
+          }),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () {
+                  GlobalController.instance.currentStartIndex -= 10;
+                  if (GlobalController.instance.currentStartIndex < 0) {
+                    GlobalController.instance.currentStartIndex = 0;
+                  }
+                  fireEvent(ManageInnerLayerState, 'top');
                 },
-                child: ((articleInfoAndMetasBuilder[
-                            GlobalController.instance.currentStartIndex + idx]
-                        ['builder'] as Function)() as UnifiedWritingImpl)
-                    .DESCRIPTION,
-              );
-            }),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    GlobalController.instance.currentStartIndex -= 10;
-                    if (GlobalController.instance.currentStartIndex < 0) {
-                      GlobalController.instance.currentStartIndex = 0;
-                    }
-                    fireEvent(ManageInnerLayerState, 'top');
-                  },
-                  icon: Icon(Icons.keyboard_arrow_left),
-                ),
-                IconButton(
-                  onPressed: () {
-                    var pre=GlobalController.instance.currentStartIndex;
+                icon: Icon(Icons.keyboard_arrow_left),
+              ),
+              IconButton(
+                onPressed: () {
+                  var pre = GlobalController.instance.currentStartIndex;
 
-                    GlobalController.instance.currentStartIndex += 10;
-                    Dbg.log('post ${GlobalController.instance.currentStartIndex}','tag');
-                    if (GlobalController.instance.currentStartIndex >=
-                        articleInfoAndMetasBuilder.length) {
-                      // GlobalController.instance.currentStartIndex =
-                      //     articleInfoAndMetasBuilder.length - 10;
-                      GlobalController.instance.currentStartIndex = pre;
-                    }
-                    fireEvent(ManageInnerLayerState, 'top');
-                  },
-                  icon: Icon(Icons.keyboard_arrow_right),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 200,
-            ),
-          ],
-        );
-      }
-    );
+                  GlobalController.instance.currentStartIndex += 10;
+                  Dbg.log('post ${GlobalController.instance.currentStartIndex}',
+                      'tag');
+                  if (GlobalController.instance.currentStartIndex >=
+                      articleInfoAndMetasBuilder.length) {
+                    // GlobalController.instance.currentStartIndex =
+                    //     articleInfoAndMetasBuilder.length - 10;
+                    GlobalController.instance.currentStartIndex = pre;
+                  }
+                  fireEvent(ManageInnerLayerState, 'top');
+                },
+                icon: Icon(Icons.keyboard_arrow_right),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 50,
+          ),
+        ],
+      );
+    });
   }
 }
 
