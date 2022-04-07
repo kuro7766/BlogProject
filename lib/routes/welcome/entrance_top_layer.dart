@@ -147,7 +147,7 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                           : Alignment.bottomLeft, Obx(() {
                     // musicState.loaded.value;
                     return musicState.loaded.value
-                        ?WhiteBorder(
+                        ? WhiteBorder(
                             color: Colors.white70,
                             child: Container(
                               child: SizedBox(
@@ -182,7 +182,9 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                                                   ),
                                                   Expanded(
                                                     child: Text(
-                                                      musicState.musicList[index]['name'],
+                                                      musicState
+                                                              .musicList[index]
+                                                          ['name'],
                                                       // Uri.decodeFull(
                                                       //   musicState.musicList[index]['name'],
                                                       // ),
@@ -203,6 +205,19 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                                                 musicState.playingIndex.value =
                                                     -1;
                                               } else {
+
+                                                //一个奇怪的bug  play pause play
+                                                logic.musicState.playingIndex
+                                                    .value = index;
+                                                await player.seek(
+                                                    Duration(milliseconds: 0),
+                                                    index: index);
+                                                musicState.player.play();
+
+                                                player.pause();
+                                                musicState.playingIndex.value =
+                                                    -1;
+
                                                 logic.musicState.playingIndex
                                                     .value = index;
                                                 await player.seek(
@@ -263,20 +278,19 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                             //     musics.length,
                             //     (index) => AudioSource.uri(
                             //         Uri.parse('asset:///${musics[index]}')))
-                        //     [
-                        //   DashAudioSource(Uri.parse()),
-                        // ]
-                        List.generate(
-                          musicState.musicList.length,
-                              (index){
-                            Dbg.log(musicState.musicList[index]['url'],'path');
-                            Dbg.log(index,'path');
-                            // return DashAudioSource(Uri.parse('https://m804.music.126.net/20220124003144/c0a096f2eccc7f7822101a90f8e1ddd7/jdyyaac/515e/525f/025f/f4398d7e34e5e34574b4556a2de2e95c.m4a?authSecret=0000017e87b096ad033d0aaba61a198a'));
-                            return DashAudioSource(Uri.parse(musicState.musicList[index]['url']));
-                              }
-                          // HlsAudioSource(
-                          // Uri.parse('asset:///${musics[index]}'))
-                          ),
+                            //     [
+                            //   DashAudioSource(Uri.parse()),
+                            // ]
+                            List.generate(musicState.musicList.length, (index) {
+                          Dbg.log(musicState.musicList[index]['url'], 'path');
+                          Dbg.log(index, 'path');
+                          // return DashAudioSource(Uri.parse('https://m804.music.126.net/20220124003144/c0a096f2eccc7f7822101a90f8e1ddd7/jdyyaac/515e/525f/025f/f4398d7e34e5e34574b4556a2de2e95c.m4a?authSecret=0000017e87b096ad033d0aaba61a198a'));
+                          return DashAudioSource(
+                              Uri.parse(musicState.musicList[index]['url']));
+                        }
+                                // HlsAudioSource(
+                                // Uri.parse('asset:///${musics[index]}'))
+                                ),
 
                         // List.generate(
                         //   musics.length,
@@ -292,7 +306,6 @@ class _EntranceTopLayerState extends State<EntranceTopLayer> {
                         //   AudioSource.uri(Uri.parse("https://example.com/track2.mp3")),
                         //   AudioSource.uri(Uri.parse("https://example.com/track3.mp3")),
                         // ]
-
                       ),
                       // Playback will be prepared to start from track1.mp3
                       // initialIndex: 0, // default
